@@ -1,4 +1,4 @@
-package sghospitalar;
+package Implementação;
 
 public class zc_Funcionario {
     
@@ -13,9 +13,20 @@ public class zc_Funcionario {
 
     // Construtor
     
-    public zc_Funcionario(){
+ 
+    
+     public zc_Funcionario(String nome, String cargo, String senha, String email, String numCell) {
+        this.nome = nome;
+        //this.cpf = cpf;
+        //this.rg = rg;
+        this.cargo = cargo;
+        this.senha = senha;
+        this.email = email;
+        this.numCell = numCell;
         
     }
+
+    
     
     // Metodos Set's
     
@@ -89,5 +100,21 @@ public class zc_Funcionario {
         return senha;
         
     }
+    
+     public String getNumCell(){
+        return numCell;
+        
+    }
+     
+      public String getEmail(){
+        return email;
+        
+    }
+    
+    
+    
+ 
+
+   
     
 }
