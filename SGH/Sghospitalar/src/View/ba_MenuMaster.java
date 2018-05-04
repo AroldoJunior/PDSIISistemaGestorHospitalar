@@ -1,4 +1,4 @@
-package sghospitalar;
+package View;
 
 import java.awt.*;
 import javax.swing.*;
@@ -139,5 +139,4 @@ public class ba_MenuMaster extends JFrame implements ActionListener{
         }
         
     }
-   
 }

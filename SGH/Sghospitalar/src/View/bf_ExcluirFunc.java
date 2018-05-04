@@ -1,26 +1,31 @@
-package sghospitalar;
+package View;
 
+import Implementação.zc_EnviaDados_Banco_Funcionario;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.event.*;
 
-public class be_AlterarFunc extends JFrame implements ActionListener{
+public class bf_ExcluirFunc extends JFrame implements ActionListener{
+    
+    zc_EnviaDados_Banco_Funcionario zz = new zc_EnviaDados_Banco_Funcionario();
     
     JLabel labelBuscar, labelInstrucao, labelNome, labelCpf, labelRg, labelCargo, labelSenha, labelEmail, labelNumCell;
     JTextPane pane1, sombraPane1, pane2, paneAux1, paneAux2, paneAux3, paneAux4;
     JTextField textBuscar, textNome, textCpf, textRg, textCargo, textSenha, textEmail, textNumbCell;
     JButton bBuscar, bVoltar, bConfirmar;
     
-    public be_AlterarFunc(){
+    int CodigoInt;
+    
+    public bf_ExcluirFunc(){
         
         Container c = this.getContentPane();
         c.setLayout(null);
         
         labelInstrucao = new JLabel();
-        labelInstrucao.setText("Caso não queira alterar um campo, deixe-o como está!");
+        labelInstrucao.setText("Confira os dados para confirmar a exclusão!");
         labelInstrucao.setForeground(Color.red);
-        labelInstrucao.setBounds(195, 70, 400, 20);
+        labelInstrucao.setBounds(230, 70, 400, 20);
         add(labelInstrucao);
         
         labelNome = new JLabel();
@@ -62,24 +67,28 @@ public class be_AlterarFunc extends JFrame implements ActionListener{
         textNome.setBounds(139, 111, 642, 21);
         textNome.setBackground(Color.WHITE);
         textNome.setBorder(new LineBorder(Color.WHITE));
+        textNome.setEditable(false);
         add(textNome);
         
         textCpf = new JTextField();
         textCpf.setBounds(55, 151, 642, 21);
         textCpf.setBackground(Color.WHITE);
         textCpf.setBorder(new LineBorder(Color.WHITE));
+        textCpf.setEditable(false);
         add(textCpf);
         
         textRg = new JTextField();
         textRg.setBounds(48, 191, 642, 21);
         textRg.setBackground(Color.WHITE);
         textRg.setBorder(new LineBorder(Color.WHITE));
+        textRg.setEditable(false);
         add(textRg);
         
         textCargo = new JTextField();
         textCargo.setBounds(72, 231, 642, 21);
         textCargo.setBackground(Color.WHITE);
         textCargo.setBorder(new LineBorder(Color.WHITE));
+        textCargo.setEditable(false);
         add(textCargo);
         
         
@@ -87,18 +96,21 @@ public class be_AlterarFunc extends JFrame implements ActionListener{
         textSenha.setBounds(74, 271, 642, 21);
         textSenha.setBackground(Color.WHITE);
         textSenha.setBorder(new LineBorder(Color.WHITE));
+        textSenha.setEditable(false);
         add(textSenha);
         
         textEmail = new JTextField();
         textEmail.setBounds(66, 311, 642, 21);
         textEmail.setBackground(Color.WHITE);
         textEmail.setBorder(new LineBorder(Color.WHITE));
+        textEmail.setEditable(false);
         add(textEmail);
         
         textNumbCell = new JTextField();
         textNumbCell.setBounds(55, 351, 642, 21);
         textNumbCell.setBackground(Color.WHITE);
         textNumbCell.setBorder(new LineBorder(Color.WHITE));
+        textNumbCell.setEditable(false);
         add(textNumbCell);
         
         paneAux1 = new JTextPane();
@@ -134,6 +146,7 @@ public class be_AlterarFunc extends JFrame implements ActionListener{
         bBuscar.setBounds(650, 10, 130, 35);
         bBuscar.setBackground(Color.decode("#FDF5E6"));
         bBuscar.setBorder(new LineBorder(Color.BLACK));
+        bBuscar.addActionListener(this);
         bBuscar.setFocusPainted(false);
         add(bBuscar);
         
@@ -152,6 +165,7 @@ public class be_AlterarFunc extends JFrame implements ActionListener{
         bConfirmar.setBounds(116, 401, 220, 45);
         bConfirmar.setBackground(Color.decode("#00FF7F"));
         bConfirmar.setBorder(new LineBorder(Color.BLACK));
+        bConfirmar.addActionListener(this);
         bConfirmar.setFocusPainted(false);
         add(bConfirmar);
         
@@ -186,7 +200,7 @@ public class be_AlterarFunc extends JFrame implements ActionListener{
         pane2.setEditable(false);
         add(pane2);
         
-        setTitle("Alterar Funcionario");
+        setTitle("Excluir Funcionario");
         setSize(800, 500);
         getContentPane().setBackground(Color.decode("#D1EEEE"));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -199,8 +213,78 @@ public class be_AlterarFunc extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == bVoltar){
-            ba_MenuMaster telamenumaster = new ba_MenuMaster();
+           
+            ca_MenuFunc telamenumaster = new ca_MenuFunc();
             dispose();
+            
+        }
+        
+        if(e.getSource() == bBuscar){
+           
+              if(textBuscar.getText().isEmpty()){
+            
+                JOptionPane.showMessageDialog(null, "Campo vazio! . Preencha o campo");
+                
+            }else{ 
+                 
+                 CodigoInt = Integer.parseInt(textBuscar.getText());  
+                 
+                  System.out.println(CodigoInt);  
+
+                 if (zz.BuscarCpf(CodigoInt) == CodigoInt){
+                    System.out.println("achou");
+                    textNome.setText(zz.BuscarNome(CodigoInt));
+                    //textCpf.setText(zz.BuscarCpf(CodigoInt));
+                    //textRg.setText(zz.BuscarRg(CodigoInt));
+                    textCargo.setText(zz.BuscarCargo(CodigoInt));
+                    textSenha.setText(zz.BuscarSenha(CodigoInt));
+                    textNumbCell.setText(zz.BuscarNumCell(CodigoInt));
+                    textEmail.setText(zz.BuscarEmail(CodigoInt));
+                   
+
+                }else{
+
+                    JOptionPane.showMessageDialog(null, "Codigo invalido!");
+
+                }
+             }
+            
+        }
+        
+         if(e.getSource() == bConfirmar){
+           
+            
+            if(textNome.getText().isEmpty() || textCargo.getText().isEmpty() || textSenha.getText().isEmpty() || textNumbCell.getText().isEmpty() || textEmail.getText().isEmpty()){
+            
+                JOptionPane.showMessageDialog(null, "Existe um campo obrigatorio vazio!");
+                requestFocus();
+                
+            }else{
+                
+               
+               if( zz.Deletar(CodigoInt) == true){
+                  
+                    textNome.setText("");
+                    //textCpf.setText(zz.BuscarCpf(CodigoInt));
+                    //textRg.setText(zz.BuscarRg(CodigoInt));
+                    textCargo.setText("");
+                    textSenha.setText("");
+                    textNumbCell.setText("");
+                    textEmail.setText("");
+                    
+                    textBuscar.setText("");
+                
+                JOptionPane.showMessageDialog(null, "Funcionario excluido com sucesso!");
+                   
+               }else{
+                   
+                   JOptionPane.showMessageDialog(null, "Erro ao exluir Funcionario!");
+                   
+               }
+                
+                   
+                
+            }
             
         }
         

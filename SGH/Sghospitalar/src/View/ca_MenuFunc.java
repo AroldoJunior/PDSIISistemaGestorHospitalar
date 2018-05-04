@@ -1,4 +1,4 @@
-package sghospitalar;
+package View;
 
 import java.awt.*;
 import javax.swing.*;
@@ -20,6 +20,7 @@ public class ca_MenuFunc extends JFrame implements ActionListener{
         bCadastrar.setBounds(91, 54, 200, 40);
         bCadastrar.setBackground(Color.decode("#FDF5E6"));
         bCadastrar.setBorder(new LineBorder(Color.BLACK));
+        bCadastrar.addActionListener(this);
         bCadastrar.setFocusPainted(false);
         add(bCadastrar);
         
@@ -28,6 +29,7 @@ public class ca_MenuFunc extends JFrame implements ActionListener{
         bListar.setBounds(91, 114, 200, 40);
         bListar.setBackground(Color.decode("#FDF5E6"));
         bListar.setBorder(new LineBorder(Color.BLACK));
+        bListar.addActionListener(this);
         bListar.setFocusPainted(false);
         add(bListar);
         
@@ -36,6 +38,7 @@ public class ca_MenuFunc extends JFrame implements ActionListener{
         bSituacao.setBounds(91, 174, 200, 40);
         bSituacao.setBackground(Color.decode("#FDF5E6"));
         bSituacao.setBorder(new LineBorder(Color.BLACK));
+        bSituacao.addActionListener(this);
         bSituacao.setFocusPainted(false);
         add(bSituacao);
         
@@ -44,6 +47,7 @@ public class ca_MenuFunc extends JFrame implements ActionListener{
         bAlterar.setBounds(91, 234, 200, 40);
         bAlterar.setBackground(Color.decode("#FDF5E6"));
         bAlterar.setBorder(new LineBorder(Color.BLACK));
+        bAlterar.addActionListener(this);
         bAlterar.setFocusPainted(false);
         add(bAlterar);
         
@@ -52,6 +56,7 @@ public class ca_MenuFunc extends JFrame implements ActionListener{
         bExcluir.setBounds(91, 294, 200, 40);
         bExcluir.setBackground(Color.decode("#FDF5E6"));
         bExcluir.setBorder(new LineBorder(Color.BLACK));
+        bExcluir.addActionListener(this);
         bExcluir.setFocusPainted(false);
         add(bExcluir);
         
@@ -115,6 +120,38 @@ public class ca_MenuFunc extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         
+        if(e.getSource() == bCadastrar){
+
+             bc_CadastroFunc telacadastro = new bc_CadastroFunc();
+             dispose();
+
+        }
+        if(e.getSource() == bListar){
+
+             bd_ListarFunc telalista = new bd_ListarFunc();
+             dispose();
+
+        }
+        if(e.getSource() == bSituacao){
+
+             //bd_ListarFunc telalista = new bd_ListarFunc();
+             //dispose();
+
+        }
+        
+        if(e.getSource() == bAlterar){
+
+              be_AlterarFunc telaaltera = new be_AlterarFunc();
+             dispose();
+
+        }
+        if(e.getSource() == bExcluir){
+
+             bf_ExcluirFunc telaexclui = new bf_ExcluirFunc();
+             dispose();
+
+        }
+        
         if(e.getSource() == bSair){
             
             ac_LoginFunc telalogin = new ac_LoginFunc();
@@ -123,5 +160,5 @@ public class ca_MenuFunc extends JFrame implements ActionListener{
         }
         
     }
-   
+    
 }

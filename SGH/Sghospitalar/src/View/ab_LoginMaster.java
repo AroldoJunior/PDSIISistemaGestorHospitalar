@@ -1,4 +1,4 @@
-package sghospitalar;
+package View;
 
 import java.awt.*;
 import javax.swing.*;

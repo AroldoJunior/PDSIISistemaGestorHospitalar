@@ -1,11 +1,15 @@
-package sghospitalar;
+package View;
 
+import Implementação.zc_EnviaDados_Banco_Funcionario;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.event.*;
+import Implementação.zc_Funcionario;
 
 public class bc_CadastroFunc extends JFrame implements ActionListener{
+    
+    zc_EnviaDados_Banco_Funcionario zz = new zc_EnviaDados_Banco_Funcionario();
     
     JButton bConfirmar, bCancelar;
     JLabel labelNome, labelCpf, labelRg, labelCargo, labelSenha, labelConfirmarSenha, labelEmail, labelNumCell, labelInfo;
@@ -157,6 +161,7 @@ public class bc_CadastroFunc extends JFrame implements ActionListener{
         bConfirmar.setBounds(116, 372, 220, 45);
         bConfirmar.setBackground(Color.decode("#00FF7F"));
         bConfirmar.setBorder(new LineBorder(Color.BLACK));
+        bConfirmar.addActionListener(this);
         bConfirmar.setFocusPainted(false);
         add(bConfirmar);
         
@@ -180,15 +185,43 @@ public class bc_CadastroFunc extends JFrame implements ActionListener{
         
     }
 
-    @Override
+     @Override
     public void actionPerformed(ActionEvent e) {
-        
-        if(e.getSource() == bCancelar){
-            ba_MenuMaster telamenumaster = new ba_MenuMaster();
+
+        if (e.getSource() == bCancelar) {
+            ca_MenuFunc telamenumaster = new ca_MenuFunc();
             dispose();
-            
+
         }
+
+        if (e.getSource() == bConfirmar) {
+            //ba_MenuMaster telamenumaster = new ba_MenuMaster();
+            //dispose();
+
+            MandaCampo_Funcionario();
+            
+
+        }
+
+    }
+
+    public void MandaCampo_Funcionario() {
+
+        String a, a1, a2, a3, a4, a5, a6, a7, a8 = null;
+
+        
+         zc_Funcionario funcionario = new zc_Funcionario(
+                        textNome.getText(), 
+                        textCargo.getText(),
+                        textSenha.getText(),
+                        textEmail.getText(),
+                        textNumCell.getText()
+                       
+                );
+        
+       
+        zz.Cadastra(funcionario);
         
     }
-    
+ 
 }

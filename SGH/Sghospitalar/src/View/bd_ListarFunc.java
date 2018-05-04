@@ -1,4 +1,4 @@
-package sghospitalar;
+package View;
 
 import java.awt.*;
 import javax.swing.*;
@@ -79,7 +79,7 @@ public class bd_ListarFunc extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == bVoltar){
-            ba_MenuMaster telamenumaster = new ba_MenuMaster();
+            ca_MenuFunc telamenumaster = new ca_MenuFunc();
             dispose();
             
         }

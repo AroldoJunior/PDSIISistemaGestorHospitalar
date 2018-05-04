@@ -1,11 +1,15 @@
-package sghospitalar;
+package View;
 
+import BancoDeDados.zc_Banco_de_Dados;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.event.*;
+import java.sql.SQLException;
 
 public class ac_LoginFunc extends JFrame implements ActionListener{
+    
+    zc_Banco_de_Dados bd = new zc_Banco_de_Dados();
  
     JLabel labelLogin, labelSenha, labelLogo, labelEntrar;
     JTextField textLogin, textSenha;
@@ -92,21 +96,74 @@ public class ac_LoginFunc extends JFrame implements ActionListener{
         
     }
 
+     public boolean  login(String login, String senha) throws SQLException {
+       
+        boolean certo = false;
+      
+        bd.connection();
+        bd.executaSQL("SELECT * FROM Login");
+        
+            if ( bd.rs.first()) {
+                
+                 String l = bd.rs.getString("usuario");
+                 String s = bd.rs.getString("senha");
+               
+                
+                    if(login.equals(l)&&senha.equals(s)){
+                         
+                        certo = true;
+                        
+                    }else{
+                       
+                    }
+            }
+          
+        return certo;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         
         if(e.getSource() == bEntrar){
-            ca_MenuFunc telamenu = new ca_MenuFunc();
-            dispose();
+            
+            try {
+                
+                String usu = textLogin.getText();
+                String sen = textSenha.getText();
+               
+                boolean resposta = login(usu,sen);
+                
+                if (resposta == true) {
+                  
+                    ca_MenuFunc telamenu = new ca_MenuFunc();
+                    dispose();
+                    
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "login não realizado!\n Favor conferir o usuario e senha digitado!");
+                }
+            } catch (SQLException ex) {
+                    System.out.println("Ocorreu erro ao conectar");
+            }
             
         }
         
         if(e.getSource() == bMaster){
-           ab_LoginMaster telamenumaster = new ab_LoginMaster();
-            dispose();
             
-        }
-        
+           /*ba_MenuMaster telamenumaster = new ba_MenuMaster();
+            dispose();
+            */
+      
+        final JFrame frame = new JFrame("JDialog Demo");
+       
+ 
+    
+                        //LoginDialog loginDlg = new LoginDialog(frame);
+                        //loginDlg.setVisible(true);
+                        // if logon successfully
+                       
+ 
+       
     }
+}
     
 }

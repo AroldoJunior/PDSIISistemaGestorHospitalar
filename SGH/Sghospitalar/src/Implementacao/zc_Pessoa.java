@@ -1,4 +1,4 @@
-package sghospitalar;
+package Implementação;
 
 public class zc_Pessoa {
     
