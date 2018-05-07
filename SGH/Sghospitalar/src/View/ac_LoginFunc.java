@@ -19,10 +19,10 @@ public class ac_LoginFunc extends JFrame implements ActionListener{
     public ac_LoginFunc(){
         
         ImageIcon icon = new ImageIcon("sghLogo.png");
-        ImageIcon icon2 = new ImageIcon("sghLogin.png");
+        //ImageIcon icon2 = new ImageIcon("sghLogin.png");
         
         icon.setImage(icon.getImage().getScaledInstance(500, 450, 100));
-        icon2.setImage(icon2.getImage().getScaledInstance(300, 150, 80));
+        //icon2.setImage(icon2.getImage().getScaledInstance(300, 150, 80));
         
         Container c = this.getContentPane();
         c.setLayout(null);
@@ -31,9 +31,9 @@ public class ac_LoginFunc extends JFrame implements ActionListener{
         labelLogo.setBounds(343, 20, 458, 430);
         add(labelLogo);
         
-        labelEntrar = new JLabel(icon2);
-        labelEntrar.setBounds(27, 0, 300, 300);
-        add(labelEntrar);
+        //labelEntrar = new JLabel(icon2);
+        //labelEntrar.setBounds(27, 0, 300, 300);
+        //add(labelEntrar);
         
         labelLogin = new JLabel();
         labelLogin.setText("Login:");
@@ -149,13 +149,11 @@ public class ac_LoginFunc extends JFrame implements ActionListener{
         
         if(e.getSource() == bMaster){
             
-           /*ba_MenuMaster telamenumaster = new ba_MenuMaster();
+           ab_LoginMaster telamenumaster = new ab_LoginMaster();
             dispose();
-            */
-      
-        final JFrame frame = new JFrame("JDialog Demo");
-       
- 
+            
+        
+                        // if logon successfully
     
                         //LoginDialog loginDlg = new LoginDialog(frame);
                         //loginDlg.setVisible(true);

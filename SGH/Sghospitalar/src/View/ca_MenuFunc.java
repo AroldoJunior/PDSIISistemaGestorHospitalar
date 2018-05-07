@@ -128,8 +128,8 @@ public class ca_MenuFunc extends JFrame implements ActionListener{
         }
         if(e.getSource() == bListar){
 
-             bd_ListarFunc telalista = new bd_ListarFunc();
-             dispose();
+             //bd_ListarFunc telalista = new bd_ListarFunc();
+             //dispose();
 
         }
         if(e.getSource() == bSituacao){
@@ -161,4 +161,10 @@ public class ca_MenuFunc extends JFrame implements ActionListener{
         
     }
     
+    public static void main(String[] args) {
+        
+        new ca_MenuFunc();
+        
+    }
+   
 }

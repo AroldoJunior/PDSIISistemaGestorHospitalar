@@ -214,7 +214,7 @@ public class bf_ExcluirFunc extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == bVoltar){
            
-            ca_MenuFunc telamenumaster = new ca_MenuFunc();
+            ba_MenuMaster telamenumaster = new ba_MenuMaster();
             dispose();
             
         }
@@ -234,8 +234,8 @@ public class bf_ExcluirFunc extends JFrame implements ActionListener{
                  if (zz.BuscarCpf(CodigoInt) == CodigoInt){
                     System.out.println("achou");
                     textNome.setText(zz.BuscarNome(CodigoInt));
-                    //textCpf.setText(zz.BuscarCpf(CodigoInt));
-                    //textRg.setText(zz.BuscarRg(CodigoInt));
+                    textCpf.setText(Integer.toString(zz.BuscarCpf(CodigoInt)));
+                    textRg.setText(Integer.toString(zz.BuscarRg(CodigoInt)));
                     textCargo.setText(zz.BuscarCargo(CodigoInt));
                     textSenha.setText(zz.BuscarSenha(CodigoInt));
                     textNumbCell.setText(zz.BuscarNumCell(CodigoInt));
@@ -288,6 +288,10 @@ public class bf_ExcluirFunc extends JFrame implements ActionListener{
             
         }
         
+    }
+    
+    public static void main(String[] args) {
+        new bf_ExcluirFunc();
     }
     
 }

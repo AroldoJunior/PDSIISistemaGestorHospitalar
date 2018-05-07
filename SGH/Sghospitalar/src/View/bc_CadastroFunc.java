@@ -9,7 +9,7 @@ import Implementação.zc_Funcionario;
 
 public class bc_CadastroFunc extends JFrame implements ActionListener{
     
-    zc_EnviaDados_Banco_Funcionario zz = new zc_EnviaDados_Banco_Funcionario();
+   
     
     JButton bConfirmar, bCancelar;
     JLabel labelNome, labelCpf, labelRg, labelCargo, labelSenha, labelConfirmarSenha, labelEmail, labelNumCell, labelInfo;
@@ -189,7 +189,7 @@ public class bc_CadastroFunc extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == bCancelar) {
-            ca_MenuFunc telamenumaster = new ca_MenuFunc();
+            ba_MenuMaster telamenumaster = new ba_MenuMaster();
             dispose();
 
         }
@@ -206,22 +206,28 @@ public class bc_CadastroFunc extends JFrame implements ActionListener{
     }
 
     public void MandaCampo_Funcionario() {
-
-        String a, a1, a2, a3, a4, a5, a6, a7, a8 = null;
-
         
-         zc_Funcionario funcionario = new zc_Funcionario(
-                        textNome.getText(), 
+        zc_EnviaDados_Banco_Funcionario zz = new zc_EnviaDados_Banco_Funcionario();
+       
+ 
+        zc_Funcionario funcionario = new zc_Funcionario(
+                        textNome.getText(),
+                        Integer.parseInt(textCpf.getText()),
+                        Integer.parseInt( textRg.getText()),
                         textCargo.getText(),
                         textSenha.getText(),
                         textEmail.getText(),
                         textNumCell.getText()
                        
-                );
+         );
         
        
         zz.Cadastra(funcionario);
         
     }
- 
+    public static void main(String[] args) {
+        new bc_CadastroFunc();
+    }
+
+    
 }
