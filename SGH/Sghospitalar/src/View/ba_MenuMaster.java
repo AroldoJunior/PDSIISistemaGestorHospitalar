@@ -115,7 +115,11 @@ public class ba_MenuMaster extends JFrame implements ActionListener{
         }
         
         if(e.getSource() == bListar){
-             bd_ListarFunc telalistarfunc = new bd_ListarFunc();
+              ba_Lista_Funcionario t =  new ba_Lista_Funcionario();
+              t.setLocationRelativeTo(null);
+              t.setVisible(true);
+              
+                
              dispose();
 
         }
@@ -139,4 +143,9 @@ public class ba_MenuMaster extends JFrame implements ActionListener{
         }
         
     }
+    
+    public static void main(String[] args) {
+        new ba_MenuMaster();
+    }
+   
 }

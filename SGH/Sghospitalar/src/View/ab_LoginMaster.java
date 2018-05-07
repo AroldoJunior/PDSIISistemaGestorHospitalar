@@ -1,12 +1,16 @@
 package View;
 
+import BancoDeDados.zc_Banco_de_Dados;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.event.*;
+import java.sql.SQLException;
 
 public class ab_LoginMaster extends JFrame implements ActionListener{
  
+    zc_Banco_de_Dados bd = new zc_Banco_de_Dados();
+    
     JLabel labelLogin, labelSenha, labelLogo, labelEntrar;
     JTextField textLogin, textSenha;
     JTextPane areaLogin,areaSombra;
@@ -14,11 +18,11 @@ public class ab_LoginMaster extends JFrame implements ActionListener{
     
     public ab_LoginMaster(){
         
-        ImageIcon icon = new ImageIcon("sghLogo.png");
-        ImageIcon icon2 = new ImageIcon("sghLogin.png");
+        ImageIcon icon = new ImageIcon("sghLogin.png");
+        //ImageIcon icon2 = new ImageIcon("sghLogin.png");
         
         icon.setImage(icon.getImage().getScaledInstance(500, 450, 100));
-        icon2.setImage(icon2.getImage().getScaledInstance(300, 150, 80));
+        //icon2.setImage(icon2.getImage().getScaledInstance(300, 150, 80));
         
         Container c = this.getContentPane();
         c.setLayout(null);
@@ -27,9 +31,9 @@ public class ab_LoginMaster extends JFrame implements ActionListener{
         labelLogo.setBounds(343, 20, 458, 430);
         add(labelLogo);
         
-        labelEntrar = new JLabel(icon2);
-        labelEntrar.setBounds(27, 0, 300, 300);
-        add(labelEntrar);
+        //labelEntrar = new JLabel(icon2);
+        //labelEntrar.setBounds(27, 0, 300, 300);
+        //add(labelEntrar);
         
         labelLogin = new JLabel();
         labelLogin.setText("Login:");
@@ -92,12 +96,57 @@ public class ab_LoginMaster extends JFrame implements ActionListener{
         
     }
 
+     public boolean  login(String login, String senha) throws SQLException {
+       
+        boolean certo = false;
+      
+        bd.connection();
+        bd.executaSQL("SELECT * FROM Mogin");
+        
+            if ( bd.rs.first()) {
+                
+                
+                 String s = bd.rs.getString("senha");
+                 String l = bd.rs.getString("usuario");
+               
+                
+                    if(login.equals(s)&&senha.equals(l)){
+                         
+                        certo = true;
+                        
+                    }else{
+                       
+                    }
+            }
+          
+        return certo;
+    }
+
+    
+    
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         
         if(e.getSource() == bEntrar){
-            ba_MenuMaster telamenu = new ba_MenuMaster();
-            dispose();
+             try {
+                
+                String usu = textLogin.getText();
+                String sen = textSenha.getText();
+               
+                boolean resposta = login(usu,sen);
+                
+                if (resposta == true) {
+                  
+                    ba_MenuMaster telamenu = new ba_MenuMaster();
+                    dispose();
+                    
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "login não realizado!\n Favor conferir o usuario e senha digitado!");
+                }
+            } catch (SQLException ex) {
+                    System.out.println("Ocorreu erro ao conectar");
+            }
             
         }
         
