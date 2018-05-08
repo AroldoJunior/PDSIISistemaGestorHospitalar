@@ -112,6 +112,48 @@ public class CadastroTest {
         assertTrue("Campos Completos!", bc.campoCompleto(setGet.getNome(),setGet.getCpf(),setGet.getRg(),setGet.getCargo(),setGet.getNumCell(),setGet.getEmail()));
     }
     
+    public void nomeSemNumero(){
+        setGet.setNome("Eduardo Rocha");
+        
+        new bc_CadastroFunc();
+        
+        assertTrue("Sem Numeros!", bc.conterNumeros(setGet.getNome()));
+        
+    }
+    
+    public void cargoSemNumero(){
+        setGet.setCargo("gerente");
+        
+        new bc_CadastroFunc();
+        
+        assertTrue("Sem Numeros!", bc.conterNumeros(setGet.getCargo()));
+        
+    }
+    
+    public void cpfSemLetras(){
+        setGet.setCpf(594326330);
+        
+        new bc_CadastroFunc();
+        
+        assertTrue("Nao contem numeros!", bc.semConterNumeros(setGet.getCpf()));
+    }
+    @Test
+    public void RgSemLetras(){
+        setGet.setRg(1234652);
+        
+        new bc_CadastroFunc();
+        
+        assertTrue("Nao contem numeros!", bc.semConterNumeros(setGet.getRg()));
+    }
+    
+    public void cpfOnzeNumeros(){ //Só aceita 10
+        setGet.setCpf(594326330);
+        
+        new bc_CadastroFunc();
+        
+        assertTrue("CPF correto!", bc.cpfNumerosSize(setGet.getCpf()));
+    }
+
     
     
     
