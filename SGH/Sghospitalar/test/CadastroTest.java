@@ -153,8 +153,70 @@ public class CadastroTest {
         
         assertTrue("CPF correto!", bc.cpfNumerosSize(setGet.getCpf()));
     }
-
     
+        
+    public void rgNoveNumeros(){ //Só aceita 10
+        setGet.setRg(9432630);
+        
+        new bc_CadastroFunc();
+        
+        assertTrue("RG correto!", bc.rgNumerosSize(setGet.getRg()));
+    }
+    
+    @Test
+    public void telefoneSemEspaço(){
+        setGet.setNumCell("89981040945");
+        
+        new bc_CadastroFunc();
+        
+        assertTrue("Telefone Sem Espaços!", bc.campoSemEspaco(setGet.getNumCell()));
+    }
+    
+    @Test
+    public void emailSemEspaço(){
+        setGet.setemail("mateus-ferreira@hotmail.com");
+        
+        new bc_CadastroFunc();
+        
+        assertTrue("Email Sem Espaços!", bc.campoSemEspaco(setGet.getEmail()));
+    }
+    
+    public void nomeSemCaracteresEspeciais(){
+        setGet.setNome("Eduardo Rocha");
+        
+        new bc_CadastroFunc();
+        
+        assertTrue("Nome Sem Caracteres Especiais!", bc.semConterCaracteresEspeciais(setGet.getNome()));
+        
+    }
+    
+    @Test
+    public void cargoSemCaracteresEspeciais(){
+        setGet.setCargo("Atendente");
+        
+        new bc_CadastroFunc();
+        
+        assertTrue("Cargo Sem Caracteres Especiais!", bc.semConterCaracteresEspeciais(setGet.getCargo()));
+        
+    }
+    @Test
+    public void telefoneSemCaracteresEspeciais(){
+        setGet.setNumCell("89981040945");
+        
+        new bc_CadastroFunc();
+        
+        assertTrue("Telefone Sem Caracteres Especiais!", bc.semConterCaracteresEspeciais(setGet.getNumCell()));
+    }
+    
+    public void emailEstruturado(){
+        setGet.setemail("mateus-ferreira@hotmail.com");
+        
+        new bc_CadastroFunc();
+        
+        assertTrue("Email Correto!", bc.emailEstrutura(setGet.getEmail()));
+    }
+    
+
     
     
     
