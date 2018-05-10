@@ -1,4 +1,4 @@
-import View.ab_LoginMaster;
+import View.telaLoginMaster;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 public class testeLoginMaster {
     
-    ab_LoginMaster l;
+    telaLoginMaster l;
     boolean respostaBranco = false;
     
     public testeLoginMaster() {
@@ -17,7 +17,7 @@ public class testeLoginMaster {
     
     @Before
     public void setUp() {
-        l = new ab_LoginMaster();
+        l = new telaLoginMaster();
         
     }
     
@@ -40,7 +40,7 @@ public class testeLoginMaster {
     
     @Test
     public void testeSenhaEmBranco(){
-        // Dado que... 
+           // Dado que... 
         
         // Quando...
         respostaBranco = l.loginEmBranco("","");

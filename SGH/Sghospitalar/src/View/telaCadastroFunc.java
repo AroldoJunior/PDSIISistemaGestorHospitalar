@@ -7,16 +7,16 @@ import javax.swing.border.*;
 import java.awt.event.*;
 import Implementação.zc_Funcionario;
 
-public class bc_CadastroFunc extends JFrame implements ActionListener{
+public class telaCadastroFunc extends JFrame implements ActionListener{
     
-    zc_EnviaDados_Banco_Funcionario zz = new zc_EnviaDados_Banco_Funcionario();
+   
     
     JButton bConfirmar, bCancelar;
     JLabel labelNome, labelCpf, labelRg, labelCargo, labelSenha, labelConfirmarSenha, labelEmail, labelNumCell, labelInfo;
     JTextField textNome, textCpf, textRg, textCargo, textSenha, textConfirmarSenha, textEmail, textNumCell;
     JTextPane pane1, paneSombra1, pane2, paneSombra2, pane3, paneSombra3;
     
-    public bc_CadastroFunc(){
+    public telaCadastroFunc(){
         
         Container c = this.getContentPane();
         c.setLayout(null);
@@ -178,7 +178,7 @@ public class bc_CadastroFunc extends JFrame implements ActionListener{
         setTitle("Cadastro Funcionario");
         setSize(800, 500);
         getContentPane().setBackground(Color.decode("#E0EEEE"));
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
         setVisible(true);
@@ -189,7 +189,6 @@ public class bc_CadastroFunc extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == bCancelar) {
-            ca_MenuFunc telamenumaster = new ca_MenuFunc();
             dispose();
 
         }
@@ -206,102 +205,27 @@ public class bc_CadastroFunc extends JFrame implements ActionListener{
     }
 
     public void MandaCampo_Funcionario() {
-
-        String a, a1, a2, a3, a4, a5, a6, a7, a8 = null;
-
         
-         zc_Funcionario funcionario = new zc_Funcionario(
-                        textNome.getText(), 
+        zc_EnviaDados_Banco_Funcionario zz = new zc_EnviaDados_Banco_Funcionario();
+       
+ 
+        zc_Funcionario funcionario = new zc_Funcionario(
+                        textNome.getText(),
+                        Integer.parseInt(textCpf.getText()),
+                        Integer.parseInt( textRg.getText()),
                         textCargo.getText(),
                         textSenha.getText(),
                         textEmail.getText(),
                         textNumCell.getText()
                        
-                );
+         );
         
        
         zz.Cadastra(funcionario);
         
     }
-    
-    public Boolean campoVazioString(String texto){
-        if(texto==null || texto.trim().equals("")){
-            return true;
-        }   
-        return false;
-        
-    }
-    
-    public Boolean campoVazioInt(Integer texto){
-        if(texto == null){
-            return true;
-        }   
-        return false;
-        
-    }
-    
-    public Boolean campoCompleto(String nome, int cpf, int rg, String cargo, String num, String email){
-        if((campoVazioString(nome)&&campoVazioInt(cpf)&&campoVazioInt(rg)&&campoVazioString(cargo)&&campoVazioString(num)&&campoVazioString(email))==true){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    
-    public Boolean conterNumeros(String texto){
-        for (int i = 0; i < texto.length(); i++) {
-            if (Character.isDigit(texto.charAt(i))==true){
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    
-    public Boolean cpfNumerosSize(int cpf){
-        if(String.valueOf(cpf).length()==11){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    
-    public Boolean rgNumerosSize(int rg){
-        if(String.valueOf(rg).length()==9){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    
-    public Boolean campoSemEspaco(String texto){
-        if (texto.contains(" ")){
-	    return false;
-	}else{
-	    return true;
-	}
-    }
-    
-    public Boolean semConterCaracteresEspeciais(String texto){
-	if (texto.matches("[a-zA-Z_][a-zA-Z0-9_]*"))
-            return false;
-	else
-	    return true;
-    }
-    public Boolean emailEstrutura(String texto){
-        if (texto.contains("@")&&texto.contains(".com")){
-	    return false;
-	}else{
-	    return true;
-	}
-    }
-    
-    public Boolean semConterNumeros(int texto){
-        
-    }
-    
     public static void main(String[] args) {
-        new bc_CadastroFunc();
+        new telaCadastroFunc();
     }
 
     
