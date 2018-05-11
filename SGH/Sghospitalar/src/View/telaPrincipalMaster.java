@@ -7,24 +7,48 @@ import java.awt.event.*;
 
 public class telaPrincipalMaster extends JFrame implements ActionListener {
     
-    JLabel labelMenu;
+    JLabel labelMenu, labelBuscar;
+    JTextField textBuscar;
     JTable tableLista;
-    JTextPane sombraTable, menuPane, menuPane2;
+    JTextPane sombraTable, menuPane, menuPane2, sombraMenu, paneBuscar, sombraBuscar;
     JButton bCadastrar, bListar, bAlterar, bExcluir, bSair;
     
     public telaPrincipalMaster() {
         
         Container c = this.getContentPane();
         c.setLayout(null);
+       
+        labelBuscar = new JLabel();
+        labelBuscar.setText("Buscar:");
+        labelBuscar.setBounds(20, 15, 150, 20);
+        add(labelBuscar);
+       
+        textBuscar = new JTextField();
+        textBuscar.setBounds(75, 16, 830, 20);
+        textBuscar.setBorder(new LineBorder(Color.WHITE));
+        add(textBuscar);
+        
+        paneBuscar = new JTextPane();
+        paneBuscar.setBounds(10, 10, 900, 30);
+        paneBuscar.setBackground(Color.WHITE);
+        paneBuscar.setBorder(new LineBorder(Color.BLACK));
+        paneBuscar.setEditable(false);
+        add(paneBuscar);
+        
+        sombraBuscar = new JTextPane();
+        sombraBuscar.setBounds(15, 15, 900, 30);
+        sombraBuscar.setBackground(Color.GRAY);
+        sombraBuscar.setEditable(false);
+        add(sombraBuscar);
         
         tableLista = new JTable();
-        tableLista.setBounds(10, 10, 900, 543);
+        tableLista.setBounds(10, 50, 900, 503);
         tableLista.setBackground(Color.WHITE);
         tableLista.setBorder(new LineBorder(Color.BLACK));
         add(tableLista);
         
         sombraTable = new JTextPane();
-        sombraTable.setBounds(15, 15, 900, 543);
+        sombraTable.setBounds(15, 55, 900, 503);
         sombraTable.setBackground(Color.GRAY);
         sombraTable.setEditable(false);
         add(sombraTable);
@@ -89,7 +113,11 @@ public class telaPrincipalMaster extends JFrame implements ActionListener {
         menuPane2.setEditable(false);
         add(menuPane2);
  
-        
+        sombraMenu = new JTextPane();
+        sombraMenu.setBounds(959, 15, 300, 543);;
+        sombraMenu.setBackground(Color.GRAY);
+        sombraMenu.setEditable(false);
+        add(sombraMenu);
         
         setTitle("Tala Principal - Gerência");
         setSize(1300, 600);
