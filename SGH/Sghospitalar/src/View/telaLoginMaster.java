@@ -16,6 +16,8 @@ public class telaLoginMaster extends JFrame implements ActionListener {
     JTextPane areaLogin, areaSombra;
     JButton bEntrar, bMaster;
 
+    // Construtor //
+    
     public telaLoginMaster() {
 
         ImageIcon icon = new ImageIcon("sghLogin.png");
@@ -95,6 +97,8 @@ public class telaLoginMaster extends JFrame implements ActionListener {
 
     }
 
+    // Função que executa o login //
+    
     public boolean login(String login, String senha) throws SQLException {
 
         boolean certo = false;
@@ -119,14 +123,97 @@ public class telaLoginMaster extends JFrame implements ActionListener {
         return certo;
     }
     
-    public boolean loginEmBranco(String login, String senha){
+    // Blindagens (Testes) //
+    
+    public boolean loginEmBranco(String login){
+       
         boolean resposta = false;
         
-        if(login.isEmpty() || senha.isEmpty())
+        if(login.isEmpty())
             resposta = true;
        
         return resposta;
+        
     }
+    
+    public boolean senhaEmBranco(String senha){
+       
+        boolean resposta = false;
+        
+        if(senha.isEmpty())
+            resposta = true;
+       
+        return resposta;
+        
+    }
+    
+    public boolean loginNaoTemCaracteresEspeciais(String login){
+	
+        boolean resposta = false;
+        
+        if (login.matches("[a-zA-Z_][a-zA-Z0-9_]*"))
+            return true;
+        
+        return resposta;
+        
+    }
+    
+    public boolean senhaNaoTemCaracteresEspeciais(String senha){
+	
+        boolean resposta = false;
+        
+        if (senha.matches("[a-zA-Z_][a-zA-Z0-9_]*"))
+            return true;
+        
+        return resposta;
+        
+    }
+    
+    public boolean loginSemEspaco(String login){
+        
+        boolean resposta = false;
+        
+        if (login.contains(" "))
+	    resposta = true;
+
+        return resposta;
+            
+    }
+    
+    public boolean senhaSemEspaco(String senha){
+        
+        boolean resposta = false;
+        
+        if (senha.contains(" "))
+	    resposta = true;
+
+        return resposta;
+            
+    }
+    
+    public boolean loginTamanho(String login){
+        
+        boolean valida = false;
+        
+        if (login.length() >= 6 && login.length() <=8 )
+            valida = true;
+        
+        return valida;
+        
+    }
+    
+    public boolean senhaTamanho(String senha){
+        
+        boolean valida = false;
+        
+        if (senha.length() >= 6 && senha.length() <=8 )
+            valida = true;
+        
+        return valida;
+        
+    }
+    
+    // Ações //
     
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -138,8 +225,9 @@ public class telaLoginMaster extends JFrame implements ActionListener {
                 String usu = textLogin.getText();
                 String sen = textSenha.getText();
 
-                if (loginEmBranco(usu, sen) == false)
-                    resposta = login(usu, sen);
+                if (loginEmBranco(usu) == false)
+                    if(loginEmBranco(sen) == false)
+                        resposta = login(usu, sen);
                 else
                     System.out.println("Ta errado");
                     

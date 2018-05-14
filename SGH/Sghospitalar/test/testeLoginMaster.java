@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 public class testeLoginMaster {
     
     telaLoginMaster l;
-    boolean respostaBranco = false;
+    boolean resposta = false;
     
     public testeLoginMaster() {
     
@@ -32,20 +32,86 @@ public class testeLoginMaster {
         // Dado que... 
         
         // Quando...
-        respostaBranco = l.loginEmBranco("","");
+        resposta = l.loginEmBranco("");
         // Então...
-        assertEquals("Nao deveria estar em branco!", respostaBranco, true);
+        assertEquals("Nao deveria estar em branco!", resposta, true);
         
     }
     
     @Test
     public void testeSenhaEmBranco(){
-           // Dado que... 
+        // Dado que... 
         
         // Quando...
-        respostaBranco = l.loginEmBranco("","");
+        resposta = l.senhaEmBranco("");
         // Então...
-        assertEquals("Nao deveria estar em branco!", respostaBranco, true);
+        assertEquals("Nao deveria estar em branco!", resposta, true);
+        
+    }
+    
+    @Test
+    public void testeLoginNaoTemCaracteresEspeciais(){
+        // Dado que... 
+        
+        // Quando...
+        resposta = l.loginNaoTemCaracteresEspeciais("Alou23@!");
+        // Então...
+        assertEquals("Nao deveria ter caracteres especiais!", resposta, false);
+        
+    }
+    
+    @Test
+    public void testeSenhaNaoTemCaracteresEspeciais(){
+        // Dado que... 
+        
+        // Quando...
+        resposta = l.senhaNaoTemCaracteresEspeciais("alou23@!");
+        // Então...
+        assertEquals("Nao deveria ter caracteres especiais!", resposta, false);
+        
+    }
+    
+    @Test
+    public void testeLoginSemEspaco(){
+        // Dado que... 
+        
+        // Quando...
+        resposta = l.loginSemEspaco("alou alou");
+        // Então...
+        assertEquals("Nao deveria ter espaços!", resposta, true);
+        
+    }
+    
+    @Test
+    public void testeSenhaSemEspaco(){
+        // Dado que... 
+        
+        // Quando...
+        resposta = l.senhaSemEspaco("alou alou");
+        // Então...
+        assertEquals("Nao deveria ter espaços!", resposta, true);
+        
+    }
+    
+    @Test
+    public void testeLoguinTamanho(){
+        // Dado que... 
+        
+        // Quando...
+        resposta = l.loginTamanho("aloualou");
+        // Então...
+        assertEquals("Login permitido!", resposta, true);
+        
+    }
+    
+    @Test
+    public void testeSenhaTamanho(){
+        // Dado que... 
+        
+        // Quando...
+        resposta = l.senhaTamanho("aloualou");
+        // Então...
+        assertEquals("Login permitido!", resposta, true);
         
     }
     

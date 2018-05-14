@@ -175,7 +175,7 @@ public class telaCadastroFunc extends JFrame implements ActionListener{
         bCancelar.setFocusPainted(false);
         add(bCancelar);
         
-        setTitle("Cadastro Funcionario");
+        setTitle("Cadastrar Funcionario");
         setSize(800, 500);
         getContentPane().setBackground(Color.decode("#E0EEEE"));
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

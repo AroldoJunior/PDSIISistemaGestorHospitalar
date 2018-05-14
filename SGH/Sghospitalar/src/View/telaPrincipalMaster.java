@@ -4,20 +4,26 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.event.*;
+import javax.swing.table.DefaultTableModel;
 
 public class telaPrincipalMaster extends JFrame implements ActionListener {
     
+    JTable tableLista;
+    JScrollPane barra;
     JLabel labelMenu, labelBuscar;
     JTextField textBuscar;
-    JTable tableLista;
     JTextPane sombraTable, menuPane, menuPane2, sombraMenu, paneBuscar, sombraBuscar;
     JButton bCadastrar, bListar, bAlterar, bExcluir, bSair;
+    
+    // Construtor //
     
     public telaPrincipalMaster() {
         
         Container c = this.getContentPane();
         c.setLayout(null);
        
+        // Buscar //
+        
         labelBuscar = new JLabel();
         labelBuscar.setText("Buscar:");
         labelBuscar.setBounds(20, 15, 150, 20);
@@ -41,17 +47,46 @@ public class telaPrincipalMaster extends JFrame implements ActionListener {
         sombraBuscar.setEditable(false);
         add(sombraBuscar);
         
+        // Tabela //
+        
+        String[] colunas = {"Código", "Nome", "CPF", "RG", "Cargo", "Email", "Telefone"};
+
+        DefaultTableModel modelo = (DefaultTableModel) (new DefaultTableModel() {
+
+            public boolean isCellEditable(int row, int coluna) {
+                return false;
+            }
+            
+            public boolean isCellRedimentionable(int row, int coluna) {
+                return true;
+            }
+            
+        });
+        
+        modelo.setColumnIdentifiers(colunas);
+        modelo.setNumRows(0);
+        
+        String[] dados = new String[7];
+        dados[0] = "01010203";
+        modelo.addRow(dados);
+        
         tableLista = new JTable();
-        tableLista.setBounds(10, 50, 900, 503);
         tableLista.setBackground(Color.WHITE);
-        tableLista.setBorder(new LineBorder(Color.BLACK));
-        add(tableLista);
+        tableLista.setModel(modelo);
+        tableLista.setFillsViewportHeight(true);
+        
+        barra = new JScrollPane(tableLista);
+        barra.setBounds(10, 50, 900, 503);
+        barra.setBorder(new LineBorder(Color.BLACK));
+        add(barra);
         
         sombraTable = new JTextPane();
         sombraTable.setBounds(15, 55, 900, 503);
         sombraTable.setBackground(Color.GRAY);
         sombraTable.setEditable(false);
         add(sombraTable);
+        
+        // Menu //
         
         bCadastrar = new JButton();
         bCadastrar.setText("CADASTRAR");
@@ -128,7 +163,9 @@ public class telaPrincipalMaster extends JFrame implements ActionListener {
         setVisible(true);
 
     }
-
+    
+    // Ações //
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         
