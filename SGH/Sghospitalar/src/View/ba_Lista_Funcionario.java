@@ -5,7 +5,7 @@
  */
 package View;
 
-import BancoDeDados.zc_Banco_de_Dados;
+import BancoDeDados.conectBanco;
 import Implementação.ModeloTabelaListar;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import javax.swing.ListSelectionModel;
  */
 public class ba_Lista_Funcionario extends javax.swing.JFrame {
     
-     zc_Banco_de_Dados bd = new zc_Banco_de_Dados();
+     conectBanco bd = new conectBanco();
 
     /**
      * Creates new form Tela

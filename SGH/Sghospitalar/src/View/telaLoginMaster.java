@@ -1,6 +1,6 @@
 package View;
 
-import BancoDeDados.zc_Banco_de_Dados;
+import BancoDeDados.conectBanco;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class telaLoginMaster extends JFrame implements ActionListener {
 
-    zc_Banco_de_Dados bd = new zc_Banco_de_Dados();
+    conectBanco bd = new conectBanco();
 
     JLabel labelLogin, labelSenha, labelLogo, labelEntrar;
     JTextField textLogin, textSenha;
@@ -213,39 +213,56 @@ public class telaLoginMaster extends JFrame implements ActionListener {
         
     }
     
+    public boolean blingadegens(String login, String senha){
+        
+        boolean resposta = false;
+        boolean aux1 = loginEmBranco(login);
+        boolean aux2 = senhaEmBranco(senha);
+        boolean aux3 = loginNaoTemCaracteresEspeciais(login);
+        boolean aux4 = senhaNaoTemCaracteresEspeciais(senha);
+        boolean aux5 = loginSemEspaco(login);
+        boolean aux6 = senhaSemEspaco(senha);
+        boolean aux7 = loginTamanho(login);
+        boolean aux8 = senhaTamanho(senha);
+        
+        if (aux1 == true && aux2 == true && aux3 == true && aux4 == true && aux5 == true && aux6 == true && aux7 == true && aux8 == true)
+            resposta = true;
+            
+        return resposta;
+        
+    }
+    
     // Ações //
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        boolean resposta = false;
+        
+        boolean resposta;
         
         if (e.getSource() == bEntrar) {
+ 
             try {
                 
                 String usu = textLogin.getText();
                 String sen = textSenha.getText();
-
-                if (loginEmBranco(usu) == false)
-                    if(loginEmBranco(sen) == false)
-                        resposta = login(usu, sen);
-                else
-                    System.out.println("Ta errado");
-                    
-                if (resposta == true) {
+                
+                if(blingadegens(usu, sen) == true){
+                    resposta = login(usu, sen);
+                
+                    if (resposta == true) {
 
                     telaPrincipalMaster telaprincipalmaster = new telaPrincipalMaster();
                     dispose();
 
-                } else {
-                    JOptionPane.showMessageDialog(rootPane, "Login não realizado!\n Confira o usuário e senha digitados.");
-                    
-                }
+                    } else
+                        JOptionPane.showMessageDialog(rootPane, "Login não realizado!\n Confira o usuário e senha digitados.");
                 
+                }
+            
             } catch (SQLException ex) {
                 System.out.println("Ocorreu erro ao conectar");
                 
             }
-
         }
 
         if (e.getSource() == bMaster) {

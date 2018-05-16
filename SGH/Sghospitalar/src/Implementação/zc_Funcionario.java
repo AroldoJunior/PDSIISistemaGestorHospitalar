@@ -1,9 +1,9 @@
 package Implementação;
 
 public class zc_Funcionario {
-    
+
     private String nome;
-    private int cpf;
+    private Long cpf;
     private int rg;
     private String cargo;
     private String login;
@@ -12,10 +12,7 @@ public class zc_Funcionario {
     private String numCell;
 
     // Construtor
-    
- 
-    
-     public zc_Funcionario(String nome, int cpf, int rg, String cargo, String senha, String email, String numCell) {
+    public zc_Funcionario(String nome, Long cpf, int rg, String cargo, String senha, String email, String numCell) {
         this.nome = nome;
         this.cpf = cpf;
         this.rg = rg;
@@ -23,98 +20,89 @@ public class zc_Funcionario {
         this.senha = senha;
         this.email = email;
         this.numCell = numCell;
-        
+
     }
 
-    
-    
     // Metodos Set's
-    
-    public void setNome(String nome){    
+    public void setNome(String nome) {
         this.nome = nome;
-        
+
     }
-    
-    public void setCpf(int cpf){
+
+    public void setCpf(Long cpf) {
         this.cpf = cpf;
-        
+
     }
-    
-    public void setRg(int rg){
+
+    public void setRg(int rg) {
         this.rg = rg;
-        
+
     }
-    
-    public void setCargo(String cargo){    
+
+    public void setCargo(String cargo) {
         this.cargo = cargo;
-        
+
     }
-    
-    public void setLogin(String login){    
+
+    public void setLogin(String login) {
         this.login = login;
-        
+
     }
-    
-    public void setSenha(String senha){    
+
+    public void setSenha(String senha) {
         this.senha = senha;
-        
+
     }
-    
-    public void setemail(String email){    
+
+    public void setemail(String email) {
         this.email = email;
-        
+
     }
-    
-    public void setNumCell(String numCell){    
+
+    public void setNumCell(String numCell) {
         this.numCell = numCell;
-        
+
     }
-     // Metodos Get's
-    
-    public String getNome(){
+    // Metodos Get's
+
+    public String getNome() {
         return nome;
-        
+
     }
-    
-    public int getCpf(){
+
+    public Long getCpf() {
         return cpf;
-        
+
     }
-    
-    public int getRg(){
+
+    public int getRg() {
         return rg;
-        
+
     }
-    
-    public String getCargo(){
+
+    public String getCargo() {
         return cargo;
-        
+
     }
 
-    public String getLogin(){
+    public String getLogin() {
         return login;
-        
-    }
-    
-    public String getSenha(){
-        return senha;
-        
-    }
-    
-     public String getNumCell(){
-        return numCell;
-        
-    }
-     
-      public String getEmail(){
-        return email;
-        
-    }
-    
-    
-    
- 
 
-   
-    
+    }
+
+    public String getSenha() {
+        return senha;
+
+    }
+
+    public String getNumCell() {
+        return numCell;
+
+    }
+
+    public String getEmail() {
+        return email;
+
+    }
+
 }

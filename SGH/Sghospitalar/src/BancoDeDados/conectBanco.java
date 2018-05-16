@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class zc_Banco_de_Dados {
+public class conectBanco {
 
     public Statement stm;
     public ResultSet rs;
@@ -47,7 +47,7 @@ public class zc_Banco_de_Dados {
 
         } catch (SQLException ex) {
 
-            Logger.getLogger(zc_Banco_de_Dados.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(conectBanco.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

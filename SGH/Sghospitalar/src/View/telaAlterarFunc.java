@@ -214,14 +214,16 @@ public class telaAlterarFunc extends JFrame implements ActionListener {
 
                 zc_Funcionario funcionario = new zc_Funcionario(
                         textNome.getText(),
-                        Integer.parseInt(textCpf.getText()),
+                        Long.parseLong(textCpf.getText()),
                         Integer.parseInt(textRg.getText()),
                         textCargo.getText(),
                         textSenha.getText(),
                         textEmail.getText(),
                         textNumbCell.getText()
                 );
-
+                
+                dispose();
+                
                 if (zz.Alterar(funcionario, CodigoInt) == true) {
 
                     textNome.setText("");

@@ -1,6 +1,6 @@
 package View;
 
-import BancoDeDados.zc_Banco_de_Dados;
+import BancoDeDados.conectBanco;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class telaLoginFunc extends JFrame implements ActionListener{
     
-    zc_Banco_de_Dados bd = new zc_Banco_de_Dados();
+    conectBanco bd = new conectBanco();
  
     JLabel labelLogin, labelSenha, labelLogo, labelEntrar;
     JTextField textLogin, textSenha;
