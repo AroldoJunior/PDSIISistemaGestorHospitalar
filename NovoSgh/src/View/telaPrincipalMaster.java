@@ -7,15 +7,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 public final class telaPrincipalMaster implements ActionListener {
 
     conectaBanco bd = new conectaBanco();
+    
+    
+    private TableRowSorter trsFiltro;
 
     ResultSet Dado, Dado1;
     int cont = 0;
@@ -205,7 +211,7 @@ public final class telaPrincipalMaster implements ActionListener {
         bd.connection();
 
         // Preenchimento da tabela com os dados do banco //
-        String sql = "select * from  funcionario";
+        String sql = "select * from  funcionarios";
 
         Statement stmt;
 
@@ -232,7 +238,7 @@ public final class telaPrincipalMaster implements ActionListener {
         modelo.setColumnIdentifiers(colunas);
         modelo.setNumRows(0);
 
-        String sql1 = "select * from funcionario";
+        String sql1 = "select * from funcionarios";
 
         Statement stmt1;
 
@@ -247,12 +253,12 @@ public final class telaPrincipalMaster implements ActionListener {
 
                 for (int i = 0; i < 7; i++) {
                     dados[0] = Dado1.getString("id");
-                    dados[1] = Dado1.getString("Nome");
-                    dados[2] = Dado1.getString("Cpf");
-                    dados[3] = Dado1.getString("Rg");
-                    dados[4] = Dado1.getString("Cargo");
-                    dados[5] = Dado1.getString("NumCell");
-                    dados[6] = Dado1.getString("Email");
+                    dados[1] = Dado1.getString("nome");
+                    dados[2] = Dado1.getString("cpf");
+                    dados[3] = Dado1.getString("rg");
+                    dados[4] = Dado1.getString("cargo");
+                    dados[5] = Dado1.getString("numtell");
+                    dados[6] = Dado1.getString("email");
 
                 }
                 modelo.addRow(dados);
@@ -280,12 +286,11 @@ public final class telaPrincipalMaster implements ActionListener {
 
         // MENU //
         bCadastrar = new JButton("Cadastrar");
-        bCadastrar.setBounds(60, 40, 233, 50);
+        bCadastrar.setBounds(1010, 40, 233, 50);
         bCadastrar.setFont(new Font("Century Gothic", Font.BOLD, 14));
         bCadastrar.setFocusPainted(false);
         bCadastrar.setBackground(Color.WHITE);
         bCadastrar.setBorder(new LineBorder(Color.BLACK));
-        bCadastrar.addActionListener(this);
         bCadastrar.addMouseListener(new MouseListener() {
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -300,15 +305,15 @@ public final class telaPrincipalMaster implements ActionListener {
             @Override
             public void mouseExited(MouseEvent e) {
                 // TODO Auto-generated method stub
-                bCadastrar.setBounds(60, 40, 233, 50);
-                sombraBCadastrar.setBounds(60, 40, 233, 52);
+                bCadastrar.setBounds(1010, 40, 233, 50);
+                sombraBCadastrar.setBounds(1010, 40, 233, 52);
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
                 e.getComponent().requestFocus();
-                bCadastrar.setBounds(57, 37, 238, 56);
-                sombraBCadastrar.setBounds(61, 40, 230, 56);
+                bCadastrar.setBounds(1007, 37, 238, 56);
+                sombraBCadastrar.setBounds(1011, 40, 230, 56);
             }
 
             @Override
@@ -319,15 +324,14 @@ public final class telaPrincipalMaster implements ActionListener {
 
         sombraBCadastrar = new JPanel();
         sombraBCadastrar.setBackground(Color.GRAY);
-        sombraBCadastrar.setBounds(60, 40, 233, 52);
+        sombraBCadastrar.setBounds(1010, 40, 233, 52);
 
         bAlterar = new JButton("Alterar");
-        bAlterar.setBounds(60, 110, 233, 50);
+        bAlterar.setBounds(1010, 110, 233, 50);
         bAlterar.setFont(new Font("Century Gothic", Font.BOLD, 14));
         bAlterar.setFocusPainted(false);
         bAlterar.setBackground(Color.WHITE);
         bAlterar.setBorder(new LineBorder(Color.BLACK));
-        bAlterar.addActionListener(this);
         bAlterar.addMouseListener(new MouseListener() {
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -342,15 +346,15 @@ public final class telaPrincipalMaster implements ActionListener {
             @Override
             public void mouseExited(MouseEvent e) {
                 // TODO Auto-generated method stub
-                bAlterar.setBounds(60, 110, 233, 50);
-                sombraBAlterar.setBounds(60, 110, 233, 52);
+                bAlterar.setBounds(1010, 110, 233, 50);
+                sombraBAlterar.setBounds(1010, 110, 233, 52);
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
                 e.getComponent().requestFocus();
-                bAlterar.setBounds(57, 107, 238, 56);
-                sombraBAlterar.setBounds(61, 110, 230, 56);
+                bAlterar.setBounds(1007, 107, 238, 56);
+                sombraBAlterar.setBounds(1011, 110, 230, 56);
             }
 
             @Override
@@ -361,15 +365,14 @@ public final class telaPrincipalMaster implements ActionListener {
 
         sombraBAlterar = new JPanel();
         sombraBAlterar.setBackground(Color.GRAY);
-        sombraBAlterar.setBounds(60, 110, 233, 52);
+        sombraBAlterar.setBounds(1010, 110, 233, 52);
 
         bExcluir = new JButton("Excluir");
-        bExcluir.setBounds(60, 180, 233, 50);
+        bExcluir.setBounds(1010, 180, 233, 50);
         bExcluir.setFont(new Font("Century Gothic", Font.BOLD, 14));
         bExcluir.setFocusPainted(false);
         bExcluir.setBackground(Color.WHITE);
         bExcluir.setBorder(new LineBorder(Color.BLACK));
-        bExcluir.addActionListener(this);
         bExcluir.addMouseListener(new MouseListener() {
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -384,15 +387,15 @@ public final class telaPrincipalMaster implements ActionListener {
             @Override
             public void mouseExited(MouseEvent e) {
                 // TODO Auto-generated method stub
-                bExcluir.setBounds(60, 180, 233, 50);
-                sombraBExcluir.setBounds(60, 180, 233, 52);
+                bExcluir.setBounds(1010, 180, 233, 50);
+                sombraBExcluir.setBounds(1010, 180, 233, 52);
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
                 e.getComponent().requestFocus();
-                bExcluir.setBounds(57, 177, 238, 56);
-                sombraBExcluir.setBounds(61, 180, 230, 56);
+                bExcluir.setBounds(1007, 177, 238, 56);
+                sombraBExcluir.setBounds(1011, 180, 230, 56);
             }
 
             @Override
@@ -403,16 +406,15 @@ public final class telaPrincipalMaster implements ActionListener {
 
         sombraBExcluir = new JPanel();
         sombraBExcluir.setBackground(Color.GRAY);
-        sombraBExcluir.setBounds(60, 180, 233, 52);
+        sombraBExcluir.setBounds(1010, 180, 233, 52);
 
         bSair = new JButton("Sair");
-        bSair.setBounds(60, 477, 233, 50);
+        bSair.setBounds(1010, 477, 233, 50);
         bSair.setFont(new Font("Century Gothic", Font.BOLD, 14));
         bSair.setFocusPainted(false);
         bSair.setBackground(Color.decode("#ff0000"));
         bSair.setForeground(Color.WHITE);
         bSair.setBorder(new LineBorder(Color.BLACK));
-        bSair.addActionListener(this);
         bSair.addMouseListener(new MouseListener() {
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -427,15 +429,15 @@ public final class telaPrincipalMaster implements ActionListener {
             @Override
             public void mouseExited(MouseEvent e) {
                 // TODO Auto-generated method stub
-                bSair.setBounds(60, 477, 233, 50);
-                sombraBSair.setBounds(60, 477, 233, 52);
+                bSair.setBounds(1010, 477, 233, 50);
+                sombraBSair.setBounds(1010, 477, 233, 52);
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
                 e.getComponent().requestFocus();
-                bSair.setBounds(57, 474, 238, 56);
-                sombraBSair.setBounds(61, 477, 230, 56);
+                bSair.setBounds(1007, 474, 238, 56);
+                sombraBSair.setBounds(1011, 477, 230, 56);
             }
 
             @Override
@@ -446,38 +448,36 @@ public final class telaPrincipalMaster implements ActionListener {
 
         sombraBSair = new JPanel();
         sombraBSair.setBackground(Color.GRAY);
-        sombraBSair.setBounds(60, 477, 233, 52);
+        sombraBSair.setBounds(1010, 477, 233, 52);
 
         menu = new JLabel("MENU");
-        menu.setBounds(140, 10, 130, 25);
+        menu.setBounds(1092, 10, 130, 25);
         menu.setFont(new Font("Urbandub", Font.BOLD, 20));
         menu.setForeground(Color.WHITE);
 
         panelMenu = new JPanel();
-        panelMenu.setBackground(Color.decode("#66b3ff"));
+        panelMenu.setBackground(Color.decode("#3399ff"));
         panelMenu.setBounds(950, 0, 350, 563);
         panelMenu.setBorder(new LineBorder(Color.BLACK));
-        panelMenu.setLayout(null);
 
         panelMenuSombra = new JPanel();
         panelMenuSombra.setBackground(Color.LIGHT_GRAY);
         panelMenuSombra.setBounds(947, 0, 350, 563);
 
         separadorMenu = new JSeparator();
-        separadorMenu.setBounds(50, 40, 1, 487);
+        separadorMenu.setBounds(1000, 40, 1, 487);
         separadorMenu.setBorder(new LineBorder(Color.BLACK));
 
         separadorMenu2 = new JSeparator();
-        separadorMenu2.setBounds(301, 40, 1, 487);
+        separadorMenu2.setBounds(1252, 40, 1, 487);
         separadorMenu2.setBorder(new LineBorder(Color.BLACK));
 
         panel = new JPanel();
-        panel.setBackground(Color.decode("#d1e0e0"));
+        panel.setBackground(Color.decode("#cce6ff"));
         panel.setLayout(null);
 
         panel.add(funcionarios);
         panel.add(separadorFuncionarios);
-
         panel.add(buscar);
         panel.add(textBuscar);
         panel.add(panelBuscar);
@@ -485,60 +485,74 @@ public final class telaPrincipalMaster implements ActionListener {
         panel.add(separadorAtualizar);
         panel.add(bAtualizar);
         panel.add(sombraBAtualizar);
-
         panel.add(barra);
         panel.add(sombraBarra);
-
-        panelMenu.add(menu);
-        panelMenu.add(separadorMenu);
-        panelMenu.add(separadorMenu2);
-        panelMenu.add(bCadastrar);
-        panelMenu.add(sombraBCadastrar);
-        panelMenu.add(bAlterar);
-        panelMenu.add(sombraBAlterar);
-        panelMenu.add(bExcluir);
-        panelMenu.add(sombraBExcluir);
-        panelMenu.add(bSair);
-        panelMenu.add(sombraBSair);
-
+        panel.add(menu);
+        panel.add(bCadastrar);
+        panel.add(sombraBCadastrar);
+        panel.add(bAlterar);
+        panel.add(sombraBAlterar);
+        panel.add(bExcluir);
+        panel.add(sombraBExcluir);
+        panel.add(bSair);
+        panel.add(sombraBSair);
+        panel.add(separadorMenu);
+        panel.add(separadorMenu2);
         panel.add(panelMenu);
         panel.add(panelMenuSombra);
 
         frame = new JFrame();
-        frame.setTitle("Menu Principal - Gerência");
+        frame.setTitle("Tela Principal - Gerência");
         frame.setSize(1300, 600);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.setContentPane(panel);
+        
+        // ação para busca inteligente //
+        
+        textBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textBuscarKeyTyped(evt);
+            }
+        });
+        
+    }
+    
+     
+    
+     public void filtro() {
+        int columnaABuscar = 1;
+       
+        trsFiltro.setRowFilter(RowFilter.regexFilter(textBuscar.getText(), columnaABuscar));
+    }
+    
+      private void textBuscarKeyTyped(java.awt.event.KeyEvent evt) {                                   
+        // TODO add your handling code here:
+        textBuscar.addKeyListener(new KeyAdapter() {
+            public void keyReleased(final KeyEvent e) {
+                String cadena = (textBuscar.getText());
+                textBuscar.setText(cadena);
+                //repaint();
+                filtro();
+            }
+        });
+        
+        trsFiltro = new TableRowSorter(tabelaListar.getModel());
+        tabelaListar.setRowSorter(trsFiltro);
 
     }
+     
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        if (e.getSource() == bCadastrar) {
-            telaCadastroFuncionario telaCadastroFuncionario = new telaCadastroFuncionario();
-        }
-        
-        if (e.getSource() == bAlterar) {
-            telaAlterarFuncionario telaAlterarFuncionario = new telaAlterarFuncionario();
-        }
-        
-        if (e.getSource() == bExcluir) {
-            telaExcluirFuncionario telaExcluirFuncionario = new telaExcluirFuncionario();
-        }
-        
-        if (e.getSource() == bSair) {
-            frame.dispose();
-        }
-        
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public static void main(String args[]) {
 
-        telaPrincipalMaster telaPrincipalMaster = new telaPrincipalMaster();
+        new telaPrincipalMaster();
 
     }
 
