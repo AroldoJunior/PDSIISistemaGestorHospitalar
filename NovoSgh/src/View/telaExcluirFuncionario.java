@@ -1,5 +1,7 @@
 package View;
 
+import Controller.insereFuncionario;
+import Model.Funcionario;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -19,6 +21,19 @@ public final class telaExcluirFuncionario implements ActionListener {
     JPasswordField textSenha, textConfirmarSenha;
     JSeparator separadorNome, separadorCpf, separadorRg, separadorCargo, separadorTelefone, separadorSenha, separadorConfirmarSenha, separadorEmail, separadorPane1, separadorPane2, separadorBotao, separadorMenu, separadorExcluir;
     JButton bExcluir, bSair;
+    private String CodigoTabela;
+    
+    
+    public void SetCodigoTabela(String CodigoTabela) {
+        this.CodigoTabela = CodigoTabela;
+
+    }
+    // Metodos Get's
+
+    public String getCodigoTabela() {
+        return CodigoTabela;
+
+    }
 
     public telaExcluirFuncionario() {
 
@@ -524,7 +539,7 @@ public final class telaExcluirFuncionario implements ActionListener {
 
         frame = new JFrame();
         frame.setTitle("Excluir - Funcionário");
-        frame.setSize(900, 412);
+        frame.setSize(900, 404);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -537,9 +552,35 @@ public final class telaExcluirFuncionario implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == bExcluir) {
+
+            insereFuncionario altera = new insereFuncionario();
+
+            int CodigoInt = Integer.parseInt(getCodigoTabela());
+
+            if (altera.Deletar(CodigoInt) == true) {
+
+                textNome.setText("");
+                textCpf.setText("");
+                textRg.setText("");
+                textCargo.setText("");
+                textSenha.setText("");
+                textTelefone.setText("");
+                textEmail.setText("");
+
+                JOptionPane.showMessageDialog(null, "Funcionario alterado com sucesso!");
+                
+                frame.dispose();
+
+            } else {
+
+                JOptionPane.showMessageDialog(null, "Erro ao alterar funcionario!");
+
+            }
             
+            
+
         }
-        
+
         if (e.getSource() == bSair) {
             frame.dispose();
         }
