@@ -1,7 +1,5 @@
 package View;
 
-import Controller.insereFuncionario;
-import Model.Funcionario;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -21,19 +19,6 @@ public final class telaAlterarFuncionario implements ActionListener {
     JPasswordField textSenha, textConfirmarSenha;
     JSeparator separadorNome, separadorCpf, separadorRg, separadorCargo, separadorTelefone, separadorSenha, separadorConfirmarSenha, separadorEmail, separadorPane1, separadorPane2, separadorBotao, separadorMenu, separadorAlterar;
     JButton bAlterar, bSair, bMudarSenha;
-    private String CodigoTabela;
-     
-     
-    public void SetCodigoTabela(String CodigoTabela) {
-        this.CodigoTabela = CodigoTabela;
-
-    }
-    // Metodos Get's
-
-    public String getCodigoTabela() {
-        return CodigoTabela;
-
-    }
 
     public telaAlterarFuncionario() {
 
@@ -641,61 +626,8 @@ public final class telaAlterarFuncionario implements ActionListener {
         if (e.getSource() == bSair) {
             frame.dispose();
         }
-        
-        if (e.getSource() == bAlterar) {
-            
-            insereFuncionario altera = new insereFuncionario();
-            
-             if (textNome.getText().isEmpty() || textCargo.getText().isEmpty() || textSenha.getText().isEmpty() || textTelefone.getText().isEmpty() || textEmail.getText().isEmpty()) {
-
-                JOptionPane.showMessageDialog(null, "Existe um campo obrigatorio vazio!");
-                frame.requestFocus();
-
-            } else {
-
-                Funcionario funcionario = new Funcionario(
-                        textNome.getText(),
-                        textCpf.getText(),
-                        textRg.getText(),
-                        textCargo.getText(),
-                        textSenha.getText(),
-                        textEmail.getText(),
-                        textTelefone.getText()
-                );
-                
-              
-                
-                int CodigoInt = Integer.parseInt(getCodigoTabela());
-             
-                if (altera.Alterar(funcionario, CodigoInt) == true) {
-
-                    textNome.setText("");
-                    textCpf.setText("");
-                    textRg.setText("");
-                    textCargo.setText("");
-                    textSenha.setText("");
-                    textTelefone.setText("");
-                    textEmail.setText("");
-
-
-                    JOptionPane.showMessageDialog(null, "Funcionario alterado com sucesso!");
-                    
-                    frame.dispose();
-
-                } else {
-
-                    JOptionPane.showMessageDialog(null, "Erro ao alterar funcionario!");
-
-                }
-
-            }
-
-            
-        }
 
     }
-    
-   
 
      public static void main(String args[]) {
 
@@ -704,6 +636,3 @@ public final class telaAlterarFuncionario implements ActionListener {
     }
     
 }
-
-
-    

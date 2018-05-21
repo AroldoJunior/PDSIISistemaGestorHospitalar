@@ -9,20 +9,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 public final class telaPrincipalMaster implements ActionListener {
 
     conectaBanco bd = new conectaBanco();
-    
-    
+
     private TableRowSorter trsFiltro;
 
     ResultSet Dado, Dado1;
@@ -292,7 +289,6 @@ public final class telaPrincipalMaster implements ActionListener {
         bCadastrar.setFont(new Font("Century Gothic", Font.BOLD, 14));
         bCadastrar.setFocusPainted(false);
         bCadastrar.setBackground(Color.WHITE);
-        bCadastrar.addActionListener(this);
         bCadastrar.setBorder(new LineBorder(Color.BLACK));
         bCadastrar.addMouseListener(new MouseListener() {
             @Override
@@ -334,7 +330,6 @@ public final class telaPrincipalMaster implements ActionListener {
         bAlterar.setFont(new Font("Century Gothic", Font.BOLD, 14));
         bAlterar.setFocusPainted(false);
         bAlterar.setBackground(Color.WHITE);
-        bAlterar.addActionListener(this);
         bAlterar.setBorder(new LineBorder(Color.BLACK));
         bAlterar.addMouseListener(new MouseListener() {
             @Override
@@ -376,7 +371,6 @@ public final class telaPrincipalMaster implements ActionListener {
         bExcluir.setFont(new Font("Century Gothic", Font.BOLD, 14));
         bExcluir.setFocusPainted(false);
         bExcluir.setBackground(Color.WHITE);
-        bExcluir.addActionListener(this);
         bExcluir.setBorder(new LineBorder(Color.BLACK));
         bExcluir.addMouseListener(new MouseListener() {
             @Override
@@ -505,8 +499,7 @@ public final class telaPrincipalMaster implements ActionListener {
         panel.add(separadorMenu2);
         panel.add(panelMenu);
         panel.add(panelMenuSombra);
-        
-      
+
         frame = new JFrame();
         frame.setTitle("Tela Principal - Gerência");
         frame.setSize(1300, 600);
@@ -515,41 +508,27 @@ public final class telaPrincipalMaster implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.setContentPane(panel);
-        
+
         // ação para busca inteligente //
-        
         textBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 textBuscarKeyTyped(evt);
             }
         });
-        
-        
-          
-         //Proporciona ação do click na tabela
-        tabelaListar.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 1) {
 
-                }
-            }
-        });
-
-        
     }
-    
-     
-    
-     public void filtro() {
+
+    public void filtro() {
         int columnaABuscar = 1;
-       
+
         trsFiltro.setRowFilter(RowFilter.regexFilter(textBuscar.getText(), columnaABuscar));
     }
-    
-      private void textBuscarKeyTyped(java.awt.event.KeyEvent evt) {                                   
+
+    private void textBuscarKeyTyped(java.awt.event.KeyEvent evt) {
         // TODO add your handling code here:
         textBuscar.addKeyListener(new KeyAdapter() {
+            @Override
             public void keyReleased(final KeyEvent e) {
                 String cadena = (textBuscar.getText());
                 textBuscar.setText(cadena);
@@ -557,83 +536,20 @@ public final class telaPrincipalMaster implements ActionListener {
                 filtro();
             }
         });
-        
+
         trsFiltro = new TableRowSorter(tabelaListar.getModel());
         tabelaListar.setRowSorter(trsFiltro);
 
     }
-     
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-         if (e.getSource() == bAlterar) {
-
-            telaAlterarFuncionario alterar = new telaAlterarFuncionario();
-
-            int index = tabelaListar.getSelectedRow();
-
-            TableModel model = model = tabelaListar.getModel();
-
-            String Id = model.getValueAt(index, 0).toString();
-            String Nome = model.getValueAt(index, 1).toString();
-            String Cpf = model.getValueAt(index, 2).toString();
-            String Rg = model.getValueAt(index, 3).toString();
-            String Cargo = model.getValueAt(index, 4).toString();
-            String Telefone = model.getValueAt(index, 5).toString();
-            String Email = model.getValueAt(index, 6).toString();
-            
-            alterar.SetCodigoTabela(Id);
-            alterar.textNome.setText(Nome);
-            alterar.textCpf.setText(Cpf);
-            alterar.textRg.setText(Rg);
-            alterar.textCargo.setText(Cargo);
-            alterar.textEmail.setText(Email);
-            alterar.textTelefone.setText(Telefone);
-
-        }
-
-        if (e.getSource() == bCadastrar) {
-
-            telaCadastroFuncionario tela = new telaCadastroFuncionario();
-            
-            
-
-        }
-
-        if (e.getSource() == bExcluir) {
-            
-            telaExcluirFuncionario excluir = new telaExcluirFuncionario();
-            
-            int index = tabelaListar.getSelectedRow();
-
-            TableModel model = model = tabelaListar.getModel();
-
-            String Id = model.getValueAt(index, 0).toString();
-            String Nome = model.getValueAt(index, 1).toString();
-            String Cpf = model.getValueAt(index, 2).toString();
-            String Rg = model.getValueAt(index, 3).toString();
-            String Cargo = model.getValueAt(index, 4).toString();
-            String Telefone = model.getValueAt(index, 5).toString();
-            String Email = model.getValueAt(index, 6).toString();
-            
-            excluir.SetCodigoTabela(Id);
-            excluir.textNome.setText(Nome);
-            excluir.textCpf.setText(Cpf);
-            excluir.textRg.setText(Rg);
-            excluir.textCargo.setText(Cargo);
-            excluir.textEmail.setText(Email);
-            excluir.textTelefone.setText(Telefone);
-        }
-
-        if (e.getSource() == bAtualizar) {
-
-        }
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public static void main(String args[]) {
 
-        new telaPrincipalMaster();
+        telaPrincipalMaster telaPrincipalMaster = new telaPrincipalMaster();
 
     }
 

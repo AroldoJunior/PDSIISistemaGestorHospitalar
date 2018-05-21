@@ -252,7 +252,7 @@ public class insereFuncionario {
         bd.connection();
         PreparedStatement stmt = null;
 
-        String sql = "delete from funcionario where Cpf = ?";
+        String sql = "delete from funcionarios where id = ?";
 
         try {
             stmt = bd.con.prepareStatement(sql);
@@ -270,7 +270,7 @@ public class insereFuncionario {
 
         return certo;
     }
-
+    
     public boolean Alterar(Funcionario funcionario, int codigo) {
 
         boolean certo;

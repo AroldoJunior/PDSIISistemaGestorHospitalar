@@ -1,7 +1,5 @@
 package View;
 
-import Controller.insereFuncionario;
-import Model.Funcionario;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -565,22 +563,6 @@ public final class telaCadastroFuncionario implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         
         if (e.getSource() == bCadastrar) {
-            
-            insereFuncionario insere = new insereFuncionario();
-
-            Funcionario funcionario = new Funcionario(
-                    textNome.getText(),
-                    textCpf.getText(),
-                    textRg.getText(),
-                    textCargo.getText(),
-                    textSenha.getText(),
-                    textEmail.getText(),
-                    textTelefone.getText()
-            );
-
-            insere.Cadastra(funcionario);
-            
-            frame.dispose();
             
         }
         
