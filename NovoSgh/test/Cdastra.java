@@ -179,6 +179,203 @@ public class Cdastra {
         assertEquals("Nao deveria estar em branco!", resposta, true);
         
     }
+    @Test
+    public void nomeSemNumero(){
+        Funcionario funcionario = new Funcionario(
+                    nome,
+                    cpf,
+                    rg,
+                    cargo,
+                    senha,
+                    email,
+                    numCell
+            );
+        // Quando...
+        resposta = l.conterNumeros(funcionario.getNome());
+        // EntÃ£o...
+        assertEquals("Nao deveria estar em branco!", resposta, false);
+        
+        
+    }
+    @Test
+    public void cargoSemNumero(){
+        Funcionario funcionario = new Funcionario(
+                    nome,
+                    cpf,
+                    rg,
+                    cargo,
+                    senha,
+                    email,
+                    numCell
+            );
+        // Quando...
+        resposta = l.conterNumeros(funcionario.getCargo());
+        // EntÃ£o...
+        assertEquals("Nao deveria estar em branco!", resposta, false);
+        
+        
+    }
+    
+    @Test
+    public void cpfSemLetras(){
+        Funcionario funcionario = new Funcionario(
+                    nome,
+                    cpf,
+                    rg,
+                    cargo,
+                    senha,
+                    email,
+                    numCell
+            );
+        // Quando...
+        resposta = l.conterNumeros(funcionario.getCargo());
+        // EntÃ£o...
+        assertEquals("Nao deveria estar em branco!", resposta, false);
+        
+    }
+    
+    @Test
+    public void cpfOnzeNumeros(){
+        Funcionario funcionario = new Funcionario(
+                    nome,
+                    cpf,
+                    rg,
+                    cargo,
+                    senha,
+                    email,
+                    numCell
+            );
+        // Quando...
+        resposta = l.cpfNumerosSize(funcionario.getCpf());
+        // EntÃ£o...
+        assertEquals("Nao deveria estar em branco!", resposta, true);
+        
+    }
+    
+    @Test
+    public void rgNoveNumeros(){
+        Funcionario funcionario = new Funcionario(
+                    nome,
+                    cpf,
+                    rg,
+                    cargo,
+                    senha,
+                    email,
+                    numCell
+            );
+        // Quando...
+        resposta = l.rgNumerosSize(funcionario.getRg());
+        // EntÃ£o...
+        assertEquals("Nao deveria estar em branco!", resposta, false);
+        
+    }
+    
+    @Test
+    public void cpfContemLetras(){
+        Funcionario funcionario = new Funcionario(
+                    nome,
+                    cpf,
+                    rg,
+                    cargo,
+                    senha,
+                    email,
+                    numCell
+            );
+        // Quando...
+        resposta = l.contemLetras(funcionario.getCpf());
+        // EntÃ£o...
+        assertEquals("Nao deveria estar em branco!", resposta, false);
+        
+    }
+    
+    @Test
+    public void rgContemLetras(){
+        Funcionario funcionario = new Funcionario(
+                    nome,
+                    cpf,
+                    rg,
+                    cargo,
+                    senha,
+                    email,
+                    numCell
+            );
+        // Quando...
+        resposta = l.contemLetras(funcionario.getRg());
+        // EntÃ£o...
+        assertEquals("Nao deveria estar em branco!", resposta, false);
+        
+    }
+    
+    @Test
+    public void cpfSemEspaco(){
+        Funcionario funcionario = new Funcionario(
+                    nome,
+                    cpf,
+                    rg,
+                    cargo,
+                    senha,
+                    email,
+                    numCell
+            );
+        // Quando...
+        resposta = l.campoSemEspaco(funcionario.getCpf());
+        // EntÃ£o...
+        assertEquals("Nao deveria estar em branco!", resposta, false);
+        
+    }
+    
+    @Test
+    public void rgSemEspaco(){
+        Funcionario funcionario = new Funcionario(
+                    nome,
+                    cpf,
+                    rg,
+                    cargo,
+                    senha,
+                    email,
+                    numCell
+            );
+        // Quando...
+        resposta = l.campoSemEspaco(funcionario.getRg());
+        // EntÃ£o...
+        assertEquals("Nao deveria estar em branco!", resposta, false);
+        
+    }
+    
+     @Test
+    public void senhaSemEspaco(){
+        Funcionario funcionario = new Funcionario(
+                    nome,
+                    cpf,
+                    rg,
+                    cargo,
+                    senha,
+                    email,
+                    numCell
+            );
+        // Quando...
+        resposta = l.campoSemEspaco(funcionario.getSenha());
+        // EntÃ£o...
+        assertEquals("Nao deveria estar em branco!", resposta, false);
+        
+    }
+    
+    public void EmailSemEspaco(){
+        Funcionario funcionario = new Funcionario(
+                    nome,
+                    cpf,
+                    rg,
+                    cargo,
+                    senha,
+                    email,
+                    numCell
+            );
+        // Quando...
+        resposta = l.campoSemEspaco(funcionario.getEmail());
+        // EntÃ£o...
+        assertEquals("Nao deveria estar em branco!", resposta, false);
+        
+    }
 
     
     
