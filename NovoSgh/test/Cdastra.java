@@ -376,6 +376,110 @@ public class Cdastra {
         assertEquals("Nao deveria estar em branco!", resposta, false);
         
     }
+    
+    
+    @Test
+    public void nomeSemCaracteresEspeciais(){
+        Funcionario funcionario = new Funcionario(
+                    nome,
+                    cpf,
+                    rg,
+                    cargo,
+                    senha,
+                    email,
+                    numCell
+            );
+        // Quando...
+        resposta = l.campoNaoTemCaracteresEspeciais(funcionario.getNome());
+        // EntÃ£o...
+        assertEquals("Nao deveria estar em branco!", resposta, true);
+    }
+    
+    @Test
+    public void cpfSemCaracteresEspeciais(){
+        Funcionario funcionario = new Funcionario(
+                    nome,
+                    cpf,
+                    rg,
+                    cargo,
+                    senha,
+                    email,
+                    numCell
+            );
+        // Quando...
+        resposta = l.campoNaoTemCaracteresEspeciais(funcionario.getCpf());
+        // EntÃ£o...
+        assertEquals("Nao deveria estar em branco!", resposta, false);
+    }
+    
+    @Test
+    public void rgSemCaracteresEspeciais(){
+        Funcionario funcionario = new Funcionario(
+                    nome,
+                    cpf,
+                    rg,
+                    cargo,
+                    senha,
+                    email,
+                    numCell
+            );
+        // Quando...
+        resposta = l.campoNaoTemCaracteresEspeciais(funcionario.getRg());
+        // EntÃ£o...
+        assertEquals("Nao deveria estar em branco!", resposta, false);
+    }
+    
+    @Test
+    public void CargoSemCaracteresEspeciais(){
+        Funcionario funcionario = new Funcionario(
+                    nome,
+                    cpf,
+                    rg,
+                    cargo,
+                    senha,
+                    email,
+                    numCell
+            );
+        // Quando...
+        resposta = l.campoNaoTemCaracteresEspeciais(funcionario.getCargo());
+        // EntÃ£o...
+        assertEquals("Nao deveria estar em branco!", resposta, true);
+    }
+    
+    @Test
+    public void numSemCaracteresEspeciais(){
+        Funcionario funcionario = new Funcionario(
+                    nome,
+                    cpf,
+                    rg,
+                    cargo,
+                    senha,
+                    email,
+                    numCell
+            );
+        // Quando...
+        resposta = l.campoNaoTemCaracteresEspeciais(funcionario.getNumCell());
+        // EntÃ£o...
+        assertEquals("Nao deveria estar em branco!", resposta, false);
+    }
+    @Test
+    public void emailEstruturado(){
+        Funcionario funcionario = new Funcionario(
+                    nome,
+                    cpf,
+                    rg,
+                    cargo,
+                    senha,
+                    email,
+                    numCell
+            );
+        // Quando...
+        resposta = l.emailEstrutura(funcionario.getEmail());
+        // EntÃ£o...
+        assertEquals("Nao deveria estar em branco!", resposta, true);
+    }
+    
+    
 
     
     
