@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import javax.swing.border.LineBorder;
+import Controller.blindagensLoginMaster;
 
 public final class telaLoginMaster implements ActionListener{
     
@@ -20,6 +21,7 @@ public final class telaLoginMaster implements ActionListener{
     private JPasswordField textSenha;
     private JSeparator separadorLogin, separadorSenha, separadorSgh;
     private JButton bLogar;
+    blindagensLoginMaster blindagem = new blindagensLoginMaster();
 
     // Construtor //
     
@@ -251,33 +253,6 @@ public final class telaLoginMaster implements ActionListener{
         
     }
     
-    public boolean blingadegens(String login, String senha){
-        
-        boolean resposta = false;
-        boolean aux1 = loginEmBranco(login);
-        boolean aux2 = senhaEmBranco(senha);
-        boolean aux3 = loginNaoTemCaracteresEspeciais(login);
-        boolean aux4 = senhaNaoTemCaracteresEspeciais(senha);
-        boolean aux5 = loginSemEspaco(login);
-        boolean aux6 = senhaSemEspaco(senha);
-        boolean aux7 = loginTamanho(login);
-        boolean aux8 = senhaTamanho(senha);
-        System.out.println(aux1);
-        System.out.println(aux2);
-        System.out.println(aux3);
-        System.out.println(aux4);
-        System.out.println(aux5);
-        System.out.println(aux6);
-        System.out.println(aux7);
-        System.out.println(aux8);
-        
-        
-        if (aux1 == false && aux2 == false && aux3 == true && aux4 == true && aux5 == false && aux6 == false && aux7 == true && aux8 == true)
-            resposta = true;
-            
-        return resposta;
-        
-    }
     
     // Ações //
     
@@ -295,7 +270,7 @@ public final class telaLoginMaster implements ActionListener{
                
                 boolean resposta = login(usu,sen);
                 
-                if (resposta == true&& blingadegens(usu, sen)) {
+                if (resposta == true&& blindagem.blingadegens(usu, sen)) {
                   
                    telaPrincipalMaster tela = new telaPrincipalMaster();
                   
