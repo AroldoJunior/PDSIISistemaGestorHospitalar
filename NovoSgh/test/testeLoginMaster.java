@@ -1,5 +1,5 @@
 
-import View.telaLoginMaster;
+import View.telasMaster.telaLoginMaster;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

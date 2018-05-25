@@ -6,11 +6,13 @@ public class Pessoa {
     private String nome;
     private String cpf;
     private String rg;
+    private String idade;
     private String situacao;
     private String descricao;
     private boolean possuiPlano;
     private String dataEntrada;
     private String dataSaida;
+    
     
     // Construtor
     
@@ -32,6 +34,11 @@ public class Pessoa {
     
     public void setRg(String rg){
         this.rg = rg;
+        
+    }
+    
+    public void setIdade(String idade){
+        this.idade = idade;
         
     }
     
@@ -74,6 +81,11 @@ public class Pessoa {
     
     public String getRg(){
         return rg;
+        
+    }
+    
+    public String getIdade(){
+        return idade;
         
     }
     

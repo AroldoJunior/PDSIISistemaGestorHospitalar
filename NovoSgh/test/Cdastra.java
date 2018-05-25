@@ -5,8 +5,8 @@
  */
 
 import Model.Funcionario;
-import View.telaCadastroFuncionario;
-import View.telaLoginMaster;
+import View.telasMaster.telaCadastroFuncionario;
+import View.telasMaster.telaLoginMaster;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
