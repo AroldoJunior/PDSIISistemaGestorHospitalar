@@ -1,6 +1,8 @@
 package View.telasAtendente;
 
 import Controller.conectaBanco;
+import View.telasMaster.telaAlterarFuncionario;
+import View.telasMaster.telaCadastroFuncionario;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.*;
@@ -9,11 +11,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 public final class telaPrincipalAtendente implements ActionListener {
@@ -210,7 +214,7 @@ public final class telaPrincipalAtendente implements ActionListener {
         bd.connection();
 
         // Preenchimento da tabela com os dados do banco //
-        String sql = "select * from  funcionarios";
+        String sql = "select * from  paciente";
 
         Statement stmt;
 
@@ -232,12 +236,12 @@ public final class telaPrincipalAtendente implements ActionListener {
         }
 
         // Setando as colunas e as celulas da tabela //
-        String[] colunas = {"Código", "Nome", "CPF", "RG", "Cargo", "Telefone", "Email"};
+        String[] colunas = {"Código", "Nome", "CPF", "RG", "Plano", "Nascimento","Telefone"};
 
         modelo.setColumnIdentifiers(colunas);
         modelo.setNumRows(0);
 
-        String sql1 = "select * from funcionarios";
+        String sql1 = "select * from paciente";
 
         Statement stmt1;
 
@@ -255,9 +259,10 @@ public final class telaPrincipalAtendente implements ActionListener {
                     dados[1] = Dado1.getString("nome");
                     dados[2] = Dado1.getString("cpf");
                     dados[3] = Dado1.getString("rg");
-                    dados[4] = Dado1.getString("cargo");
-                    dados[5] = Dado1.getString("numtell");
-                    dados[6] = Dado1.getString("email");
+                    dados[4] = Dado1.getString("plano");
+                    dados[5] = Dado1.getString("dnascimento");
+                    dados[6] = Dado1.getString("numtell");
+                   
 
                 }
                 modelo.addRow(dados);
@@ -289,6 +294,7 @@ public final class telaPrincipalAtendente implements ActionListener {
         bCadastrar.setFont(new Font("Century Gothic", Font.BOLD, 14));
         bCadastrar.setFocusPainted(false);
         bCadastrar.setBackground(Color.WHITE);
+        bCadastrar.addActionListener(this);
         bCadastrar.setBorder(new LineBorder(Color.BLACK));
         bCadastrar.addMouseListener(new MouseListener() {
             @Override
@@ -330,6 +336,7 @@ public final class telaPrincipalAtendente implements ActionListener {
         bAlterar.setFont(new Font("Century Gothic", Font.BOLD, 14));
         bAlterar.setFocusPainted(false);
         bAlterar.setBackground(Color.WHITE);
+        bAlterar.addActionListener(this);
         bAlterar.setBorder(new LineBorder(Color.BLACK));
         bAlterar.addMouseListener(new MouseListener() {
             @Override
@@ -371,6 +378,7 @@ public final class telaPrincipalAtendente implements ActionListener {
         bExcluir.setFont(new Font("Century Gothic", Font.BOLD, 14));
         bExcluir.setFocusPainted(false);
         bExcluir.setBackground(Color.WHITE);
+        bExcluir.addActionListener(this);
         bExcluir.setBorder(new LineBorder(Color.BLACK));
         bExcluir.addMouseListener(new MouseListener() {
             @Override
@@ -516,6 +524,16 @@ public final class telaPrincipalAtendente implements ActionListener {
                 textBuscarKeyTyped(evt);
             }
         });
+        
+          //Proporciona ação do click na tabela
+        tabelaListar.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 1) {
+
+                }
+            }
+        });
 
     }
 
@@ -542,9 +560,114 @@ public final class telaPrincipalAtendente implements ActionListener {
 
     }
 
-    @Override
+     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+         if (e.getSource() == bCadastrar) {
+             
+                telaCadastroPaciente tela = new telaCadastroPaciente();
+             
+         }
+         
+          if (e.getSource() == bAlterar) {
+
+            telaAlterarPaciente alterar = new telaAlterarPaciente();
+
+            int index = tabelaListar.getSelectedRow();
+
+            TableModel  model = tabelaListar.getModel();
+
+            String Id = model.getValueAt(index, 0).toString();
+            String Nome = model.getValueAt(index, 1).toString();
+            String Cpf = model.getValueAt(index, 2).toString();
+            String Rg = model.getValueAt(index, 3).toString();
+            String Plano = model.getValueAt(index, 4).toString();
+            String Dnascimanto = model.getValueAt(index, 5).toString();
+            String Telefone = model.getValueAt(index, 6).toString();
+
+            alterar.SetCodigoTabela(Id);
+            alterar.textNome.setText(Nome);
+            alterar.textCpf.setText(Cpf);
+            alterar.textRg.setText(Rg);
+            alterar.planoComboBox.setSelectedItem(Plano);
+            alterar.textNascimento.setText(Dnascimanto);
+            alterar.textTelefone.setText(Telefone);
+           
+
+        }
+          
+          if (e.getSource() == bExcluir) {
+              
+               telaExcluirPaciente excluir = new telaExcluirPaciente();
+
+            int index = tabelaListar.getSelectedRow();
+
+            TableModel model = tabelaListar.getModel();
+
+            String Id = model.getValueAt(index, 0).toString();
+            String Nome = model.getValueAt(index, 1).toString();
+            String Cpf = model.getValueAt(index, 2).toString();
+            String Rg = model.getValueAt(index, 3).toString();
+            String Plano = model.getValueAt(index, 4).toString();
+            String Nascimento = model.getValueAt(index, 5).toString();
+            String Telefone = model.getValueAt(index, 6).toString();
+
+            excluir.SetCodigoTabela(Id);
+            excluir.textNome.setText(Nome);
+            excluir.textCpf.setText(Cpf);
+            excluir.textRg.setText(Rg);
+            excluir.textNascimento.setText(Nascimento);
+            excluir.textPlano.setText(Plano);
+            excluir.textTelefone.setText(Telefone);
+              
+              
+          }
+          
+          
+        
+          if (e.getSource() == bAtualizar) {
+    
+            DefaultTableModel model = (DefaultTableModel) tabelaListar.getModel();
+
+            model.setNumRows(0);
+
+            String sql1 = "select * from paciente";
+
+            Statement stmt1;
+
+            try {
+                stmt1 = bd.con.prepareStatement(sql1);
+
+                Dado1 = stmt1.executeQuery(sql1);
+
+                while (Dado1.next()) {
+
+                   String[] dados = new String[7];
+
+                    for (int i = 0; i < 7; i++) {
+                        dados[0] = Dado1.getString("id");
+                        dados[1] = Dado1.getString("nome");
+                        dados[2] = Dado1.getString("cpf");
+                        dados[3] = Dado1.getString("rg");
+                        dados[4] = Dado1.getString("cargo");
+                        dados[5] = Dado1.getString("numtell");
+                        dados[6] = Dado1.getString("email");
+
+                    }
+                    modelo.addRow(dados);
+
+                }
+
+            } catch (SQLException n) {
+
+                JOptionPane.showMessageDialog(null, n);
+
+            }
+
+          
+        }
+        
+
     }
 
     public static void main(String args[]) {
