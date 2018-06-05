@@ -9,16 +9,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 public final class telaPrincipalMaster implements ActionListener {
 
     conectaBanco bd = new conectaBanco();
+    
+      String[] dados;
 
     private TableRowSorter trsFiltro;
 
@@ -167,6 +171,7 @@ public final class telaPrincipalMaster implements ActionListener {
         bAtualizar.setFocusPainted(false);
         bAtualizar.setBackground(Color.decode("#9999ff"));
         bAtualizar.setForeground(Color.WHITE);
+        bAtualizar.addActionListener(this);
         bAtualizar.setBorder(new LineBorder(Color.BLACK));
         bAtualizar.addMouseListener(new MouseListener() {
             @Override
@@ -248,7 +253,7 @@ public final class telaPrincipalMaster implements ActionListener {
 
             while (Dado1.next()) {
 
-                String[] dados = new String[7];
+                 dados = new String[7];
 
                 for (int i = 0; i < 7; i++) {
                     dados[0] = Dado1.getString("id");
@@ -289,6 +294,7 @@ public final class telaPrincipalMaster implements ActionListener {
         bCadastrar.setFont(new Font("Century Gothic", Font.BOLD, 14));
         bCadastrar.setFocusPainted(false);
         bCadastrar.setBackground(Color.WHITE);
+        bCadastrar.addActionListener(this);
         bCadastrar.setBorder(new LineBorder(Color.BLACK));
         bCadastrar.addMouseListener(new MouseListener() {
             @Override
@@ -330,6 +336,7 @@ public final class telaPrincipalMaster implements ActionListener {
         bAlterar.setFont(new Font("Century Gothic", Font.BOLD, 14));
         bAlterar.setFocusPainted(false);
         bAlterar.setBackground(Color.WHITE);
+        bAlterar.addActionListener(this);
         bAlterar.setBorder(new LineBorder(Color.BLACK));
         bAlterar.addMouseListener(new MouseListener() {
             @Override
@@ -371,6 +378,7 @@ public final class telaPrincipalMaster implements ActionListener {
         bExcluir.setFont(new Font("Century Gothic", Font.BOLD, 14));
         bExcluir.setFocusPainted(false);
         bExcluir.setBackground(Color.WHITE);
+        bExcluir.addActionListener(this);
         bExcluir.setBorder(new LineBorder(Color.BLACK));
         bExcluir.addMouseListener(new MouseListener() {
             @Override
@@ -413,6 +421,7 @@ public final class telaPrincipalMaster implements ActionListener {
         bSair.setFocusPainted(false);
         bSair.setBackground(Color.decode("#ff0000"));
         bSair.setForeground(Color.WHITE);
+        bSair.addActionListener(this);
         bSair.setBorder(new LineBorder(Color.BLACK));
         bSair.addMouseListener(new MouseListener() {
             @Override
@@ -511,9 +520,18 @@ public final class telaPrincipalMaster implements ActionListener {
 
         // ação para busca inteligente //
         textBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
-            @Override
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 textBuscarKeyTyped(evt);
+            }
+        });
+
+        //Proporciona ação do click na tabela
+        tabelaListar.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 1) {
+
+                }
             }
         });
 
@@ -528,7 +546,6 @@ public final class telaPrincipalMaster implements ActionListener {
     private void textBuscarKeyTyped(java.awt.event.KeyEvent evt) {
         // TODO add your handling code here:
         textBuscar.addKeyListener(new KeyAdapter() {
-            @Override
             public void keyReleased(final KeyEvent e) {
                 String cadena = (textBuscar.getText());
                 textBuscar.setText(cadena);
@@ -544,12 +561,117 @@ public final class telaPrincipalMaster implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        if (e.getSource() == bAlterar) {
+
+            telaAlterarFuncionario alterar = new telaAlterarFuncionario();
+
+            int index = tabelaListar.getSelectedRow();
+
+            TableModel  model = tabelaListar.getModel();
+
+            String Id = model.getValueAt(index, 0).toString();
+            String Nome = model.getValueAt(index, 1).toString();
+            String Cpf = model.getValueAt(index, 2).toString();
+            String Rg = model.getValueAt(index, 3).toString();
+            String Cargo = model.getValueAt(index, 4).toString();
+            String Telefone = model.getValueAt(index, 5).toString();
+            String Email = model.getValueAt(index, 6).toString();
+
+            alterar.SetCodigoTabela(Id);
+            alterar.textNome.setText(Nome);
+            alterar.textCpf.setText(Cpf);
+            alterar.textRg.setText(Rg);
+            alterar.textCargo.setText(Cargo);
+            alterar.textEmail.setText(Email);
+            alterar.textTelefone.setText(Telefone);
+
+        }
+
+        if (e.getSource() == bCadastrar) {
+
+            telaCadastroFuncionario tela = new telaCadastroFuncionario();
+
+        }
+
+        if (e.getSource() == bExcluir) {
+
+            telaExcluirFuncionario excluir = new telaExcluirFuncionario();
+
+            int index = tabelaListar.getSelectedRow();
+
+            TableModel model = tabelaListar.getModel();
+
+            String Id = model.getValueAt(index, 0).toString();
+            String Nome = model.getValueAt(index, 1).toString();
+            String Cpf = model.getValueAt(index, 2).toString();
+            String Rg = model.getValueAt(index, 3).toString();
+            String Cargo = model.getValueAt(index, 4).toString();
+            String Telefone = model.getValueAt(index, 5).toString();
+            String Email = model.getValueAt(index, 6).toString();
+
+            excluir.SetCodigoTabela(Id);
+            excluir.textNome.setText(Nome);
+            excluir.textCpf.setText(Cpf);
+            excluir.textRg.setText(Rg);
+            excluir.textCargo.setText(Cargo);
+            excluir.textEmail.setText(Email);
+            excluir.textTelefone.setText(Telefone);
+        }
+
+        if (e.getSource() == bAtualizar) {
+    
+            DefaultTableModel model = (DefaultTableModel) tabelaListar.getModel();
+
+            model.setNumRows(0);
+
+            String sql1 = "select * from funcionarios";
+
+            Statement stmt1;
+
+            try {
+                stmt1 = bd.con.prepareStatement(sql1);
+
+                Dado1 = stmt1.executeQuery(sql1);
+
+                while (Dado1.next()) {
+
+                    dados = new String[7];
+
+                    for (int i = 0; i < 7; i++) {
+                        dados[0] = Dado1.getString("id");
+                        dados[1] = Dado1.getString("nome");
+                        dados[2] = Dado1.getString("cpf");
+                        dados[3] = Dado1.getString("rg");
+                        dados[4] = Dado1.getString("cargo");
+                        dados[5] = Dado1.getString("numtell");
+                        dados[6] = Dado1.getString("email");
+
+                    }
+                    modelo.addRow(dados);
+
+                }
+
+            } catch (SQLException n) {
+
+                JOptionPane.showMessageDialog(null, n);
+
+            }
+
+          
+        }
+        
+        
+        
+
+        if (e.getSource() == bSair) {
+            frame.dispose();
+        }
     }
 
     public static void main(String args[]) {
 
-        telaPrincipalMaster telaPrincipalMaster = new telaPrincipalMaster();
+        new telaPrincipalMaster();
 
     }
 

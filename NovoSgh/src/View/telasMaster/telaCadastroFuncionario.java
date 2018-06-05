@@ -590,11 +590,7 @@ public final class telaCadastroFuncionario implements ActionListener {
             }else{
                 JOptionPane.showMessageDialog(frame ,"cadastro não realizado!\n Favor conferir os dados digitados!");
             }
-                
-
-            
-            
-            
+               
             
         }
         
