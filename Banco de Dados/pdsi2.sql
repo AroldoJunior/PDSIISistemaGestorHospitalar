@@ -25,14 +25,14 @@ DROP TABLE IF EXISTS `funcionarios`;
 CREATE TABLE `funcionarios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(40) DEFAULT NULL,
-  `cpf` varchar(11) DEFAULT NULL,
-  `rg` varchar(11) DEFAULT NULL,
-  `cargo` varchar(20) DEFAULT NULL,
-  `senha` varchar(10) DEFAULT NULL,
+  `cpf` varchar(12) DEFAULT NULL,
+  `rg` varchar(12) DEFAULT NULL,
+  `cargo` varchar(25) DEFAULT NULL,
+  `senha` varchar(15) DEFAULT NULL,
   `numtell` varchar(15) DEFAULT NULL,
   `email` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `funcionarios` (
 
 LOCK TABLES `funcionarios` WRITE;
 /*!40000 ALTER TABLE `funcionarios` DISABLE KEYS */;
-INSERT INTO `funcionarios` VALUES (1,'2345','456','45','efg','erf','erfgb','erfg');
+INSERT INTO `funcionarios` VALUES (1,'mateus','12345678910','123456789','Atendente','ferreira100','123456789','mateus@hotmail.com'),(19,'hfgd','vfgdv','gvgfsvg','vfdsgv','gvghf','gvgfvsg','gvfdg'),(20,'hdsghj','vfdgsv','vfghvg','hbdfs','vgfvgs','gvgqv','vfgv');
 /*!40000 ALTER TABLE `funcionarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,7 +57,7 @@ CREATE TABLE `funcmaster` (
   `usuario` varchar(40) DEFAULT NULL,
   `senha` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +66,38 @@ CREATE TABLE `funcmaster` (
 
 LOCK TABLES `funcmaster` WRITE;
 /*!40000 ALTER TABLE `funcmaster` DISABLE KEYS */;
+INSERT INTO `funcmaster` VALUES (1,'mateus','feitosa');
 /*!40000 ALTER TABLE `funcmaster` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `paciente`
+--
+
+DROP TABLE IF EXISTS `paciente`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `paciente` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(40) DEFAULT NULL,
+  `cpf` varchar(12) DEFAULT NULL,
+  `rg` varchar(12) DEFAULT NULL,
+  `plano` varchar(40) DEFAULT NULL,
+  `dnascimento` varchar(15) DEFAULT NULL,
+  `numtell` varchar(15) DEFAULT NULL,
+  `descricao` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `paciente`
+--
+
+LOCK TABLES `paciente` WRITE;
+/*!40000 ALTER TABLE `paciente` DISABLE KEYS */;
+INSERT INTO `paciente` VALUES (1,'mateus','12345678','2345678','Universitário','234561','1234567','sgavhg');
+/*!40000 ALTER TABLE `paciente` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -78,4 +109,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-18 22:17:35
+-- Dump completed on 2018-06-05  1:48:06
