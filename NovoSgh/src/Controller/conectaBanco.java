@@ -12,7 +12,7 @@ public class conectaBanco {
     private String driver = "com.mysql.jdbc.Driver";
     private String caminho = "jdbc:mysql://localhost:3306/pdsi2";
     private String usuario = "root";
-    private String senha = "";
+    private String senha = "root";
     public Connection con;
 
     public void connection() {
