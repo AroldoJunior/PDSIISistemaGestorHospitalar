@@ -11,7 +11,7 @@ import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.border.LineBorder;
-import Controller.blindagensCadastrarfuncionario;
+
 public final class telaCadastroFuncionario implements ActionListener {
 
     JFrame frame;
@@ -21,7 +21,7 @@ public final class telaCadastroFuncionario implements ActionListener {
     JPasswordField textSenha, textConfirmarSenha;
     JSeparator separadorNome, separadorCpf, separadorRg, separadorCargo, separadorTelefone, separadorSenha, separadorConfirmarSenha, separadorEmail, separadorPane1, separadorPane2, separadorBotao, separadorMenu, separadorCadastro;
     JButton bCadastrar, bSair;
-    blindagensCadastrarfuncionario blindagem = new blindagensCadastrarfuncionario();
+
     public telaCadastroFuncionario() {
 
         gui();
@@ -551,8 +551,8 @@ public final class telaCadastroFuncionario implements ActionListener {
         panel.add(panelMenuSombra);
 
         frame = new JFrame();
-        frame.setTitle("Cadastro - FuncionÃ¡rio");
-        frame.setSize(900, 559);
+        frame.setTitle("Cadastro - Funcionário");
+        frame.setSize(900, 551);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -560,37 +560,28 @@ public final class telaCadastroFuncionario implements ActionListener {
         frame.setContentPane(panel);
 
     }
-     @Override
+
+    @Override
     public void actionPerformed(ActionEvent e) {
         
         if (e.getSource() == bCadastrar) {
             
             insereFuncionario insere = new insereFuncionario();
 
-                    String nom = textNome.getText();
-                    String cpf = textCpf.getText();
-                    String rg = textRg.getText();
-                    String cargo = textCargo.getText();
-                    String senh = textSenha.getText();
-                    String email = textEmail.getText();
-                    String tel = textTelefone.getText();    
-            
             Funcionario funcionario = new Funcionario(
-                    nom,
-                    cpf,
-                    rg,
-                    cargo,
-                    senh,
-                    email,
-                    tel
-            );
-            if(blindagem.blingadegens(nom,cpf,rg,cargo,senh,email,tel)==true){
-                insere.Cadastra(funcionario);
-                frame.dispose();
-            }else{
-                JOptionPane.showMessageDialog(frame ,"cadastro não realizado!\n Favor conferir os dados digitados!");
-            }
-               
+                        textNome.getText(),
+                        textCpf.getText(),
+                        textRg.getText(),
+                        textCargo.getText(),
+                        textSenha.getText(),
+                        textEmail.getText(),
+                        textTelefone.getText(),
+                        textConfirmarSenha.getText()
+                );
+
+            insere.Cadastra(funcionario);
+            
+            frame.dispose();
             
         }
         
@@ -599,128 +590,7 @@ public final class telaCadastroFuncionario implements ActionListener {
         }
     }
     
-     // Blindagens (Testes) //
-    
-    public boolean campoEmBranco(String login){
-       
-        boolean resposta = false;
-        
-        if(login.isEmpty())
-            resposta = true;
-       
-        return resposta;
-        
-    }
-    
-    public boolean confirmarSenha(String senha, String confSenha){
-        boolean valida = false;
-        
-        if(confSenha.equals(senha)){
-            valida = true;
-        }
-        return valida;
-    }
-    
-    public boolean senhaEmBranco(String senha){
-       
-        boolean resposta = false;
-        
-        if(senha.isEmpty())
-            resposta = true;
-       
-        return resposta;
-        
-    }
-    
-    public boolean emailEstrutura(String texto){
-        if (texto.contains("@")&&texto.contains(".com")){
-	    return true;
-	}else{
-	    return false;
-	}
-    }
-    
-    public boolean campoNaoTemCaracteresEspeciais(String login){
-	
-        boolean resposta = false;
-        
-        if (login.matches("[a-zA-Z_][a-zA-Z0-9_]*"))
-            return true;
-        
-        return resposta;
-        
-    }
-    
-    
-    public boolean conterNumeros(String texto){
-        for (int i = 0; i < texto.length(); i++) {
-            if (Character.isDigit(texto.charAt(i))==true){
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    public Boolean cpfNumerosSize(String cpf){
-        if(cpf.length()==11){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    
-    public Boolean rgNumerosSize(String rg){
-        if(rg.length()==7){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    
-    public boolean contemLetras( String s ) {  
-        for ( int i = 0; i < s.length(); i++ ) { 
-	    if ( Character.isDigit( s.charAt(i) )==true) {  
-		return false;
-	     }  
-	}  
-	return true;  
-   }
-    
-    public boolean campoSemEspaco(String login){
-        
-        boolean resposta = false;
-        
-        if (login.contains(" "))
-	    resposta = true;
-
-        return resposta;
-            
-    }
-    
-    public boolean loginTamanho(String login){
-        
-        boolean valida = false;
-        
-        if (login.length() >= 6 && login.length() <=8 )
-            valida = true;
-        
-        return valida;
-        
-    }
-    
-    public boolean senhaTamanho(String senha){
-        
-        boolean valida = false;
-        
-        if (senha.length() >= 6 && senha.length() <=8 )
-            valida = true;
-        
-        return valida;
-        
-    }
-    
-    
-    
+     
 
     public static void main(String args[]) {
 
