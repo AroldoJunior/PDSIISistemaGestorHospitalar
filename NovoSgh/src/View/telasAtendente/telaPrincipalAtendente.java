@@ -171,6 +171,7 @@ public final class telaPrincipalAtendente implements ActionListener {
         bAtualizar.setFocusPainted(false);
         bAtualizar.setBackground(Color.decode("#9999ff"));
         bAtualizar.setForeground(Color.WHITE);
+        bAtualizar.addActionListener(this);
         bAtualizar.setBorder(new LineBorder(Color.BLACK));
         bAtualizar.addMouseListener(new MouseListener() {
             @Override
@@ -649,9 +650,9 @@ public final class telaPrincipalAtendente implements ActionListener {
                         dados[1] = Dado1.getString("nome");
                         dados[2] = Dado1.getString("cpf");
                         dados[3] = Dado1.getString("rg");
-                        dados[4] = Dado1.getString("cargo");
-                        dados[5] = Dado1.getString("numtell");
-                        dados[6] = Dado1.getString("email");
+                        dados[4] = Dado1.getString("plano");
+                        dados[5] = Dado1.getString("dnascimento");
+                        dados[6] = Dado1.getString("numtell");
 
                     }
                     modelo.addRow(dados);
