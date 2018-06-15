@@ -1,5 +1,6 @@
 package View.telasMaster;
 
+import Controller.blindagensCadastrarfuncionario;
 import Controller.insereFuncionario;
 import Model.Funcionario;
 import javax.swing.*;
@@ -21,6 +22,7 @@ public final class telaCadastroFuncionario implements ActionListener {
     JPasswordField textSenha, textConfirmarSenha;
     JSeparator separadorNome, separadorCpf, separadorRg, separadorCargo, separadorTelefone, separadorSenha, separadorConfirmarSenha, separadorEmail, separadorPane1, separadorPane2, separadorBotao, separadorMenu, separadorCadastro;
     JButton bCadastrar, bSair;
+    blindagensCadastrarfuncionario blindagem = new blindagensCadastrarfuncionario();
 
     public telaCadastroFuncionario() {
 
@@ -566,22 +568,32 @@ public final class telaCadastroFuncionario implements ActionListener {
         
         if (e.getSource() == bCadastrar) {
             
-            insereFuncionario insere = new insereFuncionario();
-
-            Funcionario funcionario = new Funcionario(
-                        textNome.getText(),
-                        textCpf.getText(),
-                        textRg.getText(),
-                        textCargo.getText(),
-                        textSenha.getText(),
-                        textEmail.getText(),
-                        textTelefone.getText(),
-                        textConfirmarSenha.getText()
-                );
-
-            insere.Cadastra(funcionario);
             
-            frame.dispose();
+                if (blindagem.blingadegens(textNome.getText(),textCpf.getText(), textRg.getText(), textCargo.getText(), textSenha.getText(),textEmail.getText(),textTelefone.getText(),textConfirmarSenha.getText())== true) {
+                    insereFuncionario insere = new insereFuncionario();
+
+                    Funcionario funcionario = new Funcionario(
+                            textNome.getText(),
+                            textCpf.getText(),
+                            textRg.getText(),
+                            textCargo.getText(),
+                            textSenha.getText(),
+                            textEmail.getText(),
+                            textTelefone.getText(),
+                            textConfirmarSenha.getText()
+                    );
+                    
+                    insere.Cadastra(funcionario);
+            
+                    frame.dispose();
+            
+
+                } else {
+                    JOptionPane.showMessageDialog(frame, "Cadastro não realizado!\n Favor conferir o usuario e senha digitado!");
+                }
+            
+
+            
             
         }
         

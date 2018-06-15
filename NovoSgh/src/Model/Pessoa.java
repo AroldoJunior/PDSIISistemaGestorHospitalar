@@ -6,19 +6,31 @@ public class Pessoa {
     private String nome;
     private String cpf;
     private String rg;
-    private String idade;
     private String situacao;
     private String descricao;
-    private boolean possuiPlano;
+    private String Plano;
     private String dataEntrada;
     private String dataSaida;
-    
+    private String numcell;
+    private String DataNascimento;
     
     // Construtor
+   
     
-    public Pessoa(){
-        
+    public Pessoa(String nome, String cpf, String rg, String Plano, String DataNascimento, String numcell, String descricao) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.rg = rg;
+        this.Plano = Plano;
+        this.DataNascimento = DataNascimento;
+        this.numcell = numcell;
+        this.descricao = descricao;
+       
     }
+    
+    
+    
+    
     
     // Metodos Set's
     
@@ -37,11 +49,6 @@ public class Pessoa {
         
     }
     
-    public void setIdade(String idade){
-        this.idade = idade;
-        
-    }
-    
     public void setSituacao(String situacao){
         this.situacao = situacao;
         
@@ -52,8 +59,8 @@ public class Pessoa {
         
     }
     
-    public void setPossuiPlano(Boolean possuiPlano){
-        this.possuiPlano = possuiPlano;
+    public void setPlano(String Plano){
+        this.Plano = Plano;
         
     }
     
@@ -64,6 +71,11 @@ public class Pessoa {
     
     public void setDataSaida(String dataSaida){    
         this.dataSaida = dataSaida;
+        
+    }
+    
+    public void setNumcell(String numcell){    
+        this.numcell = numcell;
         
     }
     
@@ -84,11 +96,6 @@ public class Pessoa {
         
     }
     
-    public String getIdade(){
-        return idade;
-        
-    }
-    
     public String getSituacao(){
         return situacao;
         
@@ -99,18 +106,18 @@ public class Pessoa {
         
     }
     
-    public boolean getPossuiPLano(){
-        return possuiPlano;
+    public String getPlano(){
+        return Plano;
         
     }
     
-    public String getDataEntrada(){
-        return dataEntrada;
+    public String getDataNascimento(){
+        return DataNascimento;
         
     }
     
-    public String getDataSaida(){
-        return dataSaida;
+    public String getNumcell(){
+        return numcell;
         
     }
     

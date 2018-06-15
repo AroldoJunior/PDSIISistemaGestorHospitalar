@@ -1,4 +1,5 @@
 
+import Controller.blindagensLoginMaster;
 import View.telasMaster.telaLoginMaster;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -9,7 +10,7 @@ import static org.junit.Assert.*;
 
 public class testeLoginMaster {
     
-    telaLoginMaster l;
+    blindagensLoginMaster l;
     boolean resposta = false;
     
     public testeLoginMaster() {
@@ -18,7 +19,7 @@ public class testeLoginMaster {
     
     @Before
     public void setUp() {
-        l = new telaLoginMaster();
+        l = new blindagensLoginMaster();
         
     }
     
@@ -113,6 +114,28 @@ public class testeLoginMaster {
         resposta = l.senhaTamanho("aloualou");
         // Então...
         assertEquals("Login permitido!", resposta, true);
+        
+    }
+    
+     @Test
+    public void testeLoginSize3(){
+        // Dado que... 
+        
+        // Quando...
+        resposta = l.campoSize3("matheus100");
+        // Então...
+        assertEquals("Nao deveria estar em branco!", resposta, true);
+        
+    }
+    
+    @Test
+    public void testeSenhaSize3(){
+        // Dado que... 
+        
+        // Quando...
+        resposta = l.campoSize3("ferreira100");
+        // Então...
+        assertEquals("Nao deveria estar em branco!", resposta, true);
         
     }
     

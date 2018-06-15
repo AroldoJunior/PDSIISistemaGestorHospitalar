@@ -1,5 +1,6 @@
 package View.telasAtendente;
 
+import Controller.inserePessoa;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -19,6 +20,20 @@ public final class telaExcluirPaciente implements ActionListener {
     JPasswordField textSenha, textConfirmarSenha;
     JSeparator separadorNome, separadorCpf, separadorRg, separadorPlano, separadorTelefone, separadorSenha, separadorConfirmarSenha, separadorNascimento, separadorPane1, separadorPane2, separadorBotao, separadorMenu, separadorExcluir;
     JButton bExcluir, bSair;
+      private String CodigoTabela;
+     
+     
+    public void SetCodigoTabela(String CodigoTabela) {
+        this.CodigoTabela = CodigoTabela;
+
+    }
+    // Metodos Get's
+
+    public String getCodigoTabela() {
+        return CodigoTabela;
+
+    }
+
 
     public telaExcluirPaciente() {
 
@@ -279,8 +294,8 @@ public final class telaExcluirPaciente implements ActionListener {
         bSair.setBounds(550, 20, 250, 50);
         bSair.setFont(new Font("Century Gothic", Font.BOLD, 14));
         bSair.setFocusPainted(false);
-        bSair.setBackground(Color.WHITE);
-        bSair.setForeground(Color.BLACK);
+        bSair.setBackground(Color.decode("#9999ff"));
+        bSair.setForeground(Color.WHITE);
         bSair.setBorder(new LineBorder(Color.BLACK));
         bSair.addActionListener(this);
         bSair.addMouseListener(new MouseListener() {
@@ -393,6 +408,29 @@ public final class telaExcluirPaciente implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == bExcluir) {
+            
+            inserePessoa exclui = new inserePessoa();
+
+            int CodigoInt = Integer.parseInt(getCodigoTabela());
+
+            if (exclui.Deletar(CodigoInt) == true) {
+
+                textNome.setText("");
+                textCpf.setText("");
+                textRg.setText("");
+                textPlano.setText("");
+                textTelefone.setText("");
+                textNascimento.setText("");
+
+                JOptionPane.showMessageDialog(null, "Funcionario excluido com sucesso!");
+                
+                frame.dispose();
+
+            } else {
+
+                JOptionPane.showMessageDialog(null, "Erro ao excluir funcionario!");
+
+            }
             
         }
         

@@ -1,6 +1,6 @@
 package View.telasMaster;
 
-import View.telasMaster.telaPrincipalMaster;
+import Controller.blindagensLoginMaster;
 import Controller.conectaBanco;
 import javax.swing.*;
 import java.awt.*;
@@ -8,14 +8,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import javax.swing.border.LineBorder;
-import Controller.blindagensLoginMaster;
 
-public final class telaLoginMaster implements ActionListener{
-    
+public final class telaLoginMaster implements ActionListener {
+
     conectaBanco bd = new conectaBanco();
-    
+
     private JFrame frame;
-    private JLabel login, senha, sgh, sgh2 ,logo;
+    private JLabel login, senha, sgh, sgh2, logo;
     private JPanel panel, eita, eita2;
     private JTextField textLogin;
     private JPasswordField textSenha;
@@ -24,40 +23,38 @@ public final class telaLoginMaster implements ActionListener{
     blindagensLoginMaster blindagem = new blindagensLoginMaster();
 
     // Construtor //
-    
     public telaLoginMaster() {
 
         gui();
 
     }
-    
-    // Tela Login - Gerência //                     
-    
+
+    // Tela Login - GerÃªncia //                     
     public void gui() {
-        
+
         sgh = new JLabel("SGH");
         sgh.setBounds(25, 10, 110, 100);
         sgh.setFont(new Font("Urbandub", Font.PLAIN, 48));
         sgh.setForeground(Color.WHITE);
-        
+
         separadorSgh = new JSeparator();
         separadorSgh.setBounds(135, 35, 2, 50);
         separadorSgh.setBorder(new LineBorder(Color.WHITE));
-        
+
         sgh2 = new JLabel("Sistema Gestor Hospitalar");
         sgh2.setBounds(145, 10, 300, 100);
         sgh2.setFont(new Font("Urbandub", Font.PLAIN, 18));
         sgh2.setForeground(Color.WHITE);
-        
+
         ImageIcon icon = new ImageIcon("imgs/sghLogo.png");
         //ImageIcon icon2 = new ImageIcon("sghLogin.png");
-        
+
         icon.setImage(icon.getImage().getScaledInstance(500, 450, 100));
         //icon2.setImage(icon2.getImage().getScaledInstance(300, 150, 80))
-        
+
         logo = new JLabel(icon);
         logo.setBounds(372, 18, 458, 430);
-        
+
         login = new JLabel("LOGIN:");
         login.setBounds(20, 190, 100, 30);
         login.setFont(new Font("Century Gothic", Font.BOLD, 14));
@@ -91,7 +88,7 @@ public final class telaLoginMaster implements ActionListener{
         textSenha.setBackground(Color.decode("#005c99"));
         textSenha.setBorder(new LineBorder(Color.decode("#005c99")));
         textSenha.setCaretColor(Color.WHITE);
-        
+
         bLogar = new JButton("ENTRAR");
         bLogar.setBounds(100, 400, 200, 40);
         bLogar.setFont(new Font("Century Gothic", Font.BOLD, 14));
@@ -99,7 +96,7 @@ public final class telaLoginMaster implements ActionListener{
         bLogar.addActionListener(this);
         bLogar.setBackground(Color.WHITE);
         bLogar.setBorder(new LineBorder(Color.BLACK));
-        
+
         eita = new JPanel();
         eita.setBackground(Color.decode("#005c99"));
         eita.setBounds(0, 0, 400, 500);
@@ -127,7 +124,7 @@ public final class telaLoginMaster implements ActionListener{
         panel.add(eita2);
 
         frame = new JFrame();
-        frame.setTitle("Login - Gerência");
+        frame.setTitle("Login - GerÃªncia");
         frame.setSize(800, 500);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
@@ -136,9 +133,8 @@ public final class telaLoginMaster implements ActionListener{
         frame.setContentPane(panel);
 
     }
-    
-    // Função que executa o login //
-    
+
+    // FunÃ§Ã£o que executa o login //
     public boolean login(String login, String senha) throws SQLException {
 
         boolean certo = false;
@@ -162,138 +158,41 @@ public final class telaLoginMaster implements ActionListener{
 
         return certo;
     }
-    
-    // Blindagens (Testes) //
-    
-    public boolean loginEmBranco(String login){
-       
-        boolean resposta = false;
-        
-        if(login.isEmpty())
-            resposta = true;
-       
-        return resposta;
-        
-    }
-    
-    public boolean senhaEmBranco(String senha){
-       
-        boolean resposta = false;
-        
-        if(senha.isEmpty())
-            resposta = true;
-       
-        return resposta;
-        
-    }
-    
-    public boolean loginNaoTemCaracteresEspeciais(String login){
-	
-        boolean resposta = false;
-        
-        if (login.matches("[a-zA-Z_][a-zA-Z0-9_]*"))
-            return true;
-        
-        return resposta;
-        
-    }
-    
-    public boolean senhaNaoTemCaracteresEspeciais(String senha){
-	
-        boolean resposta = false;
-        
-        if (senha.matches("[a-zA-Z_][a-zA-Z0-9_]*"))
-            return true;
-        
-        return resposta;
-        
-    }
-    
-    public boolean loginSemEspaco(String login){
-        
-        boolean resposta = false;
-        
-        if (login.contains(" "))
-	    resposta = true;
 
-        return resposta;
-            
-    }
-    
-    public boolean senhaSemEspaco(String senha){
-        
-        boolean resposta = false;
-        
-        if (senha.contains(" "))
-	    resposta = true;
-
-        return resposta;
-            
-    }
-    
-    public boolean loginTamanho(String login){
-        
-        boolean valida = false;
-        
-        if (login.length() >= 6 && login.length() <=8 )
-            valida = true;
-        
-        return valida;
-        
-    }
-    
-    public boolean senhaTamanho(String senha){
-        
-        boolean valida = false;
-        
-        if (senha.length() >= 6 && senha.length() <=8 )
-            valida = true;
-        
-        return valida;
-        
-    }
-    
-    
-    // Ações //
-    
+    // AÃ§Ãµes //
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-     
+
         if (e.getSource() == bLogar) {
-            
-            
-             try {
-                
+
+            try {
+
                 String usu = textLogin.getText();
                 String sen = textSenha.getText();
-               
-                boolean resposta = login(usu,sen);
-                
-                if (resposta == true&& blindagem.blingadegens(usu, sen)) {
-                  
-                   telaPrincipalMaster tela = new telaPrincipalMaster();
-                  
-                    
+
+                boolean resposta = login(usu, sen);
+
+                if (resposta == true && blindagem.blingadegens(usu, sen)) {
+
+                    telaPrincipalMaster tela = new telaPrincipalMaster();
+                    frame.dispose();
+
                 } else {
-                    JOptionPane.showMessageDialog(frame ,"login não realizado!\n Favor conferir o usuario e senha digitado!");
+                    JOptionPane.showMessageDialog(frame, "login não realizado!\n Favor conferir o usuario e senha digitado!");
                 }
             } catch (SQLException ex) {
-                    System.out.println("Ocorreu erro ao conectar");
+                System.out.println("Ocorreu erro ao conectar");
             }
-       
+
         }
-        
+
     }
-    
+
     // Main //
-    
     public static void main(String args[]) {
 
         telaLoginMaster telaLoginMaster = new telaLoginMaster();
 
     }
-
-  
 
 }

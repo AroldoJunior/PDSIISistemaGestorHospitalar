@@ -1,6 +1,7 @@
 package View.telasAtendente;
 
-import View.telasMaster.telaPrincipalMaster;
+
+import Controller.blindagensLoginAtendente;
 import Controller.conectaBanco;
 import javax.swing.*;
 import java.awt.*;
@@ -20,6 +21,7 @@ public final class telaLoginAtendente implements ActionListener{
     private JPasswordField textSenha;
     private JSeparator separadorLogin, separadorSenha, separadorSgh;
     private JButton bLogar;
+    blindagensLoginAtendente blindagem = new blindagensLoginAtendente();
 
     // Construtor //
     
@@ -142,11 +144,11 @@ public final class telaLoginAtendente implements ActionListener{
         boolean certo = false;
 
         bd.connection();
-        bd.executaSQL("SELECT * FROM funcmaster");
+        bd.executaSQL("SELECT * FROM funcionarios");
 
         if (bd.rs.first()) {
 
-            String s = bd.rs.getString("usuario");
+            String s = bd.rs.getString("nome");
             String l = bd.rs.getString("senha");
 
             if (login.equals(s) && senha.equals(l)) {
@@ -176,11 +178,16 @@ public final class telaLoginAtendente implements ActionListener{
                 String sen = textSenha.getText();
                
                 boolean resposta = login(usu,sen);
-              
+                
+                  if (resposta == true && blindagem.blingadegens(usu, sen)) {
+                      
+                       telaPrincipalAtendente tela = new telaPrincipalAtendente();
+
+                } else {
+                    JOptionPane.showMessageDialog(frame, "login não realizado!\n Favor conferir o usuario e senha digitado!");
+                }
                   
-                   telaPrincipalMaster tela = new telaPrincipalMaster();
                   
-              
             } catch (SQLException ex) {
                     System.out.println("Ocorreu erro ao conectar");
             }

@@ -1,5 +1,6 @@
 package Controller;
 
+import Controller.conectaBanco;
 import Model.Funcionario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,26 +18,28 @@ public class insereFuncionario {
 
         bd.connection();
 
-        String sql = "insert into funcionario(Nome, Cpf, Rg, Cargo,Senha, NumCell, Email) values (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into funcionarios(nome, cpf, rg, cargo,senha, numtell, email) values (?, ?, ?, ?, ?, ?, ?)";
 
         try {
 
             JOptionPane.showMessageDialog(null, "Esses são os dados a cadastrar nome '" + funcionario.getNome());
 
-            try (PreparedStatement stm = bd.con.prepareStatement(sql)) {
-                stm.setString(1, funcionario.getNome());
-                stm.setString(2, funcionario.getCpf());
-                stm.setString(3, funcionario.getRg());
-                stm.setString(4, funcionario.getCargo());
-                stm.setString(5, funcionario.getSenha());
-                stm.setString(6, funcionario.getNumCell());
-                stm.setString(7, funcionario.getEmail());
-                System.out.println("Deu certo");
-                stm.execute();
-            }
+            PreparedStatement stm = bd.con.prepareStatement(sql);
+
+            stm.setString(1, funcionario.getNome());
+            stm.setString(2, funcionario.getCpf());
+            stm.setString(3, funcionario.getRg());
+            stm.setString(4, funcionario.getCargo());
+            stm.setString(5, funcionario.getSenha());
+            stm.setString(6, funcionario.getNumCell());
+            stm.setString(7, funcionario.getEmail());
             System.out.println("Deu certo");
+            stm.execute();
+
+            stm.close();
+            
             certo = true;
-            System.out.println("Deu certo");
+         
         } catch (SQLException ex) {
 
             //throw new RuntimeException(ex);
@@ -51,8 +54,8 @@ public class insereFuncionario {
 
         String Resul = null;
         bd.connection();
-        PreparedStatement stmt;
-        ResultSet Resultado;
+        PreparedStatement stmt = null;
+        ResultSet Resultado = null;
         String sql = "select Nome from funcionario where Cpf = ?";
 
         try {
@@ -79,8 +82,8 @@ public class insereFuncionario {
 
         String Resul = null;
         bd.connection();
-        PreparedStatement stmt;
-        ResultSet Resultado;
+        PreparedStatement stmt = null;
+        ResultSet Resultado = null;
 
         String sql = "select Cpf from funcionario where Cpf = ?";
 
@@ -107,8 +110,8 @@ public class insereFuncionario {
 
         String Resul = null;
         bd.connection();
-        PreparedStatement stmt;
-        ResultSet Resultado;
+        PreparedStatement stmt = null;
+        ResultSet Resultado = null;
         String sql = "select Rg from funcionario where Cpf = ?";
 
         try {
@@ -135,8 +138,8 @@ public class insereFuncionario {
 
         String Resul = null;
         bd.connection();
-        PreparedStatement stmt;
-        ResultSet Resultado;
+        PreparedStatement stmt = null;
+        ResultSet Resultado = null;
         String sql = "select Cargo from funcionario where Cpf = ?";
 
         try {
@@ -163,8 +166,8 @@ public class insereFuncionario {
 
         String Resul = null;
         bd.connection();
-        PreparedStatement stmt;
-        ResultSet Resultado;
+        PreparedStatement stmt = null;
+        ResultSet Resultado = null;
         String sql = "select Senha from funcionario where Cpf = ?";
 
         try {
@@ -191,8 +194,8 @@ public class insereFuncionario {
 
         String Resul = null;
         bd.connection();
-        PreparedStatement stmt;
-        ResultSet Resultado;
+        PreparedStatement stmt = null;
+        ResultSet Resultado = null;
         String sql = "select NumCell from funcionario where Cpf = ?";
 
         try {
@@ -219,8 +222,8 @@ public class insereFuncionario {
 
         String Resul = null;
         bd.connection();
-        PreparedStatement stmt;
-        ResultSet Resultado;
+        PreparedStatement stmt = null;
+        ResultSet Resultado = null;
         String sql = "select Email from funcionario where Cpf = ?";
 
         try {
@@ -247,7 +250,7 @@ public class insereFuncionario {
 
         boolean certo;
         bd.connection();
-        PreparedStatement stmt;
+        PreparedStatement stmt = null;
 
         String sql = "delete from funcionarios where id = ?";
 
@@ -267,7 +270,7 @@ public class insereFuncionario {
 
         return certo;
     }
-    
+
     public boolean Alterar(Funcionario funcionario, int codigo) {
 
         boolean certo;
@@ -278,17 +281,18 @@ public class insereFuncionario {
 
         try {
 
-            try (PreparedStatement stm = bd.con.prepareStatement(sql)) {
-                stm.setString(1, funcionario.getNome());
-                stm.setString(2, funcionario.getCpf());
-                stm.setString(3, funcionario.getRg());
-                stm.setString(4, funcionario.getCargo());
-                stm.setString(5, funcionario.getSenha());
-                stm.setString(6, funcionario.getNumCell());
-                stm.setString(7, funcionario.getEmail());
-                
-                stm.execute();
-            }
+            PreparedStatement stm = bd.con.prepareStatement(sql);
+
+            stm.setString(1, funcionario.getNome());
+            stm.setString(2, funcionario.getCpf());
+            stm.setString(3, funcionario.getRg());
+            stm.setString(4, funcionario.getCargo());
+            stm.setString(5, funcionario.getSenha());
+            stm.setString(6, funcionario.getNumCell());
+            stm.setString(7, funcionario.getEmail());
+
+            stm.execute();
+            stm.close();
 
             certo = true;
 

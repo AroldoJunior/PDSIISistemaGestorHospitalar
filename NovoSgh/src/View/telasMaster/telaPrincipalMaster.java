@@ -419,7 +419,8 @@ public final class telaPrincipalMaster implements ActionListener {
         bSair.setBounds(1010, 477, 233, 50);
         bSair.setFont(new Font("Century Gothic", Font.BOLD, 14));
         bSair.setFocusPainted(false);
-        bSair.setBackground(Color.decode("#ff0000"));
+        bSair.setBackground(Color.decode("#9999ff"));
+        //bSair.setBackground(Color.decode("#ff0000"));
         bSair.setForeground(Color.WHITE);
         bSair.addActionListener(this);
         bSair.setBorder(new LineBorder(Color.BLACK));
@@ -464,6 +465,7 @@ public final class telaPrincipalMaster implements ActionListener {
         menu.setForeground(Color.WHITE);
 
         panelMenu = new JPanel();
+        //panelMenu.setBackground(Color.decode("#cce6ff"));
         panelMenu.setBackground(Color.decode("#3399ff"));
         panelMenu.setBounds(950, 0, 350, 563);
         panelMenu.setBorder(new LineBorder(Color.BLACK));

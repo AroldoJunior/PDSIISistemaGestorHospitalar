@@ -6,25 +6,26 @@
 package Controller;
 import View.telasMaster.telaLoginMaster;
 
+
 /**
  *
  * @author CABRUTO
  */
 public class blindagensLoginMaster {
         
-        telaLoginMaster tm = new telaLoginMaster();
+        
         
         public boolean blingadegens(String login, String senha){
         
         boolean resposta = false;
-        boolean aux1 = tm.loginEmBranco(login);
-        boolean aux2 = tm.senhaEmBranco(senha);
-        boolean aux3 = tm.loginNaoTemCaracteresEspeciais(login);
-        boolean aux4 = tm.senhaNaoTemCaracteresEspeciais(senha);
-        boolean aux5 = tm.loginSemEspaco(login);
-        boolean aux6 = tm.senhaSemEspaco(senha);
-        boolean aux7 = tm.loginTamanho(login);
-        boolean aux8 = tm.senhaTamanho(senha);
+        boolean aux1 = loginEmBranco(login);
+        boolean aux2 = senhaEmBranco(senha);
+        boolean aux3 = loginNaoTemCaracteresEspeciais(login);
+        boolean aux4 = senhaNaoTemCaracteresEspeciais(senha);
+        boolean aux5 = loginSemEspaco(login);
+        boolean aux6 = senhaSemEspaco(senha);
+        boolean aux7 = loginTamanho(login);
+        boolean aux8 = senhaTamanho(senha);
              
         
         if (aux1 == false && aux2 == false && aux3 == true && aux4 == true && aux5 == false && aux6 == false && aux7 == true && aux8 == true)
@@ -33,4 +34,113 @@ public class blindagensLoginMaster {
         return resposta;
         
     }
+        
+     
+    // Blindagens (Testes) //
+    public boolean loginEmBranco(String login) {
+
+        boolean resposta = false;
+
+        if (login.isEmpty()) {
+            resposta = true;
+        }
+
+        return resposta;
+
+    }
+
+    public boolean senhaEmBranco(String senha) {
+
+        boolean resposta = false;
+
+        if (senha.isEmpty()) {
+            resposta = true;
+        }
+
+        return resposta;
+
+    }
+
+    public boolean loginNaoTemCaracteresEspeciais(String login) {
+
+        boolean resposta = false;
+
+        if (login.matches("[a-zA-Z_][a-zA-Z0-9_]*")) {
+            return true;
+        }
+
+        return resposta;
+
+    }
+
+    public boolean senhaNaoTemCaracteresEspeciais(String senha) {
+
+        boolean resposta = false;
+
+        if (senha.matches("[a-zA-Z_][a-zA-Z0-9_]*")) {
+            return true;
+        }
+
+        return resposta;
+
+    }
+
+    public boolean loginSemEspaco(String login) {
+
+        boolean resposta = false;
+
+        if (login.contains(" ")) {
+            resposta = true;
+        }
+
+        return resposta;
+
+    }
+
+    public boolean senhaSemEspaco(String senha) {
+
+        boolean resposta = false;
+
+        if (senha.contains(" ")) {
+            resposta = true;
+        }
+
+        return resposta;
+
+    }
+
+    public boolean loginTamanho(String login) {
+
+        boolean valida = false;
+
+        if (login.length() >= 6 && login.length() <= 8) {
+            valida = true;
+        }
+
+        return valida;
+
+    }
+
+    public boolean senhaTamanho(String senha) {
+
+        boolean valida = false;
+
+        if (senha.length() >= 6 && senha.length() <= 8) {
+            valida = true;
+        }
+
+        return valida;
+
+    }
+
+   
+     public boolean campoSize3(String nome){
+            if(nome.length()<3){
+                return false;
+            }else{
+                return true;
+            }
+    }
+   
+        
 }

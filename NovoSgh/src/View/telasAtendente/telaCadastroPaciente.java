@@ -1,5 +1,8 @@
 package View.telasAtendente;
 
+import Controller.blindagensCadastrarpaciente;
+import Controller.inserePessoa;
+import Model.Pessoa;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -21,6 +24,7 @@ public final class telaCadastroPaciente implements ActionListener {
     JSeparator separadorNome, separadorCpf, separadorRg, separadorPlano, separadorTelefone, separadorNascimento, separadorPane1, separadorPane2, separadorBotao, separadorMenu, separadorCadastro;
     JButton bCadastrar, bSair;
     JComboBox planoComboBox;
+    blindagensCadastrarpaciente blindagem = new blindagensCadastrarpaciente();
 
     public telaCadastroPaciente() {
 
@@ -514,6 +518,39 @@ public final class telaCadastroPaciente implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        
+          if (e.getSource() == bCadastrar) {
+              
+              if (blindagem.blingadegens( textNome.getText(),textCpf.getText(),textRg.getText(),planoComboBox.getSelectedItem().toString(),textNascimento.getText(), textTelefone.getText(),textDescricao.getText())== true) {
+                       
+                  inserePessoa insere = new inserePessoa();
+
+                  Pessoa pessoa = new Pessoa(
+                          textNome.getText(),
+                          textCpf.getText(),
+                          textRg.getText(),
+                          planoComboBox.getSelectedItem().toString(),
+                          textNascimento.getText(),
+                          textTelefone.getText(),
+                          textDescricao.getText()
+                  );
+
+                  insere.Cadastra(pessoa);
+
+                  frame.dispose();
+            
+            
+
+                } else {
+                    JOptionPane.showMessageDialog(frame, "Cadastro não realizado!\n Favor conferir o usuario e senha digitado!");
+                }
+              
+        
+        }
+        
+        if (e.getSource() == bSair) {
+            frame.dispose();
+        }
    
     }
     

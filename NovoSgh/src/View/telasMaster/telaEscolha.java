@@ -1,5 +1,7 @@
 package View.telasMaster;
 
+import View.telasAtendente.telaLoginAtendente;
+import View.telasAtendente.telaPrincipalAtendente;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -24,7 +26,7 @@ public final class telaEscolha implements ActionListener{
     
     public void gui(){
         
-        bMaster = new JButton("GERENTE");
+        bMaster = new JButton("ÁREA DO GERENTE");
         bMaster.setBounds(10, 10, 380, 445);
         bMaster.setFont(new Font("Century Gothic", Font.BOLD, 20));
         bMaster.setFocusPainted(false);
@@ -63,7 +65,7 @@ public final class telaEscolha implements ActionListener{
             }
         });
         
-        bAtendente = new JButton("ATENDENTE");
+        bAtendente = new JButton("ÁREA DO ATENDENTE");
         bAtendente.setBounds(411, 10, 379, 445);
         bAtendente.setFont(new Font("Century Gothic", Font.BOLD, 20));
         bAtendente.setFocusPainted(false);
@@ -128,7 +130,7 @@ public final class telaEscolha implements ActionListener{
         
         frame = new JFrame();
         frame.setTitle("Inicio");
-        frame.setSize(800, 500);
+        frame.setSize(810, 500);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -139,7 +141,19 @@ public final class telaEscolha implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+          if (e.getSource() == bAtendente) {
+              
+               telaLoginAtendente telaLoginMaster = new telaLoginAtendente();
+                    frame.dispose();
+              
+          }
+          
+          if (e.getSource() == bMaster) {
+              
+               telaLoginMaster telaLoginMaster = new telaLoginMaster();
+                    frame.dispose();
+          }
+    
     }
     
     public static void main(String args[]) {

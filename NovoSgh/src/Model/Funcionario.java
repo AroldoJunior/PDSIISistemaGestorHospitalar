@@ -10,9 +10,10 @@ public class Funcionario {
     private String senha;
     private String email;
     private String numCell;
+    private String confirmarSenha;
 
     // Construtor
-    public Funcionario(String nome, String cpf, String rg, String cargo, String senha, String email, String numCell) {
+    public Funcionario(String nome, String cpf, String rg, String cargo, String senha, String email, String numCell,String confirmarSenha) {
         this.nome = nome;
         this.cpf = cpf;
         this.rg = rg;
@@ -20,6 +21,8 @@ public class Funcionario {
         this.senha = senha;
         this.email = email;
         this.numCell = numCell;
+        this.confirmarSenha = confirmarSenha;
+        
 
     }
 
@@ -63,6 +66,11 @@ public class Funcionario {
         this.numCell = numCell;
 
     }
+    
+     public void setconfirmarSenha(String confirmarSenha) {
+        this.confirmarSenha = confirmarSenha;
+
+    }
     // Metodos Get's
 
     public String getNome() {
@@ -102,6 +110,11 @@ public class Funcionario {
 
     public String getEmail() {
         return email;
+
+    }
+    
+     public String getConfirmarSenha() {
+        return confirmarSenha;
 
     }
 

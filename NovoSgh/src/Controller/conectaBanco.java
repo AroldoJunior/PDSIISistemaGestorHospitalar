@@ -7,14 +7,14 @@ import java.util.logging.Logger;
 
 public class conectaBanco {
     
-    public Statement stm;
+      public Statement stm;
     public ResultSet rs;
     private String driver = "com.mysql.jdbc.Driver";
     private String caminho = "jdbc:mysql://localhost:3306/pdsi2";
     private String usuario = "root";
     private String senha = "root";
     public Connection con;
-
+    
     public void connection() {
 
         try {

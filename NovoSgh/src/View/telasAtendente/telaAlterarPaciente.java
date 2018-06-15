@@ -1,5 +1,7 @@
 package View.telasAtendente;
 
+import Controller.inserePessoa;
+import Model.Pessoa;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -19,8 +21,21 @@ public final class telaAlterarPaciente implements ActionListener {
     JTextArea textDescricao;
     JScrollPane barraDescricao;
     JSeparator separadorNome, separadorCpf, separadorRg, separadorPlano, separadorTelefone, separadorNascimento, separadorPane1, separadorPane2, separadorBotao, separadorMenu, separadorAlterar;
-    JButton bCadastrar, bSair, bMudarDescricao;
+    JButton bAlterar, bSair, bMudarDescricao;
     JComboBox planoComboBox;
+    private String CodigoTabela;
+     
+     
+    public void SetCodigoTabela(String CodigoTabela) {
+        this.CodigoTabela = CodigoTabela;
+
+    }
+    // Metodos Get's
+
+    public String getCodigoTabela() {
+        return CodigoTabela;
+
+    }
 
     public telaAlterarPaciente() {
 
@@ -168,7 +183,7 @@ public final class telaAlterarPaciente implements ActionListener {
         String[] opcoesCombo = {"Nenhum", "Para gravidas", "Para recem-nascidos", "Familiar", "Para idosos", "Coparticipação", "Appai", "Empresarial/Colaborador", "Aposentadoria por invalidez", "Universitário",};
         
         planoComboBox = new JComboBox(opcoesCombo);
-        planoComboBox.setBounds(460, 28, 410, 20);
+        planoComboBox.setBounds(460, 30, 410, 22);
         planoComboBox.setFont(new Font("Urbandub", Font.PLAIN, 12));
         planoComboBox.addFocusListener(new FocusListener() {
             @Override
@@ -398,15 +413,15 @@ public final class telaAlterarPaciente implements ActionListener {
         separadorBotao.setBounds(10, 419, 880, 1);
         separadorBotao.setBorder(new LineBorder(Color.BLACK));
 
-        bCadastrar = new JButton("Cadastrar");
-        bCadastrar.setBounds(95, 20, 250, 50);
-        bCadastrar.setFont(new Font("Century Gothic", Font.BOLD, 14));
-        bCadastrar.setFocusPainted(false);
-        bCadastrar.setForeground(Color.WHITE);
-        bCadastrar.setBackground(Color.decode("#40bf40"));
-        bCadastrar.setBorder(new LineBorder(Color.BLACK));
-        bCadastrar.addActionListener(this);
-        bCadastrar.addMouseListener(new MouseListener() {
+        bAlterar = new JButton("Alterar");
+        bAlterar.setBounds(95, 20, 250, 50);
+        bAlterar.setFont(new Font("Century Gothic", Font.BOLD, 14));
+        bAlterar.setFocusPainted(false);
+        bAlterar.setForeground(Color.WHITE);
+        bAlterar.setBackground(Color.decode("#40bf40"));
+        bAlterar.setBorder(new LineBorder(Color.BLACK));
+        bAlterar.addActionListener(this);
+        bAlterar.addMouseListener(new MouseListener() {
             @Override
             public void mouseReleased(MouseEvent e) {
                 // TODO Auto-generated method stub
@@ -420,14 +435,14 @@ public final class telaAlterarPaciente implements ActionListener {
             @Override
             public void mouseExited(MouseEvent e) {
                 // TODO Auto-generated method stub
-                bCadastrar.setBounds(95, 20, 250, 50);
+                bAlterar.setBounds(95, 20, 250, 50);
                 sombraBCadastrar.setBounds(95, 20, 250, 52);
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
                 e.getComponent().requestFocus();
-                bCadastrar.setBounds(92, 17, 255, 56);
+                bAlterar.setBounds(92, 17, 255, 56);
                 sombraBCadastrar.setBounds(96, 20, 247, 56);
             }
 
@@ -549,7 +564,7 @@ public final class telaAlterarPaciente implements ActionListener {
         panel.add(separadorBotao);
 
         panelMenu.add(separadorMenu);
-        panelMenu.add(bCadastrar);
+        panelMenu.add(bAlterar);
         panelMenu.add(sombraBCadastrar);
         panelMenu.add(bSair);
         panelMenu.add(sombraBSair);
@@ -582,6 +597,55 @@ public final class telaAlterarPaciente implements ActionListener {
             frame.dispose();
         }
         
+        if (e.getSource() == bAlterar) {
+            
+            inserePessoa altera = new inserePessoa();
+            
+             if (textNome.getText().isEmpty() || textNascimento.getText().isEmpty() || textDescricao.getText().isEmpty() || textTelefone.getText().isEmpty() || textRg.getText().isEmpty()) {
+
+                JOptionPane.showMessageDialog(null, "Existe um campo obrigatorio vazio!");
+                frame.requestFocus();
+
+            } else {
+
+                 Pessoa pessoa = new Pessoa(
+                        textNome.getText(),
+                        textCpf.getText(),
+                        textRg.getText(),
+                        planoComboBox.getSelectedItem().toString(),
+                        textNascimento.getText(),
+                        textTelefone.getText(),
+                        textDescricao.getText()
+                        
+                );
+
+              
+                
+                int CodigoInt = Integer.parseInt(getCodigoTabela());
+             
+                if (altera.Alterar(pessoa, CodigoInt) == true) {
+
+                        textNome.setText("");;
+                        textCpf.setText("");;
+                        textRg.setText("");
+                        textNascimento.setText("");;
+                        textTelefone.setText("");
+                        textDescricao.setText("");
+
+
+                    JOptionPane.showMessageDialog(null, "Funcionario alterado com sucesso!");
+                    
+                    frame.dispose();
+
+                } else {
+
+                    JOptionPane.showMessageDialog(null, "Erro ao alterar funcionario!");
+
+                }
+
+            }
+             
+        }
     }
     
      // Blindagens (Testes) //

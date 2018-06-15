@@ -169,6 +169,46 @@ public class Cdastra {
         assertEquals("Nao deveria estar em branco!", resposta, false);
         
     }
+    
+     @Test
+    public void TelefoneSemCaracteresEspeciais(){
+        // Dado que... 
+        Funcionario funcionario = new Funcionario(
+                    nome,
+                    cpf,
+                    rg,
+                    cargo,
+                    senha,
+                    email,
+                    numCell,
+                    confirmarSenha
+            );
+        // Quando...
+        resposta = l.campoNaoTemCaracteresEspeciais(funcionario.getNumCell());
+        // Então...
+        assertEquals("Nao deveria estar em branco!", resposta, false);
+        
+    }
+    
+     @Test
+    public void TelefoneSemEspaco(){
+        Funcionario funcionario = new Funcionario(
+                    nome,
+                    cpf,
+                    rg,
+                    cargo,
+                    senha,
+                    email,
+                    numCell,
+                    confirmarSenha
+            );
+        // Quando...
+        resposta = l.campoSemEspaco(funcionario.getNumCell());
+        // Então...
+        assertEquals("Nao deveria estar em branco!", resposta, false);
+        
+    }
+    
     @Test
     public void campoVazioEmail(){// Dado que... 
         Funcionario funcionario = new Funcionario(

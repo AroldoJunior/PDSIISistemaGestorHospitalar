@@ -1,3 +1,4 @@
+
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -9,7 +10,8 @@ import org.junit.runners.Suite;
 
     @Suite.SuiteClasses({
             Cdastra.class,
-            testeLoginMaster.class
+            testeLoginMaster.class,
+            pacienteTest.class 
 })
 
 public class suiteTest {

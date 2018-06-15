@@ -420,8 +420,10 @@ public final class telaPrincipalAtendente implements ActionListener {
         bSair.setBounds(1010, 477, 233, 50);
         bSair.setFont(new Font("Century Gothic", Font.BOLD, 14));
         bSair.setFocusPainted(false);
-        bSair.setBackground(Color.decode("#ff0000"));
+        bSair.setBackground(Color.decode("#9999ff"));
+        //bSair.setBackground(Color.decode("#ff0000"));
         bSair.setForeground(Color.WHITE);
+        bSair.addActionListener(this);
         bSair.setBorder(new LineBorder(Color.BLACK));
         bSair.addMouseListener(new MouseListener() {
             @Override
@@ -465,6 +467,7 @@ public final class telaPrincipalAtendente implements ActionListener {
 
         panelMenu = new JPanel();
         panelMenu.setBackground(Color.decode("#339966"));
+        //panelMenu.setBackground(Color.decode("#b3e6cc"));
         panelMenu.setBounds(950, 0, 350, 563);
         panelMenu.setBorder(new LineBorder(Color.BLACK));
 
@@ -666,6 +669,10 @@ public final class telaPrincipalAtendente implements ActionListener {
             }
 
           
+        }
+          
+        if (e.getSource() == bSair) {
+            frame.dispose();
         }
         
 
