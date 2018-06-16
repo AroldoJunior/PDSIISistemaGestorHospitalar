@@ -132,11 +132,7 @@ public class blindagensLoginAtendente {
 
    
      public boolean campoSize3(String nome){
-            if(nome.length()<3){
-                return false;
-            }else{
-                return true;
-            }
+         return nome.length() >= 3;
     }
         
     

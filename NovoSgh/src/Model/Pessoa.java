@@ -12,7 +12,7 @@ public class Pessoa {
     private String dataEntrada;
     private String dataSaida;
     private String numcell;
-    private String DataNascimento;
+    private final String DataNascimento;
     
     // Construtor
    

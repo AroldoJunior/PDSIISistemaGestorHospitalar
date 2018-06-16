@@ -1,7 +1,6 @@
 package View.telasMaster;
 
 import Controller.insereFuncionario;
-import Model.Funcionario;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

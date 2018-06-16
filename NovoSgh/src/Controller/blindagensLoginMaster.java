@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Controller;
-import View.telasMaster.telaLoginMaster;
 
 
 /**
@@ -135,11 +134,7 @@ public class blindagensLoginMaster {
 
    
      public boolean campoSize3(String nome){
-            if(nome.length()<3){
-                return false;
-            }else{
-                return true;
-            }
+            return nome.length() >= 3;
     }
    
         

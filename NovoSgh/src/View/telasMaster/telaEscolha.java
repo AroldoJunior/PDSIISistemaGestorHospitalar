@@ -10,22 +10,20 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.border.LineBorder;
 
+public final class telaEscolha implements ActionListener {
 
-public final class telaEscolha implements ActionListener{
-    
     JFrame frame;
     JPanel panel, panelSBMaster, panelSBAtendente;
     JSeparator separador;
     JButton bMaster, bAtendente;
-   
-    public telaEscolha(){
+
+    public telaEscolha() {
         gui();
-        
+
     }
-    
-    
-    public void gui(){
-        
+
+    public void gui() {
+
         bMaster = new JButton("ÁREA DO GERENTE");
         bMaster.setBounds(10, 10, 380, 445);
         bMaster.setFont(new Font("Century Gothic", Font.BOLD, 20));
@@ -64,7 +62,7 @@ public final class telaEscolha implements ActionListener{
                 // TODO Auto-generated method stub
             }
         });
-        
+
         bAtendente = new JButton("ÁREA DO ATENDENTE");
         bAtendente.setBounds(411, 10, 379, 445);
         bAtendente.setFont(new Font("Century Gothic", Font.BOLD, 20));
@@ -103,31 +101,31 @@ public final class telaEscolha implements ActionListener{
                 // TODO Auto-generated method stub
             }
         });
-        
+
         panelSBMaster = new JPanel();
         panelSBMaster.setBounds(10, 10, 380, 446);
         panelSBMaster.setBackground(Color.GRAY);
         panelSBMaster.setBorder(new LineBorder(Color.BLACK));
-        
+
         panelSBAtendente = new JPanel();
         panelSBAtendente.setBounds(411, 10, 379, 446);
         panelSBAtendente.setBackground(Color.GRAY);
         panelSBAtendente.setBorder(new LineBorder(Color.BLACK));
-        
+
         separador = new JSeparator();
         separador.setBounds(400, 10, 1, 445);
         separador.setBorder(new LineBorder(Color.BLACK));
-        
+
         panel = new JPanel();
         panel.setBackground(Color.decode("#f0f5f5"));
         panel.setLayout(null);
-        
+
         panel.add(separador);
         panel.add(bMaster);
         panel.add(bAtendente);
         panel.add(panelSBMaster);
         panel.add(panelSBAtendente);
-        
+
         frame = new JFrame();
         frame.setTitle("Inicio");
         frame.setSize(810, 500);
@@ -136,30 +134,30 @@ public final class telaEscolha implements ActionListener{
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setVisible(true);
         frame.setContentPane(panel);
-   
+
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
-          if (e.getSource() == bAtendente) {
-              
-               telaLoginAtendente telaLoginMaster = new telaLoginAtendente();
-                    frame.dispose();
-              
-          }
-          
-          if (e.getSource() == bMaster) {
-              
-               telaLoginMaster telaLoginMaster = new telaLoginMaster();
-                    frame.dispose();
-          }
-    
+        if (e.getSource() == bAtendente) {
+
+            telaLoginAtendente telaLoginMaster = new telaLoginAtendente();
+            frame.dispose();
+
+        }
+
+        if (e.getSource() == bMaster) {
+
+            telaLoginMaster telaLoginMaster = new telaLoginMaster();
+            frame.dispose();
+        }
+
     }
-    
+
     public static void main(String args[]) {
 
         telaEscolha telaescolha = new telaEscolha();
 
     }
-    
-}   
+
+}

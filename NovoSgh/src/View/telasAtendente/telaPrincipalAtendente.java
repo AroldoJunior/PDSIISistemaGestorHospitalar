@@ -1,8 +1,6 @@
 package View.telasAtendente;
 
 import Controller.conectaBanco;
-import View.telasMaster.telaAlterarFuncionario;
-import View.telasMaster.telaCadastroFuncionario;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.*;
@@ -237,7 +235,7 @@ public final class telaPrincipalAtendente implements ActionListener {
         }
 
         // Setando as colunas e as celulas da tabela //
-        String[] colunas = {"Código", "Nome", "CPF", "RG", "Plano", "Nascimento","Telefone"};
+        String[] colunas = {"Código", "Nome", "CPF", "RG", "Plano", "Nascimento", "Telefone"};
 
         modelo.setColumnIdentifiers(colunas);
         modelo.setNumRows(0);
@@ -263,7 +261,6 @@ public final class telaPrincipalAtendente implements ActionListener {
                     dados[4] = Dado1.getString("plano");
                     dados[5] = Dado1.getString("dnascimento");
                     dados[6] = Dado1.getString("numtell");
-                   
 
                 }
                 modelo.addRow(dados);
@@ -420,8 +417,7 @@ public final class telaPrincipalAtendente implements ActionListener {
         bSair.setBounds(1010, 477, 233, 50);
         bSair.setFont(new Font("Century Gothic", Font.BOLD, 14));
         bSair.setFocusPainted(false);
-        bSair.setBackground(Color.decode("#9999ff"));
-        //bSair.setBackground(Color.decode("#ff0000"));
+        bSair.setBackground(Color.decode("#ff0000"));
         bSair.setForeground(Color.WHITE);
         bSair.addActionListener(this);
         bSair.setBorder(new LineBorder(Color.BLACK));
@@ -466,7 +462,7 @@ public final class telaPrincipalAtendente implements ActionListener {
         menu.setForeground(Color.WHITE);
 
         panelMenu = new JPanel();
-        panelMenu.setBackground(Color.decode("#339966"));
+        panelMenu.setBackground(Color.decode("#66cc99"));
         //panelMenu.setBackground(Color.decode("#b3e6cc"));
         panelMenu.setBounds(950, 0, 350, 563);
         panelMenu.setBorder(new LineBorder(Color.BLACK));
@@ -528,8 +524,8 @@ public final class telaPrincipalAtendente implements ActionListener {
                 textBuscarKeyTyped(evt);
             }
         });
-        
-          //Proporciona ação do click na tabela
+
+        //Proporciona ação do click na tabela
         tabelaListar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -564,22 +560,22 @@ public final class telaPrincipalAtendente implements ActionListener {
 
     }
 
-     @Override
+    @Override
     public void actionPerformed(ActionEvent e) {
-        
-         if (e.getSource() == bCadastrar) {
-             
-                telaCadastroPaciente tela = new telaCadastroPaciente();
-             
-         }
-         
-          if (e.getSource() == bAlterar) {
+
+        if (e.getSource() == bCadastrar) {
+
+            telaCadastroPaciente tela = new telaCadastroPaciente();
+
+        }
+
+        if (e.getSource() == bAlterar) {
 
             telaAlterarPaciente alterar = new telaAlterarPaciente();
 
             int index = tabelaListar.getSelectedRow();
 
-            TableModel  model = tabelaListar.getModel();
+            TableModel model = tabelaListar.getModel();
 
             String Id = model.getValueAt(index, 0).toString();
             String Nome = model.getValueAt(index, 1).toString();
@@ -596,13 +592,12 @@ public final class telaPrincipalAtendente implements ActionListener {
             alterar.planoComboBox.setSelectedItem(Plano);
             alterar.textNascimento.setText(Dnascimanto);
             alterar.textTelefone.setText(Telefone);
-           
 
         }
-          
-          if (e.getSource() == bExcluir) {
-              
-               telaExcluirPaciente excluir = new telaExcluirPaciente();
+
+        if (e.getSource() == bExcluir) {
+
+            telaExcluirPaciente excluir = new telaExcluirPaciente();
 
             int index = tabelaListar.getSelectedRow();
 
@@ -623,14 +618,11 @@ public final class telaPrincipalAtendente implements ActionListener {
             excluir.textNascimento.setText(Nascimento);
             excluir.textPlano.setText(Plano);
             excluir.textTelefone.setText(Telefone);
-              
-              
-          }
-          
-          
-        
-          if (e.getSource() == bAtualizar) {
-    
+
+        }
+
+        if (e.getSource() == bAtualizar) {
+
             DefaultTableModel model = (DefaultTableModel) tabelaListar.getModel();
 
             model.setNumRows(0);
@@ -646,7 +638,7 @@ public final class telaPrincipalAtendente implements ActionListener {
 
                 while (Dado1.next()) {
 
-                   String[] dados = new String[7];
+                    String[] dados = new String[7];
 
                     for (int i = 0; i < 7; i++) {
                         dados[0] = Dado1.getString("id");
@@ -668,13 +660,11 @@ public final class telaPrincipalAtendente implements ActionListener {
 
             }
 
-          
         }
-          
+
         if (e.getSource() == bSair) {
             frame.dispose();
         }
-        
 
     }
 

@@ -1,20 +1,19 @@
 package Controller;
-    
+
 import java.sql.*;
-import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class conectaBanco {
-    
-      public Statement stm;
+
+    public Statement stm;
     public ResultSet rs;
-    private String driver = "com.mysql.jdbc.Driver";
-    private String caminho = "jdbc:mysql://localhost:3306/pdsi2";
-    private String usuario = "root";
-    private String senha = "root";
+    private final String driver = "com.mysql.jdbc.Driver";
+    private final String caminho = "jdbc:mysql://localhost:3306/pdsi2";
+    private final String usuario = "root";
+    private final String senha = "";
     public Connection con;
-    
+
     public void connection() {
 
         try {
@@ -38,7 +37,7 @@ public class conectaBanco {
 
         try {
 
-            stm = con.createStatement(rs.TYPE_SCROLL_INSENSITIVE, rs.CONCUR_READ_ONLY);
+            stm = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
             rs = stm.executeQuery(SQL);
 
@@ -47,5 +46,5 @@ public class conectaBanco {
             Logger.getLogger(conectaBanco.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
 }

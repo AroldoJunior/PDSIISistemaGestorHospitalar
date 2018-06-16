@@ -84,29 +84,17 @@ public class blindagensCadastrarpaciente {
     }
     
     public boolean campoSize3(String nome){
-            if(nome.length()<3){
-                return false;
-            }else{
-                return true;
-            }
+        return nome.length() >= 3;
     }
     
   
     
     public boolean rgNumerosSizeMaior(String rg){
-        if(rg.length()>7){
-            return true;
-        }else{
-            return false;
-        }
+        return rg.length()>7;
     }
     
     public boolean rgNumerosSizeMenor(String rg){
-        if(rg.length()<7){
-            return true;
-        }else{
-            return false;
-        }
+        return rg.length()<7;
     }
     
     public boolean contemLetras( String s ) {  
@@ -130,37 +118,21 @@ public class blindagensCadastrarpaciente {
     }
     
      public boolean cpfNumerosSize(String cpf){
-        if(cpf.length()==11){
-            return true;
-        }else{
-            return false;
-        }
+        return cpf.length()==11;
     }
    
     public boolean rgNumerosSize(String rg){
-        if(rg.length()==7){
-            return true;
-        }else{
-            return false;
-        }
+        return rg.length()==7;
     }
     
     
     
     public boolean cpfNumerosSizeMaior(String cpf){
-        if(cpf.length()>11){
-            return true;
-        }else{
-            return false;
-        }
+        return cpf.length()>11;
     }
     
     public boolean cpfNumerosSizeMenor(String cpf){
-        if(cpf.length()<11){
-            return true;
-        }else{
-            return false;
-        }
+        return cpf.length()<11;
     }
     
   

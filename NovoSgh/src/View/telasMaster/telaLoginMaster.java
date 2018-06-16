@@ -124,7 +124,7 @@ public final class telaLoginMaster implements ActionListener {
         panel.add(eita2);
 
         frame = new JFrame();
-        frame.setTitle("Login - GerÃªncia");
+        frame.setTitle("Login - Gerencia");
         frame.setSize(800, 500);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
