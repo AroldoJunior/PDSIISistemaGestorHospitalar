@@ -457,7 +457,7 @@ public final class telaPrincipalMaster implements ActionListener {
         sombraBMudarSenha = new JPanel();
         sombraBMudarSenha.setBackground(Color.GRAY);
         sombraBMudarSenha.setBounds(1010, 270, 233, 52);
-        
+
         bSair = new JButton("Sair");
         bSair.setBounds(1010, 477, 233, 50);
         bSair.setFont(new Font("Century Gothic", Font.BOLD, 14));
@@ -566,6 +566,7 @@ public final class telaPrincipalMaster implements ActionListener {
 
         // ação para busca inteligente //
         textBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 textBuscarKeyTyped(evt);
             }
@@ -592,6 +593,7 @@ public final class telaPrincipalMaster implements ActionListener {
     private void textBuscarKeyTyped(java.awt.event.KeyEvent evt) {
         // TODO add your handling code here:
         textBuscar.addKeyListener(new KeyAdapter() {
+            @Override
             public void keyReleased(final KeyEvent e) {
                 String cadena = (textBuscar.getText());
                 textBuscar.setText(cadena);
@@ -713,7 +715,7 @@ public final class telaPrincipalMaster implements ActionListener {
 
     public static void main(String args[]) {
 
-        new telaPrincipalMaster();
+        telaPrincipalMaster telaPrincipalMaster = new telaPrincipalMaster();
 
     }
 
