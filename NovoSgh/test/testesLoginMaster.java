@@ -8,12 +8,12 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class testeLoginMaster {
+public class testesLoginMaster {
     
     blindagensLoginMaster l;
     boolean resposta = false;
     
-    public testeLoginMaster() {
+    public testesLoginMaster() {
     
     }
     

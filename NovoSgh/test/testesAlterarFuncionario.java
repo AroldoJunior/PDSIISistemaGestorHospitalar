@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
  *
  * @author Gemeos
  */
-public class AlterarFuncionarioTest {
+public class testesAlterarFuncionario {
     
     blindagensFuncionarios l;
     
@@ -32,7 +32,7 @@ public class AlterarFuncionarioTest {
     private String numCell="89981040935";
 
     
-    public AlterarFuncionarioTest() {
+    public testesAlterarFuncionario() {
     }
     
     

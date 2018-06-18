@@ -9,10 +9,10 @@ import org.junit.runners.Suite;
  @RunWith(Suite.class)
 
     @Suite.SuiteClasses({
-            testeCadastroFuncionario.class,
-            testeLoginMaster.class,
+            testesCadastroFuncionario.class,
+            testesLoginMaster.class,
             pacienteTest.class,
-            AlterarFuncionarioTest.class,
+            testesAlterarFuncionario.class,
             AlterarPacienteTest.class,
             pacienteTest.class
 })
