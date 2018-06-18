@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
  *
  * @author Gemeos
  */
-public class Cdastra {
+public class testeCadastroFuncionario {
     
     blindagensFuncionarios l;
     
@@ -32,7 +32,7 @@ public class Cdastra {
     private String numCell="89981040935";
 
     
-    public Cdastra() {
+    public testeCadastroFuncionario() {
     }
     
     

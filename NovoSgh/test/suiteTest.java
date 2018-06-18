@@ -9,7 +9,7 @@ import org.junit.runners.Suite;
  @RunWith(Suite.class)
 
     @Suite.SuiteClasses({
-            Cdastra.class,
+            testeCadastroFuncionario.class,
             testeLoginMaster.class,
             pacienteTest.class,
             AlterarFuncionarioTest.class,
