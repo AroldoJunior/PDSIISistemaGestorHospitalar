@@ -19,7 +19,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 
-public class pacienteTest {
+public class testesPaciente {
     
     
      blindagensCadastrarpaciente l;
@@ -36,7 +36,7 @@ public class pacienteTest {
    
 
     
-    public pacienteTest() {
+    public testesPaciente() {
     }
     
    

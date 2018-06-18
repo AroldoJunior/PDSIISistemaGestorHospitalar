@@ -17,7 +17,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 
-public class CadastraPacienteTeste {
+public class testesAlterarPaciente {
     
     
     blindagensCadastrarpaciente l;
@@ -34,7 +34,7 @@ public class CadastraPacienteTeste {
    
 
     
-    public CadastraPacienteTeste() {
+    public testesAlterarPaciente() {
     }
     
    
