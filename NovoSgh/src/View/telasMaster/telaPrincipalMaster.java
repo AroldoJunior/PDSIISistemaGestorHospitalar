@@ -30,13 +30,13 @@ public final class telaPrincipalMaster implements ActionListener {
     int cont = 0;
 
     private JFrame frame;
-    private JPanel panel, panelMenu, panelMenuSombra, panelBuscar, sombraBuscar, sombraBarra, sombraBCadastrar, sombraBAlterar, sombraBExcluir, sombraBSair, sombraBAtualizar;
-    private JSeparator separadorMenu, separadorMenu2, separadorFuncionarios, separadorAtualizar;
+    private JPanel panel, panelMenu, panelMenuSombra, panelBuscar, sombraBuscar, sombraBarra, sombraBCadastrar, sombraBAlterar, sombraBExcluir, sombraBSair, sombraBAtualizar, sombraBMudarSenha;
+    private JSeparator separadorMenu, separadorMenu2, separadorFuncionarios, separadorAtualizar, separadorMudarSenha;
     private JLabel funcionarios, buscar, menu;
     private JTextField textBuscar;
     private JTable tabelaListar;
     private JScrollPane barra;
-    private JButton bCadastrar, bAlterar, bExcluir, bSair, bAtualizar;
+    private JButton bCadastrar, bAlterar, bExcluir, bSair, bAtualizar, bMudarSenha;
     private final DefaultTableModel modelo = (DefaultTableModel) (new DefaultTableModel() {
 
         @Override
@@ -415,6 +415,49 @@ public final class telaPrincipalMaster implements ActionListener {
         sombraBExcluir.setBackground(Color.GRAY);
         sombraBExcluir.setBounds(1010, 180, 233, 52);
 
+        bMudarSenha = new JButton("MUDAR SENHA");
+        bMudarSenha.setBounds(1010, 270, 233, 50);
+        bMudarSenha.setFont(new Font("Century Gothic", Font.BOLD, 14));
+        bMudarSenha.setFocusPainted(false);
+        bMudarSenha.setForeground(Color.red);
+        bMudarSenha.setBackground(Color.WHITE);
+        bMudarSenha.addActionListener(this);
+        bMudarSenha.setBorder(new LineBorder(Color.BLACK));
+        bMudarSenha.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // TODO Auto-generated method stub
+                bMudarSenha.setBounds(1010, 270, 233, 50);
+                sombraBMudarSenha.setBounds(1010, 270, 233, 52);
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                e.getComponent().requestFocus();
+                bMudarSenha.setBounds(1007, 267, 238, 56);
+                sombraBMudarSenha.setBounds(1011, 270, 230, 56);
+            }
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+            }
+        });
+
+        sombraBMudarSenha = new JPanel();
+        sombraBMudarSenha.setBackground(Color.GRAY);
+        sombraBMudarSenha.setBounds(1010, 270, 233, 52);
+        
         bSair = new JButton("Sair");
         bSair.setBounds(1010, 477, 233, 50);
         bSair.setFont(new Font("Century Gothic", Font.BOLD, 14));
@@ -503,6 +546,8 @@ public final class telaPrincipalMaster implements ActionListener {
         panel.add(sombraBAlterar);
         panel.add(bExcluir);
         panel.add(sombraBExcluir);
+        panel.add(bMudarSenha);
+        panel.add(sombraBMudarSenha);
         panel.add(bSair);
         panel.add(sombraBSair);
         panel.add(separadorMenu);
