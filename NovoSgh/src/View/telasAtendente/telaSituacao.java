@@ -176,11 +176,11 @@ public final class telaSituacao implements ActionListener{
         textDescricao.setFont(new Font("Urbandub", Font.PLAIN, 12));
         
         barraDescricao = new JScrollPane(textDescricao);
-        barraDescricao.setBounds(10, 30, 580, 130);
+        barraDescricao.setBounds(10, 30, 850, 130);
         barraDescricao.setBorder(new LineBorder(Color.BLACK));
         
         panel2 = new JPanel();
-        panel2.setBounds(10, 255, 600, 170);
+        panel2.setBounds(10, 255, 870, 170);
         panel2.setBorder(new LineBorder(Color.BLACK));
         panel2.setBackground(Color.WHITE);
         panel2.setLayout(null);
@@ -189,7 +189,7 @@ public final class telaSituacao implements ActionListener{
         panel2.add(barraDescricao);
         
         panelSombra2 = new JPanel();
-        panelSombra2.setBounds(10, 255, 600, 172);
+        panelSombra2.setBounds(10, 255, 870, 172);
         panelSombra2.setBackground(Color.GRAY);
         
         bGerarFicha = new JButton("Gerar Ficha");
@@ -305,8 +305,8 @@ public final class telaSituacao implements ActionListener{
         panel.add(panelSombra1);
         panel.add(panel2);
         panel.add(panelSombra2);
-        panel.add(panel3);
-        panel.add(panelSombra3);
+        //panel.add(panel3);
+        //panel.add(panelSombra3);
         panel.add(separadorBotao);
         panel.add(bVoltar);
         panel.add(sombraBVoltar);
