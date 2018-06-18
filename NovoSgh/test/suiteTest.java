@@ -11,7 +11,10 @@ import org.junit.runners.Suite;
     @Suite.SuiteClasses({
             Cdastra.class,
             testeLoginMaster.class,
-            pacienteTest.class 
+            pacienteTest.class,
+            AlterarFuncionarioTest.class,
+            AlterarPacienteTest.class,
+            pacienteTest.class
 })
 
 public class suiteTest {
