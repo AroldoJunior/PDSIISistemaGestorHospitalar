@@ -21,8 +21,8 @@ import javax.swing.table.TableRowSorter;
 public final class telaPrincipalMaster implements ActionListener {
 
     conectaBanco bd = new conectaBanco();
-    
-      String[] dados;
+
+    String[] dados;
 
     private TableRowSorter trsFiltro;
 
@@ -253,7 +253,7 @@ public final class telaPrincipalMaster implements ActionListener {
 
             while (Dado1.next()) {
 
-                 dados = new String[7];
+                dados = new String[7];
 
                 for (int i = 0; i < 7; i++) {
                     dados[0] = Dado1.getString("id");
@@ -569,7 +569,7 @@ public final class telaPrincipalMaster implements ActionListener {
 
             int index = tabelaListar.getSelectedRow();
 
-            TableModel  model = tabelaListar.getModel();
+            TableModel model = tabelaListar.getModel();
 
             String Id = model.getValueAt(index, 0).toString();
             String Nome = model.getValueAt(index, 1).toString();
@@ -621,7 +621,7 @@ public final class telaPrincipalMaster implements ActionListener {
         }
 
         if (e.getSource() == bAtualizar) {
-    
+
             DefaultTableModel model = (DefaultTableModel) tabelaListar.getModel();
 
             model.setNumRows(0);
@@ -659,11 +659,7 @@ public final class telaPrincipalMaster implements ActionListener {
 
             }
 
-          
         }
-        
-        
-        
 
         if (e.getSource() == bSair) {
             frame.dispose();

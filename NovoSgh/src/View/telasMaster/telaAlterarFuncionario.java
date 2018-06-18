@@ -22,8 +22,7 @@ public final class telaAlterarFuncionario implements ActionListener {
     JSeparator separadorNome, separadorCpf, separadorRg, separadorCargo, separadorTelefone, separadorSenha, separadorConfirmarSenha, separadorEmail, separadorPane1, separadorPane2, separadorBotao, separadorMenu, separadorAlterar;
     JButton bAlterar, bSair, bMudarSenha;
     private String CodigoTabela;
-     
-     
+
     public void SetCodigoTabela(String CodigoTabela) {
         this.CodigoTabela = CodigoTabela;
 
@@ -601,12 +600,12 @@ public final class telaAlterarFuncionario implements ActionListener {
 
         panel.add(panel1);
         panel.add(panel1Sombra);
-        
+
         panel.add(panel3);
-        
+
         panel.add(panel2);
         panel.add(panel2Sombra);
- 
+
         panel.add(separadorBotao);
 
         panelMenu.add(separadorMenu);
@@ -641,12 +640,12 @@ public final class telaAlterarFuncionario implements ActionListener {
         if (e.getSource() == bSair) {
             frame.dispose();
         }
-        
+
         if (e.getSource() == bAlterar) {
-            
+
             insereFuncionario altera = new insereFuncionario();
-            
-             if (textNome.getText().isEmpty() || textCargo.getText().isEmpty() || textSenha.getText().isEmpty() || textTelefone.getText().isEmpty() || textEmail.getText().isEmpty()) {
+
+            if (textNome.getText().isEmpty() || textCargo.getText().isEmpty() || textSenha.getText().isEmpty() || textTelefone.getText().isEmpty() || textEmail.getText().isEmpty()) {
 
                 JOptionPane.showMessageDialog(null, "Existe um campo obrigatorio vazio!");
                 frame.requestFocus();
@@ -663,11 +662,9 @@ public final class telaAlterarFuncionario implements ActionListener {
                         textTelefone.getText(),
                         textConfirmarSenha.getText()
                 );
-                
-              
-                
+
                 int CodigoInt = Integer.parseInt(getCodigoTabela());
-             
+
                 if (altera.Alterar(funcionario, CodigoInt) == true) {
 
                     textNome.setText("");
@@ -678,9 +675,8 @@ public final class telaAlterarFuncionario implements ActionListener {
                     textTelefone.setText("");
                     textEmail.setText("");
 
-
                     JOptionPane.showMessageDialog(null, "Funcionario alterado com sucesso!");
-                    
+
                     frame.dispose();
 
                 } else {
@@ -691,20 +687,14 @@ public final class telaAlterarFuncionario implements ActionListener {
 
             }
 
-            
         }
 
     }
-    
-   
 
-     public static void main(String args[]) {
+    public static void main(String args[]) {
 
         telaAlterarFuncionario telaAlterarFuncionario = new telaAlterarFuncionario();
 
     }
-    
+
 }
-
-
-    

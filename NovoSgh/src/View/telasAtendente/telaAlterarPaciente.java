@@ -24,8 +24,7 @@ public final class telaAlterarPaciente implements ActionListener {
     JButton bAlterar, bSair, bMudarDescricao;
     JComboBox planoComboBox;
     private String CodigoTabela;
-     
-     
+
     public void SetCodigoTabela(String CodigoTabela) {
         this.CodigoTabela = CodigoTabela;
 
@@ -179,9 +178,9 @@ public final class telaAlterarPaciente implements ActionListener {
         plano.setBounds(460, 10, 150, 20);
         plano.setFont(new Font("Urbandub", Font.PLAIN, 14));
         plano.setForeground(Color.BLACK);
-        
+
         String[] opcoesCombo = {"Nenhum", "Para gravidas", "Para recem-nascidos", "Familiar", "Para idosos", "Coparticipação", "Appai", "Empresarial/Colaborador", "Aposentadoria por invalidez", "Universitário",};
-        
+
         planoComboBox = new JComboBox(opcoesCombo);
         planoComboBox.setBounds(460, 30, 410, 22);
         planoComboBox.setFont(new Font("Urbandub", Font.PLAIN, 12));
@@ -207,7 +206,7 @@ public final class telaAlterarPaciente implements ActionListener {
             }
 
         });
-        
+
         separadorPlano = new JSeparator();
         separadorPlano.setBounds(460, 51, 410, 1);
         separadorPlano.setBorder(new LineBorder(Color.BLACK));
@@ -295,7 +294,7 @@ public final class telaAlterarPaciente implements ActionListener {
         descricao.setBounds(10, 10, 100, 20);
         descricao.setFont(new Font("Urbandub", Font.PLAIN, 14));
         descricao.setForeground(Color.BLACK);
-        
+
         textDescricao = new JTextArea();
         textDescricao.setBorder(new LineBorder(Color.WHITE));
         textDescricao.setFont(new Font("Urbandub", Font.PLAIN, 12));
@@ -307,7 +306,7 @@ public final class telaAlterarPaciente implements ActionListener {
                 textDescricao.setFont(new Font("Urbandub", Font.PLAIN, 14));
                 textDescricao.setCaretColor(Color.decode("#005c99"));
                 descricao.setForeground(Color.decode("#005c99"));
-                barraDescricao.setBorder(new LineBorder(Color.decode("#005c99"), 2));                
+                barraDescricao.setBorder(new LineBorder(Color.decode("#005c99"), 2));
 
             }
 
@@ -323,12 +322,11 @@ public final class telaAlterarPaciente implements ActionListener {
             }
 
         });
-    
-        
+
         barraDescricao = new JScrollPane(textDescricao);
         barraDescricao.setBounds(10, 30, 860, 100);
         barraDescricao.setBorder(new LineBorder(Color.BLACK));
-        
+
         bMudarDescricao = new JButton("Mudar descrição");
         bMudarDescricao.setBounds(315, 45, 250, 50);
         bMudarDescricao.setFont(new Font("Century Gothic", Font.BOLD, 14));
@@ -371,7 +369,7 @@ public final class telaAlterarPaciente implements ActionListener {
         sombraBMudarDescricao = new JPanel();
         sombraBMudarDescricao.setBackground(Color.GRAY);
         sombraBMudarDescricao.setBounds(315, 45, 250, 52);
-        
+
         // PAINEIS //
         panel1 = new JPanel();
         panel1.setBounds(10, 49, 880, 207);
@@ -393,14 +391,14 @@ public final class telaAlterarPaciente implements ActionListener {
         panel2.setBackground(Color.WHITE);
         panel2.setVisible(true);
         panel2.setLayout(null);
-        
+
         panel3 = new JPanel();
         panel3.setBounds(10, 269, 880, 138);
         panel3.setBorder(new LineBorder(Color.BLACK));
         panel3.setBackground(Color.WHITE);
         panel3.setVisible(false);
         panel3.setLayout(null);
-        
+
         separadorPane2 = new JSeparator();
         separadorPane2.setBounds(440, 10, 1, 118);
         separadorPane2.setBorder(new LineBorder(Color.BLACK));
@@ -546,18 +544,17 @@ public final class telaAlterarPaciente implements ActionListener {
         panel1.add(separadorTelefone);
 
         //panel2.add(separadorPane2);
-        
         panel2.add(bMudarDescricao);
         panel2.add(sombraBMudarDescricao);
-        
+
         panel3.add(descricao);
         panel3.add(barraDescricao);
-    
+
         panel.add(panel1);
         panel.add(panel1Sombra);
-        
+
         panel.add(panel3);
-        
+
         panel.add(panel2);
         panel.add(panel2Sombra);
 
@@ -585,8 +582,7 @@ public final class telaAlterarPaciente implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-   
-        
+
         if (e.getSource() == bMudarDescricao) {
             panel2.setVisible(false);
             panel3.setVisible(true);
@@ -596,19 +592,19 @@ public final class telaAlterarPaciente implements ActionListener {
         if (e.getSource() == bSair) {
             frame.dispose();
         }
-        
+
         if (e.getSource() == bAlterar) {
-            
+
             inserePessoa altera = new inserePessoa();
-            
-             if (textNome.getText().isEmpty() || textNascimento.getText().isEmpty() || textDescricao.getText().isEmpty() || textTelefone.getText().isEmpty() || textRg.getText().isEmpty()) {
+
+            if (textNome.getText().isEmpty() || textNascimento.getText().isEmpty() || textDescricao.getText().isEmpty() || textTelefone.getText().isEmpty() || textRg.getText().isEmpty()) {
 
                 JOptionPane.showMessageDialog(null, "Existe um campo obrigatorio vazio!");
                 frame.requestFocus();
 
             } else {
 
-                 Pessoa pessoa = new Pessoa(
+                Pessoa pessoa = new Pessoa(
                         textNome.getText(),
                         textCpf.getText(),
                         textRg.getText(),
@@ -616,25 +612,21 @@ public final class telaAlterarPaciente implements ActionListener {
                         textNascimento.getText(),
                         textTelefone.getText(),
                         textDescricao.getText()
-                        
                 );
 
-              
-                
                 int CodigoInt = Integer.parseInt(getCodigoTabela());
-             
+
                 if (altera.Alterar(pessoa, CodigoInt) == true) {
 
-                        textNome.setText("");;
-                        textCpf.setText("");;
-                        textRg.setText("");
-                        textNascimento.setText("");;
-                        textTelefone.setText("");
-                        textDescricao.setText("");
-
+                    textNome.setText("");;
+                    textCpf.setText("");;
+                    textRg.setText("");
+                    textNascimento.setText("");;
+                    textTelefone.setText("");
+                    textDescricao.setText("");
 
                     JOptionPane.showMessageDialog(null, "Funcionario alterado com sucesso!");
-                    
+
                     frame.dispose();
 
                 } else {
@@ -644,12 +636,11 @@ public final class telaAlterarPaciente implements ActionListener {
                 }
 
             }
-             
+
         }
     }
-    
-     // Blindagens (Testes) //
-  
+
+    // Blindagens (Testes) //
     public static void main(String args[]) {
 
         telaAlterarPaciente telaAlterarPaciente = new telaAlterarPaciente();

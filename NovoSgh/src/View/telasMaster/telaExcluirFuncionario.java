@@ -21,8 +21,7 @@ public final class telaExcluirFuncionario implements ActionListener {
     JSeparator separadorNome, separadorCpf, separadorRg, separadorCargo, separadorTelefone, separadorSenha, separadorConfirmarSenha, separadorEmail, separadorPane1, separadorPane2, separadorBotao, separadorMenu, separadorExcluir;
     JButton bExcluir, bSair;
     private String CodigoTabela;
-    
-    
+
     public void SetCodigoTabela(String CodigoTabela) {
         this.CodigoTabela = CodigoTabela;
 
@@ -524,7 +523,7 @@ public final class telaExcluirFuncionario implements ActionListener {
 
         panel.add(panel1);
         panel.add(panel1Sombra);
-        
+
         panel.add(separadorBotao);
 
         panelMenu.add(separadorMenu);
@@ -567,7 +566,7 @@ public final class telaExcluirFuncionario implements ActionListener {
                 textEmail.setText("");
 
                 JOptionPane.showMessageDialog(null, "Funcionario excluido com sucesso!");
-                
+
                 frame.dispose();
 
             } else {
@@ -575,15 +574,13 @@ public final class telaExcluirFuncionario implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Erro ao excluir funcionario!");
 
             }
-            
-            
 
         }
 
         if (e.getSource() == bSair) {
             frame.dispose();
         }
-        
+
     }
 
     public static void main(String args[]) {

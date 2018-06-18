@@ -20,9 +20,8 @@ public final class telaExcluirPaciente implements ActionListener {
     JPasswordField textSenha, textConfirmarSenha;
     JSeparator separadorNome, separadorCpf, separadorRg, separadorPlano, separadorTelefone, separadorSenha, separadorConfirmarSenha, separadorNascimento, separadorPane1, separadorPane2, separadorBotao, separadorMenu, separadorExcluir;
     JButton bExcluir, bSair;
-      private String CodigoTabela;
-     
-     
+    private String CodigoTabela;
+
     public void SetCodigoTabela(String CodigoTabela) {
         this.CodigoTabela = CodigoTabela;
 
@@ -33,7 +32,6 @@ public final class telaExcluirPaciente implements ActionListener {
         return CodigoTabela;
 
     }
-
 
     public telaExcluirPaciente() {
 
@@ -143,7 +141,7 @@ public final class telaExcluirPaciente implements ActionListener {
         textTelefone.setFont(new Font("Urbandub", Font.BOLD, 12));
         textTelefone.setBackground(Color.WHITE);
         textTelefone.setEditable(false);
-      
+
         separadorTelefone = new JSeparator();
         separadorTelefone.setBounds(460, 191, 410, 2);
         separadorTelefone.setBorder(new LineBorder(Color.RED));
@@ -381,7 +379,7 @@ public final class telaExcluirPaciente implements ActionListener {
 
         panel.add(panel1);
         panel.add(panel1Sombra);
-        
+
         panel.add(separadorBotao);
 
         panelMenu.add(separadorMenu);
@@ -408,7 +406,7 @@ public final class telaExcluirPaciente implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == bExcluir) {
-            
+
             inserePessoa exclui = new inserePessoa();
 
             int CodigoInt = Integer.parseInt(getCodigoTabela());
@@ -423,7 +421,7 @@ public final class telaExcluirPaciente implements ActionListener {
                 textNascimento.setText("");
 
                 JOptionPane.showMessageDialog(null, "Funcionario excluido com sucesso!");
-                
+
                 frame.dispose();
 
             } else {
@@ -431,13 +429,13 @@ public final class telaExcluirPaciente implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Erro ao excluir funcionario!");
 
             }
-            
+
         }
-        
+
         if (e.getSource() == bSair) {
             frame.dispose();
         }
-        
+
     }
 
     public static void main(String args[]) {

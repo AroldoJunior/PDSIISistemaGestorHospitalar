@@ -1,21 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controller;
 
-
-/**
- *
- * @author CABRUTO
- */
 public class blindagensLoginMaster {
-        
-        
-        
-        public boolean blingadegens(String login, String senha){
-        
+
+    public boolean blingadegens(String login, String senha) {
+
         boolean resposta = false;
         boolean aux1 = loginEmBranco(login);
         boolean aux2 = senhaEmBranco(senha);
@@ -25,16 +13,15 @@ public class blindagensLoginMaster {
         boolean aux6 = senhaSemEspaco(senha);
         boolean aux7 = loginTamanho(login);
         boolean aux8 = senhaTamanho(senha);
-             
-        
-        if (aux1 == false && aux2 == false && aux3 == true && aux4 == true && aux5 == false && aux6 == false && aux7 == true && aux8 == true)
+
+        if (aux1 == false && aux2 == false && aux3 == true && aux4 == true && aux5 == false && aux6 == false && aux7 == true && aux8 == true) {
             resposta = true;
-            
+        }
+
         return resposta;
-        
+
     }
-        
-     
+
     // Blindagens (Testes) //
     public boolean loginEmBranco(String login) {
 
@@ -132,10 +119,8 @@ public class blindagensLoginMaster {
 
     }
 
-   
-     public boolean campoSize3(String nome){
-            return nome.length() >= 3;
+    public boolean campoSize3(String nome) {
+        return nome.length() >= 3;
     }
-   
-        
+
 }

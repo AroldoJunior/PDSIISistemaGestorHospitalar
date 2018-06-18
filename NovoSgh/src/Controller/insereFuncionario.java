@@ -287,12 +287,11 @@ public class insereFuncionario {
             stm.setString(7, funcionario.getEmail());
 
             stm.execute();
-            
-            
+
         } catch (Exception e) {
             certo = false;
         }
-        
+
         certo = true;
 
         return certo;

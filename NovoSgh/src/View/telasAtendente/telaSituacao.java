@@ -8,7 +8,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.border.LineBorder;
 
-public final class telaSituacao implements ActionListener{
+public final class telaSituacao implements ActionListener {
 
     private JFrame frame;
     private JPanel panel, panel1, panelSombra1, panel2, panelSombra2, panel3, panelSombra3, sombraBGerarFicha, sombraBVoltar;
@@ -165,33 +165,33 @@ public final class telaSituacao implements ActionListener{
         panelSombra1 = new JPanel();
         panelSombra1.setBounds(10, 49, 600, 192);
         panelSombra1.setBackground(Color.GRAY);
-        
+
         descricao = new JLabel("Descrição");
         descricao.setBounds(10, 10, 100, 20);
         descricao.setFont(new Font("Urbandub", Font.PLAIN, 14));
         descricao.setForeground(Color.BLACK);
-        
+
         textDescricao = new JTextArea();
         textDescricao.setBorder(new LineBorder(Color.WHITE));
         textDescricao.setFont(new Font("Urbandub", Font.PLAIN, 12));
-        
+
         barraDescricao = new JScrollPane(textDescricao);
         barraDescricao.setBounds(10, 30, 850, 130);
         barraDescricao.setBorder(new LineBorder(Color.BLACK));
-        
+
         panel2 = new JPanel();
         panel2.setBounds(10, 255, 870, 170);
         panel2.setBorder(new LineBorder(Color.BLACK));
         panel2.setBackground(Color.WHITE);
         panel2.setLayout(null);
-        
+
         panel2.add(descricao);
         panel2.add(barraDescricao);
-        
+
         panelSombra2 = new JPanel();
         panelSombra2.setBounds(10, 255, 870, 172);
         panelSombra2.setBackground(Color.GRAY);
-        
+
         bGerarFicha = new JButton("Gerar Ficha");
         bGerarFicha.setBounds(10, 70, 230, 50);
         bGerarFicha.setFont(new Font("Century Gothic", Font.BOLD, 14));
@@ -234,24 +234,24 @@ public final class telaSituacao implements ActionListener{
         sombraBGerarFicha = new JPanel();
         sombraBGerarFicha.setBackground(Color.GRAY);
         sombraBGerarFicha.setBounds(10, 70, 230, 52);
-        
+
         panel3 = new JPanel();
         panel3.setBounds(630, 49, 250, 190);
         panel3.setBackground(Color.WHITE);
         panel3.setBorder(new LineBorder(Color.BLACK));
         panel3.setLayout(null);
-        
+
         panel3.add(bGerarFicha);
         panel3.add(sombraBGerarFicha);
-        
+
         panelSombra3 = new JPanel();
         panelSombra3.setBounds(630, 49, 250, 192);
         panelSombra3.setBackground(Color.GRAY);
-        
+
         separadorBotao = new JSeparator();
         separadorBotao.setBounds(10, 437, 880, 1);
         separadorBotao.setBorder(new LineBorder(Color.BLACK));
-        
+
         bVoltar = new JButton("Voltar");
         bVoltar.setBounds(320, 455, 250, 50);
         bVoltar.setFont(new Font("Century Gothic", Font.BOLD, 14));
@@ -294,7 +294,7 @@ public final class telaSituacao implements ActionListener{
         sombraBVoltar = new JPanel();
         sombraBVoltar.setBackground(Color.GRAY);
         sombraBVoltar.setBounds(320, 455, 250, 52);
-        
+
         panel = new JPanel();
         panel.setBackground(Color.decode("#c6ecd9"));
         panel.setLayout(null);
@@ -310,7 +310,7 @@ public final class telaSituacao implements ActionListener{
         panel.add(separadorBotao);
         panel.add(bVoltar);
         panel.add(sombraBVoltar);
-        
+
         frame = new JFrame();
         frame.setTitle("Situacao - Paciente");
         frame.setSize(900, 559);
@@ -326,11 +326,11 @@ public final class telaSituacao implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-     public static void main(String args[]) {
+
+    public static void main(String args[]) {
 
         telaSituacao telastuacao = new telaSituacao();
 
     }
-    
+
 }

@@ -1,7 +1,7 @@
 package Model;
 
 public class Funcionario {
-    
+
     private String nome;
     private String cpf;
     private String rg;
@@ -12,8 +12,7 @@ public class Funcionario {
     private String numCell;
     private String confirmarSenha;
 
-    // Construtor
-    public Funcionario(String nome, String cpf, String rg, String cargo, String senha, String email, String numCell,String confirmarSenha) {
+    public Funcionario(String nome, String cpf, String rg, String cargo, String senha, String email, String numCell, String confirmarSenha) {
         this.nome = nome;
         this.cpf = cpf;
         this.rg = rg;
@@ -22,11 +21,9 @@ public class Funcionario {
         this.email = email;
         this.numCell = numCell;
         this.confirmarSenha = confirmarSenha;
-        
 
     }
 
-    // Metodos Set's
     public void setNome(String nome) {
         this.nome = nome;
 
@@ -66,12 +63,11 @@ public class Funcionario {
         this.numCell = numCell;
 
     }
-    
-     public void setconfirmarSenha(String confirmarSenha) {
+
+    public void setconfirmarSenha(String confirmarSenha) {
         this.confirmarSenha = confirmarSenha;
 
     }
-    // Metodos Get's
 
     public String getNome() {
         return nome;
@@ -112,8 +108,8 @@ public class Funcionario {
         return email;
 
     }
-    
-     public String getConfirmarSenha() {
+
+    public String getConfirmarSenha() {
         return confirmarSenha;
 
     }

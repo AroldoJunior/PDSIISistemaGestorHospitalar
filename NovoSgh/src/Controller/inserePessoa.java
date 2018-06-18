@@ -1,23 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controller;
-
 
 import Model.Pessoa;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Gemeos
- */
 public class inserePessoa {
-    
-     conectaBanco bd = new conectaBanco();
+
+    conectaBanco bd = new conectaBanco();
     //zc_Funcionario z = new zc_Funcionario();
 
     public boolean Cadastra(Pessoa pessoa) {
@@ -45,9 +35,9 @@ public class inserePessoa {
             stm.execute();
 
             stm.close();
-            
+
             certo = true;
-         
+
         } catch (SQLException ex) {
 
             //throw new RuntimeException(ex);
@@ -58,8 +48,6 @@ public class inserePessoa {
 
     }
 
-    
-    
     public boolean Deletar(int codigo) {
 
         boolean certo;
@@ -119,5 +107,5 @@ public class inserePessoa {
         return certo;
 
     }
-    
+
 }

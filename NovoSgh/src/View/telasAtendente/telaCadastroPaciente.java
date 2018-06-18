@@ -168,9 +168,9 @@ public final class telaCadastroPaciente implements ActionListener {
         plano.setBounds(460, 10, 150, 20);
         plano.setFont(new Font("Urbandub", Font.PLAIN, 14));
         plano.setForeground(Color.BLACK);
-        
+
         String[] opcoesCombo = {"Nenhum", "Para gravidas", "Para recem-nascidos", "Familiar", "Para idosos", "Coparticipação", "Appai", "Empresarial/Colaborador", "Aposentadoria por invalidez", "Universitário",};
-        
+
         planoComboBox = new JComboBox(opcoesCombo);
         planoComboBox.setBounds(460, 28, 410, 20);
         planoComboBox.setFont(new Font("Urbandub", Font.PLAIN, 12));
@@ -196,7 +196,7 @@ public final class telaCadastroPaciente implements ActionListener {
             }
 
         });
-        
+
         separadorPlano = new JSeparator();
         separadorPlano.setBounds(460, 51, 410, 1);
         separadorPlano.setBorder(new LineBorder(Color.BLACK));
@@ -284,7 +284,7 @@ public final class telaCadastroPaciente implements ActionListener {
         descricao.setBounds(10, 10, 100, 20);
         descricao.setFont(new Font("Urbandub", Font.PLAIN, 14));
         descricao.setForeground(Color.BLACK);
-        
+
         textDescricao = new JTextArea();
         textDescricao.setBorder(new LineBorder(Color.WHITE));
         textDescricao.setFont(new Font("Urbandub", Font.PLAIN, 12));
@@ -296,7 +296,7 @@ public final class telaCadastroPaciente implements ActionListener {
                 textDescricao.setFont(new Font("Urbandub", Font.PLAIN, 14));
                 textDescricao.setCaretColor(Color.decode("#005c99"));
                 descricao.setForeground(Color.decode("#005c99"));
-                barraDescricao.setBorder(new LineBorder(Color.decode("#005c99"), 2));                
+                barraDescricao.setBorder(new LineBorder(Color.decode("#005c99"), 2));
 
             }
 
@@ -312,12 +312,11 @@ public final class telaCadastroPaciente implements ActionListener {
             }
 
         });
-    
-        
+
         barraDescricao = new JScrollPane(textDescricao);
         barraDescricao.setBounds(10, 30, 860, 100);
         barraDescricao.setBorder(new LineBorder(Color.BLACK));
-        
+
         // PAINEIS //
         panel1 = new JPanel();
         panel1.setBounds(10, 49, 880, 207);
@@ -486,8 +485,7 @@ public final class telaCadastroPaciente implements ActionListener {
         //panel2.add(separadorPane2);
         panel2.add(descricao);
         panel2.add(barraDescricao);
-      
-        
+
         panel.add(panel1);
         panel.add(panel1Sombra);
 
@@ -518,44 +516,40 @@ public final class telaCadastroPaciente implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-          if (e.getSource() == bCadastrar) {
-              
-              if (blindagem.blingadegens( textNome.getText(),textCpf.getText(),textRg.getText(),planoComboBox.getSelectedItem().toString(),textNascimento.getText(), textTelefone.getText(),textDescricao.getText())== true) {
-                       
-                  inserePessoa insere = new inserePessoa();
 
-                  Pessoa pessoa = new Pessoa(
-                          textNome.getText(),
-                          textCpf.getText(),
-                          textRg.getText(),
-                          planoComboBox.getSelectedItem().toString(),
-                          textNascimento.getText(),
-                          textTelefone.getText(),
-                          textDescricao.getText()
-                  );
+        if (e.getSource() == bCadastrar) {
 
-                  insere.Cadastra(pessoa);
+            if (blindagem.blingadegens(textNome.getText(), textCpf.getText(), textRg.getText(), planoComboBox.getSelectedItem().toString(), textNascimento.getText(), textTelefone.getText(), textDescricao.getText()) == true) {
 
-                  frame.dispose();
-            
-            
+                inserePessoa insere = new inserePessoa();
 
-                } else {
-                    JOptionPane.showMessageDialog(frame, "Cadastro não realizado!\n Favor conferir o usuario e senha digitado!");
-                }
-              
-        
+                Pessoa pessoa = new Pessoa(
+                        textNome.getText(),
+                        textCpf.getText(),
+                        textRg.getText(),
+                        planoComboBox.getSelectedItem().toString(),
+                        textNascimento.getText(),
+                        textTelefone.getText(),
+                        textDescricao.getText()
+                );
+
+                insere.Cadastra(pessoa);
+
+                frame.dispose();
+
+            } else {
+                JOptionPane.showMessageDialog(frame, "Cadastro não realizado!\n Favor conferir o usuario e senha digitado!");
+            }
+
         }
-        
+
         if (e.getSource() == bSair) {
             frame.dispose();
         }
-   
+
     }
-    
-     // Blindagens (Testes) //
-  
+
+    // Blindagens (Testes) //
     public static void main(String args[]) {
 
         telaCadastroPaciente telaCadastroPaciente = new telaCadastroPaciente();
