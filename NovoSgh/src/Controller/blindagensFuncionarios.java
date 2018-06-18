@@ -9,7 +9,7 @@ import View.telasMaster.telaCadastroFuncionario;
  *
  * @author CABRUTO
  */
-public class blindagensCadastrarfuncionario {
+public class blindagensFuncionarios {
     
     public boolean blingadegens(String nome, String cpf, String rg, String cargo,String senha, String email, String Telefone,String confirmasenha){
    

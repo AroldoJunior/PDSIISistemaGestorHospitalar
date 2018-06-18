@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import Controller.blindagensCadastrarfuncionario;
+import Controller.blindagensFuncionarios;
 import Model.Funcionario;
 //import View.telaLoginMaster;
 import org.junit.After;
@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
  */
 public class AlterarFuncionarioTest {
     
-    blindagensCadastrarfuncionario l;
+    blindagensFuncionarios l;
     
     boolean resposta = false;
     private String nome="Mateus";
@@ -40,7 +40,7 @@ public class AlterarFuncionarioTest {
    
     @Before
     public void setUp() {
-        l = new blindagensCadastrarfuncionario();
+        l = new blindagensFuncionarios();
         
     }
     

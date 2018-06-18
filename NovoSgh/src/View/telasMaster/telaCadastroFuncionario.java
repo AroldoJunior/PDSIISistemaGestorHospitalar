@@ -1,6 +1,6 @@
 package View.telasMaster;
 
-import Controller.blindagensCadastrarfuncionario;
+import Controller.blindagensFuncionarios;
 import Controller.insereFuncionario;
 import Model.Funcionario;
 import javax.swing.*;
@@ -22,7 +22,7 @@ public final class telaCadastroFuncionario implements ActionListener {
     JPasswordField textSenha, textConfirmarSenha;
     JSeparator separadorNome, separadorCpf, separadorRg, separadorCargo, separadorTelefone, separadorSenha, separadorConfirmarSenha, separadorEmail, separadorPane1, separadorPane2, separadorBotao, separadorMenu, separadorCadastro;
     JButton bCadastrar, bSair;
-    blindagensCadastrarfuncionario blindagem = new blindagensCadastrarfuncionario();
+    blindagensFuncionarios blindagem = new blindagensFuncionarios();
 
     public telaCadastroFuncionario() {
 
