@@ -31,7 +31,7 @@ public final class telaLoginMaster implements ActionListener {
 
     // Tela Login - GerÃªncia //                     
     public void gui() {
-        
+
         bVoltar = new JButton("<-");
         bVoltar.setBounds(10, 10, 40, 35);
         bVoltar.setFont(new Font("Century Gothic", Font.BOLD, 14));
@@ -39,7 +39,7 @@ public final class telaLoginMaster implements ActionListener {
         bVoltar.addActionListener(this);
         bVoltar.setBackground(Color.WHITE);
         bVoltar.setBorder(new LineBorder(Color.BLACK));
-        
+
         sgh = new JLabel("SGH");
         sgh.setBounds(25, 70, 110, 100);
         sgh.setFont(new Font("Urbandub", Font.PLAIN, 48));
@@ -116,7 +116,7 @@ public final class telaLoginMaster implements ActionListener {
         panel = new JPanel();
         panel.setBackground(Color.decode("#cce6ff"));
         panel.setLayout(null);
-        
+
         panel.add(bVoltar);
         panel.add(sgh);
         panel.add(separadorSgh);
@@ -192,6 +192,13 @@ public final class telaLoginMaster implements ActionListener {
             } catch (SQLException ex) {
                 System.out.println("Ocorreu erro ao conectar");
             }
+
+        }
+
+        if (e.getSource() == bVoltar) {
+
+            frame.dispose();
+            telaEscolha telaescolha = new telaEscolha();
 
         }
 

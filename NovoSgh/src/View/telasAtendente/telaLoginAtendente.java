@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import javax.swing.border.LineBorder;
+import View.telasMaster.telaEscolha;
 
 public final class telaLoginAtendente implements ActionListener {
 
@@ -31,7 +32,7 @@ public final class telaLoginAtendente implements ActionListener {
 
     // Tela Login - Gerência //                     
     public void gui() {
-        
+
         bVoltar = new JButton("<-");
         bVoltar.setBounds(10, 10, 40, 35);
         bVoltar.setFont(new Font("Century Gothic", Font.BOLD, 14));
@@ -39,7 +40,7 @@ public final class telaLoginAtendente implements ActionListener {
         bVoltar.addActionListener(this);
         bVoltar.setBackground(Color.WHITE);
         bVoltar.setBorder(new LineBorder(Color.BLACK));
-        
+
         sgh = new JLabel("SGH");
         sgh.setBounds(25, 70, 110, 100);
         sgh.setFont(new Font("Urbandub", Font.PLAIN, 48));
@@ -116,7 +117,7 @@ public final class telaLoginAtendente implements ActionListener {
         panel = new JPanel();
         panel.setBackground(Color.decode("#cce6ff"));
         panel.setLayout(null);
-        
+
         panel.add(bVoltar);
         panel.add(sgh);
         panel.add(separadorSgh);
@@ -195,9 +196,16 @@ public final class telaLoginAtendente implements ActionListener {
 
         }
 
-    }
+        if (e.getSource() == bVoltar) {
 
+            frame.dispose();
+            telaEscolha telaescolha = new telaEscolha();
+
+        }
+
+    }
     // Main //
+
     public static void main(String args[]) {
 
         telaLoginAtendente telaLoginAtendente = new telaLoginAtendente();
