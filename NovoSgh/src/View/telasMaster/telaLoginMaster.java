@@ -19,7 +19,7 @@ public final class telaLoginMaster implements ActionListener {
     private JTextField textLogin;
     private JPasswordField textSenha;
     private JSeparator separadorLogin, separadorSenha, separadorSgh;
-    private JButton bLogar;
+    private JButton bLogar, bVoltar;
     blindagensLoginMaster blindagem = new blindagensLoginMaster();
 
     // Construtor //
@@ -31,18 +31,26 @@ public final class telaLoginMaster implements ActionListener {
 
     // Tela Login - GerÃªncia //                     
     public void gui() {
-
+        
+        bVoltar = new JButton("<-");
+        bVoltar.setBounds(10, 10, 40, 35);
+        bVoltar.setFont(new Font("Century Gothic", Font.BOLD, 14));
+        bVoltar.setFocusPainted(false);
+        bVoltar.addActionListener(this);
+        bVoltar.setBackground(Color.WHITE);
+        bVoltar.setBorder(new LineBorder(Color.BLACK));
+        
         sgh = new JLabel("SGH");
-        sgh.setBounds(25, 10, 110, 100);
+        sgh.setBounds(25, 70, 110, 100);
         sgh.setFont(new Font("Urbandub", Font.PLAIN, 48));
         sgh.setForeground(Color.WHITE);
 
         separadorSgh = new JSeparator();
-        separadorSgh.setBounds(135, 35, 2, 50);
+        separadorSgh.setBounds(135, 95, 2, 50);
         separadorSgh.setBorder(new LineBorder(Color.WHITE));
 
         sgh2 = new JLabel("Sistema Gestor Hospitalar");
-        sgh2.setBounds(145, 10, 300, 100);
+        sgh2.setBounds(145, 70, 300, 100);
         sgh2.setFont(new Font("Urbandub", Font.PLAIN, 18));
         sgh2.setForeground(Color.WHITE);
 
@@ -108,7 +116,8 @@ public final class telaLoginMaster implements ActionListener {
         panel = new JPanel();
         panel.setBackground(Color.decode("#cce6ff"));
         panel.setLayout(null);
-
+        
+        panel.add(bVoltar);
         panel.add(sgh);
         panel.add(separadorSgh);
         panel.add(sgh2);
