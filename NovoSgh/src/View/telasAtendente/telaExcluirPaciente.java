@@ -41,7 +41,7 @@ public final class telaExcluirPaciente implements ActionListener {
 
         excluir = new JLabel("Excluir");
         excluir.setBounds(10, 10, 150, 20);
-        excluir.setFont(new Font("Urbandub", Font.BOLD, 20));
+        excluir.setFont(new Font("Urbandub", Font.PLAIN, 20));
         excluir.setForeground(Color.BLACK);
 
         separadorExcluir = new JSeparator();
