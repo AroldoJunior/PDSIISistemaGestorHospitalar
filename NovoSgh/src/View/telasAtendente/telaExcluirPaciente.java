@@ -5,8 +5,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.border.LineBorder;
@@ -44,15 +42,15 @@ public final class telaExcluirPaciente implements ActionListener {
         excluir = new JLabel("Excluir");
         excluir.setBounds(10, 10, 150, 20);
         excluir.setFont(new Font("Urbandub", Font.BOLD, 20));
-        excluir.setForeground(Color.RED);
+        excluir.setForeground(Color.BLACK);
 
         separadorExcluir = new JSeparator();
         separadorExcluir.setBounds(10, 34, 880, 1);
         separadorExcluir.setBorder(new LineBorder(Color.BLACK));
 
-        nome = new JLabel("Nome ");
+        nome = new JLabel("Nome");
         nome.setBounds(10, 10, 70, 20);
-        nome.setFont(new Font("Urbandub", Font.BOLD, 16));
+        nome.setFont(new Font("Urbandub", Font.BOLD, 14));
         nome.setForeground(Color.RED);
 
         textNome = new JTextField();
@@ -63,12 +61,12 @@ public final class telaExcluirPaciente implements ActionListener {
         textNome.setEditable(false);
 
         separadorNome = new JSeparator();
-        separadorNome.setBounds(10, 51, 410, 2);
+        separadorNome.setBounds(10, 51, 410, 1);
         separadorNome.setBorder(new LineBorder(Color.RED));
 
-        cpf = new JLabel("CPF ");
+        cpf = new JLabel("CPF");
         cpf.setBounds(10, 80, 50, 20);
-        cpf.setFont(new Font("Urbandub", Font.BOLD, 16));
+        cpf.setFont(new Font("Urbandub", Font.BOLD, 14));
         cpf.setForeground(Color.RED);
 
         textCpf = new JTextField();
@@ -79,12 +77,12 @@ public final class telaExcluirPaciente implements ActionListener {
         textCpf.setEditable(false);
 
         separadorCpf = new JSeparator();
-        separadorCpf.setBounds(10, 121, 410, 2);
+        separadorCpf.setBounds(10, 121, 410, 1);
         separadorCpf.setBorder(new LineBorder(Color.RED));
 
-        rg = new JLabel("RG ");
+        rg = new JLabel("RG");
         rg.setBounds(10, 150, 50, 20);
-        rg.setFont(new Font("Urbandub", Font.BOLD, 16));
+        rg.setFont(new Font("Urbandub", Font.BOLD, 14));
         rg.setForeground(Color.RED);
 
         textRg = new JTextField();
@@ -95,12 +93,12 @@ public final class telaExcluirPaciente implements ActionListener {
         textRg.setEditable(false);
 
         separadorRg = new JSeparator();
-        separadorRg.setBounds(10, 191, 410, 2);
+        separadorRg.setBounds(10, 191, 410, 1);
         separadorRg.setBorder(new LineBorder(Color.RED));
 
-        plano = new JLabel("Plano ");
+        plano = new JLabel("Plano");
         plano.setBounds(460, 10, 70, 20);
-        plano.setFont(new Font("Urbandub", Font.BOLD, 16));
+        plano.setFont(new Font("Urbandub", Font.BOLD, 14));
         plano.setForeground(Color.RED);
 
         textPlano = new JTextField();
@@ -111,12 +109,12 @@ public final class telaExcluirPaciente implements ActionListener {
         textPlano.setEditable(false);
 
         separadorPlano = new JSeparator();
-        separadorPlano.setBounds(460, 51, 410, 2);
+        separadorPlano.setBounds(460, 51, 410, 1);
         separadorPlano.setBorder(new LineBorder(Color.RED));
 
-        nascimento = new JLabel("Data de nascimento ");
+        nascimento = new JLabel("Data de nascimento");
         nascimento.setBounds(460, 80, 200, 20);
-        nascimento.setFont(new Font("Urbandub", Font.BOLD, 16));
+        nascimento.setFont(new Font("Urbandub", Font.BOLD, 14));
         nascimento.setForeground(Color.RED);
 
         textNascimento = new JTextField();
@@ -127,12 +125,12 @@ public final class telaExcluirPaciente implements ActionListener {
         textNascimento.setEditable(false);
 
         separadorNascimento = new JSeparator();
-        separadorNascimento.setBounds(460, 121, 410, 2);
+        separadorNascimento.setBounds(460, 121, 410, 1);
         separadorNascimento.setBorder(new LineBorder(Color.RED));
 
-        telefone = new JLabel("Telefone ");
+        telefone = new JLabel("Telefone");
         telefone.setBounds(460, 150, 100, 20);
-        telefone.setFont(new Font("Urbandub", Font.BOLD, 16));
+        telefone.setFont(new Font("Urbandub", Font.BOLD, 14));
         telefone.setForeground(Color.RED);
 
         textTelefone = new JTextField();
@@ -143,10 +141,10 @@ public final class telaExcluirPaciente implements ActionListener {
         textTelefone.setEditable(false);
 
         separadorTelefone = new JSeparator();
-        separadorTelefone.setBounds(460, 191, 410, 2);
+        separadorTelefone.setBounds(460, 191, 410, 1);
         separadorTelefone.setBorder(new LineBorder(Color.RED));
 
-        senha = new JLabel("Senha ");
+        senha = new JLabel("Senha");
         senha.setBounds(10, 10, 70, 20);
         senha.setFont(new Font("Urbandub", Font.BOLD, 14));
         senha.setForeground(Color.BLACK);
@@ -155,38 +153,12 @@ public final class telaExcluirPaciente implements ActionListener {
         textSenha.setBounds(10, 30, 410, 20);
         textSenha.setBorder(new LineBorder(Color.WHITE));
         textSenha.setFont(new Font("Urbandub", Font.PLAIN, 12));
-        textSenha.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-
-                senha.setFont(new Font("Urbandub", Font.BOLD, 15));
-                textSenha.setFont(new Font("Urbandub", Font.PLAIN, 14));
-                textSenha.setCaretColor(Color.decode("#005c99"));
-                senha.setForeground(Color.decode("#005c99"));
-                separadorSenha.setBounds(10, 51, 410, 2);
-                separadorSenha.setBorder(new LineBorder(Color.decode("#005c99")));
-
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-
-                senha.setFont(new Font("Urbandub", Font.PLAIN, 14));
-                textSenha.setFont(new Font("Urbandub", Font.PLAIN, 12));
-                textSenha.setCaretColor(Color.BLACK);
-                senha.setForeground(Color.BLACK);
-                separadorSenha.setBounds(10, 51, 410, 1);
-                separadorSenha.setBorder(new LineBorder(Color.BLACK));
-
-            }
-
-        });
 
         separadorSenha = new JSeparator();
         separadorSenha.setBounds(10, 51, 410, 1);
         separadorSenha.setBorder(new LineBorder(Color.BLACK));
 
-        confirmarSenha = new JLabel("Confirmar senha ");
+        confirmarSenha = new JLabel("Confirmar senha");
         confirmarSenha.setBounds(10, 80, 150, 20);
         confirmarSenha.setFont(new Font("Urbandub", Font.PLAIN, 14));
         confirmarSenha.setForeground(Color.BLACK);
@@ -195,32 +167,6 @@ public final class telaExcluirPaciente implements ActionListener {
         textConfirmarSenha.setBounds(10, 100, 410, 20);
         textConfirmarSenha.setBorder(new LineBorder(Color.WHITE));
         textConfirmarSenha.setFont(new Font("Urbandub", Font.BOLD, 12));
-        textConfirmarSenha.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-
-                confirmarSenha.setFont(new Font("Urbandub", Font.BOLD, 15));
-                textConfirmarSenha.setFont(new Font("Urbandub", Font.PLAIN, 14));
-                textConfirmarSenha.setCaretColor(Color.decode("#005c99"));
-                confirmarSenha.setForeground(Color.decode("#005c99"));
-                separadorConfirmarSenha.setBounds(10, 121, 410, 2);
-                separadorConfirmarSenha.setBorder(new LineBorder(Color.decode("#005c99")));
-
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-
-                confirmarSenha.setFont(new Font("Urbandub", Font.PLAIN, 14));
-                textConfirmarSenha.setFont(new Font("Urbandub", Font.PLAIN, 12));
-                textConfirmarSenha.setCaretColor(Color.BLACK);
-                confirmarSenha.setForeground(Color.BLACK);
-                separadorConfirmarSenha.setBounds(10, 121, 410, 1);
-                separadorConfirmarSenha.setBorder(new LineBorder(Color.BLACK));
-
-            }
-
-        });
 
         separadorConfirmarSenha = new JSeparator();
         separadorConfirmarSenha.setBounds(10, 121, 410, 1);
@@ -292,8 +238,8 @@ public final class telaExcluirPaciente implements ActionListener {
         bSair.setBounds(550, 20, 250, 50);
         bSair.setFont(new Font("Century Gothic", Font.BOLD, 14));
         bSair.setFocusPainted(false);
-        bSair.setBackground(Color.decode("#9999ff"));
-        bSair.setForeground(Color.WHITE);
+        bSair.setBackground(Color.WHITE);
+        bSair.setForeground(Color.BLACK);
         bSair.setBorder(new LineBorder(Color.BLACK));
         bSair.addActionListener(this);
         bSair.addMouseListener(new MouseListener() {

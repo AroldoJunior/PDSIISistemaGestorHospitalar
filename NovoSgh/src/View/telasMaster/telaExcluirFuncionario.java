@@ -5,8 +5,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.border.LineBorder;
@@ -50,247 +48,103 @@ public final class telaExcluirFuncionario implements ActionListener {
         separadorExcluir.setBounds(10, 34, 880, 1);
         separadorExcluir.setBorder(new LineBorder(Color.BLACK));
 
-        nome = new JLabel("Nome *");
+        nome = new JLabel("Nome");
         nome.setBounds(10, 10, 70, 20);
-        nome.setFont(new Font("Urbandub", Font.PLAIN, 14));
-        nome.setForeground(Color.BLACK);
+        nome.setFont(new Font("Urbandub", Font.BOLD, 14));
+        nome.setForeground(Color.RED);
 
         textNome = new JTextField();
         textNome.setBounds(10, 30, 410, 20);
         textNome.setBorder(new LineBorder(Color.WHITE));
         textNome.setFont(new Font("Urbandub", Font.PLAIN, 12));
-        textNome.addFocusListener(new FocusListener() {
-
-            @Override
-            public void focusGained(FocusEvent e) {
-
-                nome.setFont(new Font("Urbandub", Font.BOLD, 15));
-                textNome.setFont(new Font("Urbandub", Font.PLAIN, 14));
-                textNome.setCaretColor(Color.decode("#005c99"));
-                nome.setForeground(Color.decode("#005c99"));
-                separadorNome.setBounds(10, 51, 410, 2);
-                separadorNome.setBorder(new LineBorder(Color.decode("#005c99")));
-
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-
-                nome.setFont(new Font("Urbandub", Font.PLAIN, 14));
-                textNome.setFont(new Font("Urbandub", Font.PLAIN, 12));
-                textNome.setCaretColor(Color.BLACK);
-                nome.setForeground(Color.BLACK);
-                separadorNome.setBounds(10, 51, 410, 1);
-                separadorNome.setBorder(new LineBorder(Color.BLACK));
-
-            }
-
-        });
+        textNome.setEditable(false);
+        textNome.setBackground(Color.WHITE);
 
         separadorNome = new JSeparator();
         separadorNome.setBounds(10, 51, 410, 1);
-        separadorNome.setBorder(new LineBorder(Color.BLACK));
+        separadorNome.setBorder(new LineBorder(Color.RED));
 
-        cpf = new JLabel("CPF *");
+        cpf = new JLabel("CPF");
         cpf.setBounds(10, 80, 50, 20);
-        cpf.setFont(new Font("Urbandub", Font.PLAIN, 14));
-        cpf.setForeground(Color.BLACK);
+        cpf.setFont(new Font("Urbandub", Font.BOLD, 14));
+        cpf.setForeground(Color.RED);
 
         textCpf = new JTextField();
         textCpf.setBounds(10, 100, 410, 20);
         textCpf.setBorder(new LineBorder(Color.WHITE));
         textCpf.setFont(new Font("Urbandub", Font.BOLD, 12));
-        textCpf.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-
-                cpf.setFont(new Font("Urbandub", Font.BOLD, 15));
-                textCpf.setFont(new Font("Urbandub", Font.PLAIN, 14));
-                textCpf.setCaretColor(Color.decode("#005c99"));
-                cpf.setForeground(Color.decode("#005c99"));
-                separadorCpf.setBounds(10, 121, 410, 2);
-                separadorCpf.setBorder(new LineBorder(Color.decode("#005c99")));
-
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-
-                cpf.setFont(new Font("Urbandub", Font.PLAIN, 14));
-                textCpf.setFont(new Font("Urbandub", Font.PLAIN, 12));
-                textCpf.setCaretColor(Color.BLACK);
-                cpf.setForeground(Color.BLACK);
-                separadorCpf.setBounds(10, 121, 410, 1);
-                separadorCpf.setBorder(new LineBorder(Color.BLACK));
-
-            }
-
-        });
+        textCpf.setEditable(false);
+        textCpf.setBackground(Color.WHITE);
 
         separadorCpf = new JSeparator();
         separadorCpf.setBounds(10, 121, 410, 1);
-        separadorCpf.setBorder(new LineBorder(Color.BLACK));
+        separadorCpf.setBorder(new LineBorder(Color.RED));
 
-        rg = new JLabel("RG *");
+        rg = new JLabel("RG");
         rg.setBounds(10, 150, 50, 20);
-        rg.setFont(new Font("Urbandub", Font.PLAIN, 14));
-        rg.setForeground(Color.BLACK);
+        rg.setFont(new Font("Urbandub", Font.BOLD, 14));
+        rg.setForeground(Color.RED);
 
         textRg = new JTextField();
         textRg.setBounds(10, 170, 410, 20);
         textRg.setBorder(new LineBorder(Color.WHITE));
         textRg.setFont(new Font("Urbandub", Font.BOLD, 12));
-        textRg.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-
-                rg.setFont(new Font("Urbandub", Font.BOLD, 15));
-                textRg.setFont(new Font("Urbandub", Font.PLAIN, 14));
-                textRg.setCaretColor(Color.decode("#005c99"));
-                rg.setForeground(Color.decode("#005c99"));
-                separadorRg.setBounds(10, 191, 410, 2);
-                separadorRg.setBorder(new LineBorder(Color.decode("#005c99")));
-
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-
-                rg.setFont(new Font("Urbandub", Font.PLAIN, 14));
-                textRg.setFont(new Font("Urbandub", Font.PLAIN, 12));
-                textRg.setCaretColor(Color.BLACK);
-                rg.setForeground(Color.BLACK);
-                separadorRg.setBounds(10, 191, 410, 1);
-                separadorRg.setBorder(new LineBorder(Color.BLACK));
-
-            }
-
-        });
+        textRg.setEditable(false);
+        textRg.setBackground(Color.WHITE);
 
         separadorRg = new JSeparator();
         separadorRg.setBounds(10, 191, 410, 1);
-        separadorRg.setBorder(new LineBorder(Color.BLACK));
+        separadorRg.setBorder(new LineBorder(Color.RED));
 
-        cargo = new JLabel("Cargo *");
+        cargo = new JLabel("Cargo");
         cargo.setBounds(460, 10, 70, 20);
-        cargo.setFont(new Font("Urbandub", Font.PLAIN, 14));
-        cargo.setForeground(Color.BLACK);
+        cargo.setFont(new Font("Urbandub", Font.BOLD, 14));
+        cargo.setForeground(Color.RED);
 
         textCargo = new JTextField();
         textCargo.setBounds(460, 30, 410, 20);
         textCargo.setBorder(new LineBorder(Color.WHITE));
         textCargo.setFont(new Font("Urbandub", Font.PLAIN, 12));
-        textCargo.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-
-                cargo.setFont(new Font("Urbandub", Font.BOLD, 15));
-                textCargo.setFont(new Font("Urbandub", Font.PLAIN, 14));
-                textCargo.setCaretColor(Color.decode("#005c99"));
-                cargo.setForeground(Color.decode("#005c99"));
-                separadorCargo.setBounds(460, 51, 410, 2);
-                separadorCargo.setBorder(new LineBorder(Color.decode("#005c99")));
-
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-
-                cargo.setFont(new Font("Urbandub", Font.PLAIN, 14));
-                textCargo.setFont(new Font("Urbandub", Font.PLAIN, 12));
-                textCargo.setCaretColor(Color.BLACK);
-                cargo.setForeground(Color.BLACK);
-                separadorCargo.setBounds(460, 51, 410, 1);
-                separadorCargo.setBorder(new LineBorder(Color.BLACK));
-
-            }
-
-        });
+        textCargo.setEditable(false);
+        textCargo.setBackground(Color.WHITE);
 
         separadorCargo = new JSeparator();
         separadorCargo.setBounds(460, 51, 410, 1);
-        separadorCargo.setBorder(new LineBorder(Color.BLACK));
+        separadorCargo.setBorder(new LineBorder(Color.RED));
 
-        email = new JLabel("Email *");
+        email = new JLabel("Email");
         email.setBounds(460, 80, 70, 20);
-        email.setFont(new Font("Urbandub", Font.PLAIN, 14));
-        email.setForeground(Color.BLACK);
+        email.setFont(new Font("Urbandub", Font.BOLD, 14));
+        email.setForeground(Color.RED);
 
         textEmail = new JTextField();
         textEmail.setBounds(460, 100, 410, 20);
         textEmail.setBorder(new LineBorder(Color.WHITE));
         textEmail.setFont(new Font("Urbandub", Font.PLAIN, 12));
-        textEmail.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-
-                email.setFont(new Font("Urbandub", Font.BOLD, 15));
-                textEmail.setFont(new Font("Urbandub", Font.PLAIN, 14));
-                textEmail.setCaretColor(Color.decode("#005c99"));
-                email.setForeground(Color.decode("#005c99"));
-                separadorEmail.setBounds(460, 121, 410, 2);
-                separadorEmail.setBorder(new LineBorder(Color.decode("#005c99")));
-
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-
-                email.setFont(new Font("Urbandub", Font.PLAIN, 14));
-                textEmail.setFont(new Font("Urbandub", Font.PLAIN, 12));
-                textEmail.setCaretColor(Color.BLACK);
-                email.setForeground(Color.BLACK);
-                separadorEmail.setBounds(460, 121, 410, 1);
-                separadorEmail.setBorder(new LineBorder(Color.BLACK));
-
-            }
-
-        });
+        textEmail.setEditable(false);
+        textEmail.setBackground(Color.WHITE);
 
         separadorEmail = new JSeparator();
         separadorEmail.setBounds(460, 121, 410, 1);
-        separadorEmail.setBorder(new LineBorder(Color.BLACK));
+        separadorEmail.setBorder(new LineBorder(Color.RED));
 
-        telefone = new JLabel("Telefone *");
+        telefone = new JLabel("Telefone");
         telefone.setBounds(460, 150, 100, 20);
-        telefone.setFont(new Font("Urbandub", Font.PLAIN, 14));
-        telefone.setForeground(Color.BLACK);
+        telefone.setFont(new Font("Urbandub", Font.BOLD, 14));
+        telefone.setForeground(Color.RED);
 
         textTelefone = new JTextField();
         textTelefone.setBounds(460, 170, 410, 20);
         textTelefone.setBorder(new LineBorder(Color.WHITE));
         textTelefone.setFont(new Font("Urbandub", Font.PLAIN, 12));
-        textTelefone.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-
-                telefone.setFont(new Font("Urbandub", Font.BOLD, 15));
-                textTelefone.setFont(new Font("Urbandub", Font.PLAIN, 14));
-                textTelefone.setCaretColor(Color.decode("#005c99"));
-                telefone.setForeground(Color.decode("#005c99"));
-                separadorTelefone.setBounds(460, 191, 410, 2);
-                separadorTelefone.setBorder(new LineBorder(Color.decode("#005c99")));
-
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-
-                telefone.setFont(new Font("Urbandub", Font.PLAIN, 14));
-                textTelefone.setFont(new Font("Urbandub", Font.PLAIN, 12));
-                telefone.setForeground(Color.BLACK);
-                separadorTelefone.setBounds(460, 191, 410, 1);
-                separadorTelefone.setBorder(new LineBorder(Color.BLACK));
-
-            }
-
-        });
+        textTelefone.setEditable(false);
+        textTelefone.setBackground(Color.WHITE);
 
         separadorTelefone = new JSeparator();
         separadorTelefone.setBounds(460, 191, 410, 1);
-        separadorTelefone.setBorder(new LineBorder(Color.BLACK));
+        separadorTelefone.setBorder(new LineBorder(Color.RED));
 
-        senha = new JLabel("Senha *");
+        senha = new JLabel("Senha");
         senha.setBounds(10, 10, 70, 20);
         senha.setFont(new Font("Urbandub", Font.PLAIN, 14));
         senha.setForeground(Color.BLACK);
@@ -299,38 +153,12 @@ public final class telaExcluirFuncionario implements ActionListener {
         textSenha.setBounds(10, 30, 410, 20);
         textSenha.setBorder(new LineBorder(Color.WHITE));
         textSenha.setFont(new Font("Urbandub", Font.PLAIN, 12));
-        textSenha.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-
-                senha.setFont(new Font("Urbandub", Font.BOLD, 15));
-                textSenha.setFont(new Font("Urbandub", Font.PLAIN, 14));
-                textSenha.setCaretColor(Color.decode("#005c99"));
-                senha.setForeground(Color.decode("#005c99"));
-                separadorSenha.setBounds(10, 51, 410, 2);
-                separadorSenha.setBorder(new LineBorder(Color.decode("#005c99")));
-
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-
-                senha.setFont(new Font("Urbandub", Font.PLAIN, 14));
-                textSenha.setFont(new Font("Urbandub", Font.PLAIN, 12));
-                textSenha.setCaretColor(Color.BLACK);
-                senha.setForeground(Color.BLACK);
-                separadorSenha.setBounds(10, 51, 410, 1);
-                separadorSenha.setBorder(new LineBorder(Color.BLACK));
-
-            }
-
-        });
 
         separadorSenha = new JSeparator();
         separadorSenha.setBounds(10, 51, 410, 1);
         separadorSenha.setBorder(new LineBorder(Color.BLACK));
 
-        confirmarSenha = new JLabel("Confirmar senha *");
+        confirmarSenha = new JLabel("Confirmar senha");
         confirmarSenha.setBounds(10, 80, 150, 20);
         confirmarSenha.setFont(new Font("Urbandub", Font.PLAIN, 14));
         confirmarSenha.setForeground(Color.BLACK);
@@ -339,32 +167,6 @@ public final class telaExcluirFuncionario implements ActionListener {
         textConfirmarSenha.setBounds(10, 100, 410, 20);
         textConfirmarSenha.setBorder(new LineBorder(Color.WHITE));
         textConfirmarSenha.setFont(new Font("Urbandub", Font.BOLD, 12));
-        textConfirmarSenha.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-
-                confirmarSenha.setFont(new Font("Urbandub", Font.BOLD, 15));
-                textConfirmarSenha.setFont(new Font("Urbandub", Font.PLAIN, 14));
-                textConfirmarSenha.setCaretColor(Color.decode("#005c99"));
-                confirmarSenha.setForeground(Color.decode("#005c99"));
-                separadorConfirmarSenha.setBounds(10, 121, 410, 2);
-                separadorConfirmarSenha.setBorder(new LineBorder(Color.decode("#005c99")));
-
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-
-                confirmarSenha.setFont(new Font("Urbandub", Font.PLAIN, 14));
-                textConfirmarSenha.setFont(new Font("Urbandub", Font.PLAIN, 12));
-                textConfirmarSenha.setCaretColor(Color.BLACK);
-                confirmarSenha.setForeground(Color.BLACK);
-                separadorConfirmarSenha.setBounds(10, 121, 410, 1);
-                separadorConfirmarSenha.setBorder(new LineBorder(Color.BLACK));
-
-            }
-
-        });
 
         separadorConfirmarSenha = new JSeparator();
         separadorConfirmarSenha.setBounds(10, 121, 410, 1);
@@ -436,8 +238,8 @@ public final class telaExcluirFuncionario implements ActionListener {
         bSair.setBounds(550, 20, 250, 50);
         bSair.setFont(new Font("Century Gothic", Font.BOLD, 14));
         bSair.setFocusPainted(false);
-        bSair.setBackground(Color.decode("#9999ff"));
-        bSair.setForeground(Color.WHITE);
+        bSair.setBackground(Color.WHITE);
+        bSair.setForeground(Color.BLACK);
         bSair.setBorder(new LineBorder(Color.BLACK));
         bSair.addActionListener(this);
         bSair.addMouseListener(new MouseListener() {
